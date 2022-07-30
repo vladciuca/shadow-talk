@@ -11,10 +11,10 @@ import {
   InputContainer,
   SendMessageContainer,
   SendMessageButton,
-} from "./Footer.styles";
+} from "./ChatFooter.styles";
 import { UserIcon } from "../UserIcon/UserIcon";
 
-export const Footer = () => {
+export const ChatFooter = () => {
   return (
     <>
       <FooterContainer>

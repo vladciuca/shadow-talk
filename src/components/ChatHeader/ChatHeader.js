@@ -1,4 +1,5 @@
 import React from "react";
+import { BackToHome } from "../BackToHome/BackToHome";
 import { UserIcon } from "../UserIcon/UserIcon";
 import {
   HeaderContainer,
@@ -6,13 +7,13 @@ import {
   UserInfo,
   UserName,
   SubText,
-  AppInfoContainer,
-} from "./Header.styles";
+} from "./ChatHeader.styles";
 
-export const Header = () => {
+export const ChatHeader = () => {
   return (
     <>
       <HeaderContainer>
+        <BackToHome />
         <ProfileImage>
           <UserIcon
             bgHeightAndWidth={3.5}
@@ -25,7 +26,6 @@ export const Header = () => {
           <SubText>Chatting with your</SubText>
           <UserName>Past-Self</UserName>
         </UserInfo>
-        <AppInfoContainer>info</AppInfoContainer>
       </HeaderContainer>
     </>
   );

@@ -1,14 +1,6 @@
 import styled from "styled-components";
 
-// export const AppContainer = styled.div`
-//   width: 100%,
-//   height: 100vh;
-//   max-width: 800px;
-//   padding: 0 0.5rem;
-//   margin: 0 auto;
-// `;
-
-export const Container = styled.div`
+export const AppContainer = styled.div`
   with: 100vw;
   height: 100vh;
   display: flex;
@@ -16,88 +8,51 @@ export const Container = styled.div`
   align-items: center;
 `;
 
-// export const CenterColumn = styled.div`
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-//   justify-content: center;
-// `;
-
-// export const CenterRow = styled.div`
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-// `;
-
-// export const Spacer = styled.div`
-//   height: 200px;
-// `;
-
-//TEXT components
-
-export const Paragraph = styled.div`
-  text-align: justify;
-  text-justify: inter-word;
-  @media (max-width: 600px) {
-    padding: 1rem 1rem;
+export const Screen = styled.div`
+  height: 800px;
+  width: 400px;
+  @media (max-width: 420px) {
+    height: 98vh;
+    width: 100vw;
   }
-  @media (min-width: 600px) {
-    padding: 1rem 3rem;
-  }
+  margin: 0 0.5rem;
+  background: ${({ theme }) => theme.card};
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  border-radius: 20px;
+  border: 1px solid ${({ theme }) => theme.cardBorder};
+  overflow: hidden;
+  position: relative;
 `;
 
-export const Text = styled.span`
-  font-size: 1.2rem;
-  line-height: 2.2rem;
-  color: ${({ theme }) => theme.text};
+export const ScreenHeader = styled.div`
+  height: 100px;
+  width: 100%;
+  padding: 0.5rem;
+  background: ${({ theme }) => theme.bgSecondary};
+  position: absolute;
+  top: 0;
 `;
 
-export const TextLight = styled.span`
-  font-size: 1.1rem;
-  line-height: 2.1rem;
-  color: ${({ theme }) => theme.textLight};
+export const ScreenContent = styled.div`
+  height: 100%;
+  width: 100%;
+  padding: 105px 0.3rem 105px 0.3rem;
 `;
 
-export const Source = styled.span`
-  text-decoration: underline;
+export const ScreenOverflow = styled.div`
+  height: 100%;
+  width: 100%;
+  padding: 1rem;
+  overflow-x: hidden;
+  overflow-y: scroll;
 `;
 
-export const TextHighlight = styled.span`
-  background-color: ${({ theme }) => theme.textHighlight};
-`;
-
-export const NeutralHighlight = styled.span`
-  background-color: ${({ theme }) => theme.neutral};
-`;
-
-export const PositiveHighlight = styled.span`
-  background-color: ${({ theme }) => theme.positive};
-`;
-
-export const NegativeHighlight = styled.span`
-  background-color: ${({ theme }) => theme.negative};
-`;
-
-export const NeutralColor = styled.span`
-  color: ${({ theme }) => theme.neutral};
-`;
-
-export const PositiveColor = styled.span`
-  color: ${({ theme }) => theme.positive};
-`;
-export const NegativeColor = styled.span`
-  color: ${({ theme }) => theme.negative};
-`;
-
-//SECTION components
-
-export const SectionTitle = styled.div`
-  font-size: 1.7rem;
-  line-height: 2.3rem;
-  @media (max-width: 600px) {
-    padding: 3rem 1.5rem 1rem 1.5rem;
-  }
-  @media (min-width: 600px) {
-    padding: 3rem 3rem 1rem 3rem;
-  }
+export const ScreenFooter = styled.div`
+  height: 100px;
+  width: 100%;
+  padding: 0.5rem;
+  background: ${({ theme }) => theme.bgSecondary};
+  position: absolute;
+  bottom: 0;
 `;

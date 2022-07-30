@@ -60,15 +60,16 @@ export const SwitchUserContainer = styled.div`
 `;
 
 export const SwitchUserButton = styled.div`
-  padding: 0.5rem 1rem;
+  padding: 0.25rem 0.75rem;
   border-radius: 1.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
   background: ${({ theme }) => theme.card};
   color: ${({ theme }) => theme.textLight};
+  font-size: 0.9rem;
   span {
-    font-size: 1.1rem;
+    font-size: 0.9rem;
     color: ${({ theme }) => theme.text};
     padding: 0 0.5rem;
   }
@@ -78,7 +79,7 @@ export const SwitchIcon = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.4rem;
+  font-size: 1rem;
   color: ${({ theme }) => theme.text};
   padding: 0 0.5rem;
 `;

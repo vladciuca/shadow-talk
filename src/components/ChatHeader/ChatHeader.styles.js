@@ -6,11 +6,19 @@ export const HeaderContainer = styled.div`
   height: 100%;
 `;
 
+export const BackButton = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 15%;
+  font-size: 2rem;
+`;
+
 export const ProfileImage = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 25%;
+  width: 20%;
 `;
 
 export const UserInfo = styled.div`
@@ -18,6 +26,7 @@ export const UserInfo = styled.div`
   flex-direction: column;
   justify-content: center;
   flex-grow: 1;
+  padding-left: 1rem;
 `;
 
 export const UserName = styled.div`
@@ -28,11 +37,4 @@ export const UserName = styled.div`
 
 export const SubText = styled.div`
   color: ${({ theme }) => theme.textLight};
-`;
-
-export const AppInfoContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 15%;
 `;
