@@ -16,7 +16,7 @@ const About = () => {
           <AboutHeader />
         </ScreenHeader>
         <ScreenContent>
-          <ScreenOverflow>This is the About Page</ScreenOverflow>
+          <ScreenOverflow></ScreenOverflow>
         </ScreenContent>
         <ScreenFooter></ScreenFooter>
       </Screen>

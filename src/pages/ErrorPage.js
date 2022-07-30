@@ -1,4 +1,5 @@
 import React from "react";
+import { ErrorPageContent } from "../components/ErrorPageContent/ErrorPageContent";
 import { ErrorPageHeader } from "../components/ErrorPageHeader/ErrorPageHeader";
 import {
   Screen,
@@ -15,7 +16,9 @@ const ErrorPage = () => {
         <ErrorPageHeader />
       </ScreenHeader>
       <ScreenContent>
-        <ScreenOverflow>Page Not Found</ScreenOverflow>
+        <ScreenOverflow>
+          <ErrorPageContent />
+        </ScreenOverflow>
       </ScreenContent>
       <ScreenFooter></ScreenFooter>
     </Screen>
