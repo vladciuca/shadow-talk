@@ -1,10 +1,24 @@
 import React from "react";
+import { ErrorPageHeader } from "../components/ErrorPageHeader/ErrorPageHeader";
+import {
+  Screen,
+  ScreenHeader,
+  ScreenContent,
+  ScreenOverflow,
+  ScreenFooter,
+} from "../components/UI/UI.styles";
 
 const ErrorPage = () => {
   return (
-    <>
-      <div>Page not Found! 404</div>
-    </>
+    <Screen>
+      <ScreenHeader>
+        <ErrorPageHeader />
+      </ScreenHeader>
+      <ScreenContent>
+        <ScreenOverflow>Page Not Found</ScreenOverflow>
+      </ScreenContent>
+      <ScreenFooter></ScreenFooter>
+    </Screen>
   );
 };
 

@@ -22,10 +22,6 @@ function App() {
             <Route path="/chat" element={<Chat />} />
             <Route path="*" element={<ErrorPage />} />
           </Routes>
-
-          {/* Header */}
-          {/* Screen Content  */}
-          {/* Footer */}
         </AppContainer>
       </ThemeProvider>
     </Router>
