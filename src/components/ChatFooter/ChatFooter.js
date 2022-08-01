@@ -21,6 +21,7 @@ export const ChatFooter = ({
   handleChange,
   handleValue,
   handleSubmit,
+  submitNotAllowed,
 }) => {
   return (
     <>
@@ -43,7 +44,10 @@ export const ChatFooter = ({
             />
           </InputContainer>
           <SendMessageContainer>
-            <SendMessageButton onClick={handleSubmit}>
+            <SendMessageButton
+              onClick={handleSubmit}
+              submitNotAllowed={submitNotAllowed}
+            >
               <IoSend />
             </SendMessageButton>
           </SendMessageContainer>

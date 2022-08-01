@@ -21,7 +21,8 @@ export const theme = {
 
   positive: "#00bfff",
   neutral: "#a487c3",
-  negative: "#ff69b4",
+  // negative: "#ff69b4",
+  negative: "#ff78c3",
 
   positiveDark: "#0073cf",
   neutralDark: "#5b486a",

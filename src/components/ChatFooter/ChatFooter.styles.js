@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const FooterContainer = styled.div`
   height: 100%;
@@ -41,6 +41,8 @@ export const SendMessageContainer = styled.div`
 `;
 
 export const SendMessageButton = styled.div`
+  cursor: ${({ submitNotAllowed }) =>
+    submitNotAllowed ? "not-allowed" : "pointer"};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -48,8 +50,15 @@ export const SendMessageButton = styled.div`
   height: 2rem;
   width: 2rem;
   border-radius: 999px;
+  ${({ submitNotAllowed }) =>
+    submitNotAllowed
+      ? css`
+          background: ${({ theme }) => theme.textLight};
+        `
+      : css`
+          background: ${({ theme }) => theme.positive};
+        `};
   color: ${({ theme }) => theme.text};
-  background: ${({ theme }) => theme.positive};
 `;
 
 export const SwitchUserContainer = styled.div`

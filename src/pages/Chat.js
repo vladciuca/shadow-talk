@@ -8,14 +8,11 @@ const Chat = () => {
   const [currentUser, setCurrentUser] = useState("");
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
+  const [submitNotAllowed, setSubmitNotAllowed] = useState(true);
 
   useEffect(() => {
     setCurrentUser("PRESENT");
   }, []);
-
-  useEffect(() => {
-    console.log(messages, "inState");
-  }, [messages]);
 
   const secondUser = () => {
     if (currentUser === "PRESENT") {
@@ -31,16 +28,26 @@ const Chat = () => {
     } else {
       setCurrentUser("PRESENT");
     }
+    setNewMessage("");
   };
 
   const handleChange = (e) => {
+    if (e !== "") {
+      setSubmitNotAllowed(false);
+    } else {
+      setSubmitNotAllowed(true);
+    }
     setNewMessage(e);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (newMessage === "") {
+      return;
+    }
     setMessages([...messages, { user: currentUser, text: newMessage }]);
     setNewMessage("");
+    setSubmitNotAllowed(true);
   };
 
   return (
@@ -56,6 +63,7 @@ const Chat = () => {
           handleChange={(e) => handleChange(e.target.value)}
           handleValue={newMessage}
           handleSubmit={(e) => handleSubmit(e)}
+          submitNotAllowed={submitNotAllowed}
         />
       }
     />
