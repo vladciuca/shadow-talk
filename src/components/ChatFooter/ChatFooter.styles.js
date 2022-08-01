@@ -4,7 +4,7 @@ export const FooterContainer = styled.div`
   height: 100%;
 `;
 
-export const UserInputContainer = styled.div`
+export const UserInputContainer = styled.form`
   display: flex;
   align-items: center;
   height: 50%;
@@ -60,6 +60,7 @@ export const SwitchUserContainer = styled.div`
 `;
 
 export const SwitchUserButton = styled.div`
+  cursor: pointer;
   padding: 0.25rem 0.75rem;
   border-radius: 1.5rem;
   display: flex;

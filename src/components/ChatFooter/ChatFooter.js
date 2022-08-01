@@ -14,35 +14,47 @@ import {
 } from "./ChatFooter.styles";
 import { UserIcon } from "../UserIcon/UserIcon";
 
-export const ChatFooter = () => {
+export const ChatFooter = ({
+  user,
+  secondUser,
+  switchUser,
+  handleChange,
+  handleValue,
+  handleSubmit,
+}) => {
   return (
     <>
       <FooterContainer>
-        <UserInputContainer>
+        <UserInputContainer onSubmit={handleSubmit}>
           <UserImage>
             <UserIcon
               bgHeightAndWidth={2.5}
               iconSize={2}
-              // iconColor={iconColor}
               iconMargin={1}
+              user={user}
             />
           </UserImage>
           <InputContainer>
-            <input type="text" placeholder={`Chatting as: ${"Present-Self"}`} />
+            <input
+              type="text"
+              placeholder={`Chatting as: ${user}-self`}
+              onChange={handleChange}
+              value={handleValue}
+            />
           </InputContainer>
           <SendMessageContainer>
-            <SendMessageButton>
+            <SendMessageButton onClick={handleSubmit}>
               <IoSend />
             </SendMessageButton>
           </SendMessageContainer>
         </UserInputContainer>
         <SwitchUserContainer>
-          <SwitchUserButton>
+          <SwitchUserButton onClick={switchUser}>
             <SwitchIcon>
               <TbArrowsLeftRight />
             </SwitchIcon>
             Switch to
-            <span>{"Past-Self"}</span>
+            <span>{secondUser}-self</span>
           </SwitchUserButton>
         </SwitchUserContainer>
       </FooterContainer>

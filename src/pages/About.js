@@ -1,27 +1,10 @@
 import React from "react";
-import {
-  Screen,
-  ScreenHeader,
-  ScreenContent,
-  ScreenOverflow,
-  ScreenFooter,
-} from "../components/UI/UI.styles";
+import { Screen } from "../components/Screen/Screen";
 import { AboutHeader } from "../components/AboutHeader/AboutHeader";
+import { AboutContent } from "../components/AboutContent/AboutContent";
 
-const About = () => {
-  return (
-    <>
-      <Screen>
-        <ScreenHeader>
-          <AboutHeader />
-        </ScreenHeader>
-        <ScreenContent>
-          <ScreenOverflow></ScreenOverflow>
-        </ScreenContent>
-        <ScreenFooter></ScreenFooter>
-      </Screen>
-    </>
-  );
-};
+const About = () => (
+  <Screen header={<AboutHeader />} content={<AboutContent />} />
+);
 
 export default About;

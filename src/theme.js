@@ -2,14 +2,14 @@ export const theme = {
   bgPrimary: "#262335",
   bgSecondary: "#40384a",
 
-  // cardPrimary: "rgb(36,27,47, 0.4)",
+  cardPrimary: "rgb(36,27,47, 0.4)",
   // cardSecondary: "#241b2f",
 
   //CARDS
 
   card: "rgba(255, 255, 255, 0.2)",
   cardBorder: "rgba(255, 255, 255, 0.3)",
-  shadow: "rgba(0, 0, 0, 0.1)",
+  shadow: "rgba(0, 0, 0, 0.2)",
 
   //TEXT
 

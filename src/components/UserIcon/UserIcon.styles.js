@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const UserBackground = styled.div`
   height: ${({ bgHeightAndWidth }) => bgHeightAndWidth}rem;
@@ -12,6 +12,13 @@ export const UserBackground = styled.div`
   span {
     font-size: ${({ iconSize }) => iconSize}rem;
     margin-top: ${({ iconMargin }) => iconMargin}rem;
-    color: ${({ theme }) => theme.neutral};
+    color: ${({ user }) =>
+      user === "PRESENT"
+        ? css`
+            ${({ theme }) => theme.negative}
+          `
+        : css`
+            ${({ theme }) => theme.neutral}
+          `};
   }
 `;

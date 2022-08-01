@@ -9,7 +9,7 @@ import {
   SubText,
 } from "./ChatHeader.styles";
 
-export const ChatHeader = () => {
+export const ChatHeader = ({ user, secondUser }) => {
   return (
     <>
       <HeaderContainer>
@@ -18,13 +18,13 @@ export const ChatHeader = () => {
           <UserIcon
             bgHeightAndWidth={3.5}
             iconSize={3}
-            // iconColor={iconColor}
             iconMargin={1.5}
+            user={secondUser}
           />
         </ProfileImage>
         <UserInfo>
           <SubText>Chatting with your</SubText>
-          <UserName>Past-Self</UserName>
+          <UserName>{secondUser}-self</UserName>
         </UserInfo>
       </HeaderContainer>
     </>
