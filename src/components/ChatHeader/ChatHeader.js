@@ -24,7 +24,7 @@ export const ChatHeader = ({ user, secondUser }) => {
         </ProfileImage>
         <UserInfo>
           <SubText>Chatting with your</SubText>
-          <UserName>{secondUser}-self</UserName>
+          <UserName>{secondUser}-Self</UserName>
         </UserInfo>
       </HeaderContainer>
     </>

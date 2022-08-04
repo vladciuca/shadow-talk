@@ -38,7 +38,7 @@ export const ChatFooter = ({
           <InputContainer>
             <input
               type="text"
-              placeholder={`Chatting as: ${user}-self`}
+              placeholder={`Chatting as: ${user}-Self`}
               onChange={handleChange}
               value={handleValue}
             />
@@ -58,7 +58,7 @@ export const ChatFooter = ({
               <TbArrowsLeftRight />
             </SwitchIcon>
             Switch to
-            <span>{secondUser}-self</span>
+            <span>{secondUser}-Self</span>
           </SwitchUserButton>
         </SwitchUserContainer>
       </FooterContainer>

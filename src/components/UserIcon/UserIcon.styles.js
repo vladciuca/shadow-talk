@@ -13,7 +13,7 @@ export const UserBackground = styled.div`
     font-size: ${({ iconSize }) => iconSize}rem;
     margin-top: ${({ iconMargin }) => iconMargin}rem;
     color: ${({ user }) =>
-      user === "PRESENT"
+      user === "Present"
         ? css`
             ${({ theme }) => theme.negative}
           `

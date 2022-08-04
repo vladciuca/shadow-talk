@@ -1,12 +1,13 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import { HomeFooterContainer, Button } from "./HomeFooter.styles";
 
-export const HomeFooter = () => {
-  let navigate = useNavigate();
+export const HomeFooter = ({ startNewChat }) => {
+  // let navigate = useNavigate();
+  // () => navigate("/chat")
   return (
     <HomeFooterContainer>
-      <Button onClick={() => navigate("/chat")}>Start New Chat</Button>
+      <Button onClick={startNewChat}>Start New Chat</Button>
     </HomeFooterContainer>
   );
 };

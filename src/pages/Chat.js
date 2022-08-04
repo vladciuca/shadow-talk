@@ -1,32 +1,38 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
+import { ChatsContext } from "../Store";
+import { useParams } from "react-router-dom";
 import { Screen } from "../components/Screen/Screen";
 import { ChatHeader } from "../components/ChatHeader/ChatHeader";
 import { ChatContent } from "../components/ChatContent/ChatContent";
 import { ChatFooter } from "../components/ChatFooter/ChatFooter";
 
 const Chat = () => {
+  const { getChat, updateChat } = useContext(ChatsContext);
   const [currentUser, setCurrentUser] = useState("");
-  const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
   const [submitNotAllowed, setSubmitNotAllowed] = useState(true);
 
+  const { id } = useParams();
+
+  const chat = getChat(id);
+
   useEffect(() => {
-    setCurrentUser("PRESENT");
+    setCurrentUser("Present");
   }, []);
 
   const secondUser = () => {
-    if (currentUser === "PRESENT") {
-      return "PAST";
+    if (currentUser === "Present") {
+      return "Past";
     } else {
-      return "PRESENT";
+      return "Present";
     }
   };
 
   const switchUser = () => {
-    if (currentUser === "PRESENT") {
-      setCurrentUser("PAST");
+    if (currentUser === "Present") {
+      setCurrentUser("Past");
     } else {
-      setCurrentUser("PRESENT");
+      setCurrentUser("Present");
     }
     setNewMessage("");
   };
@@ -45,7 +51,9 @@ const Chat = () => {
     if (newMessage === "") {
       return;
     }
-    setMessages([...messages, { user: currentUser, text: newMessage }]);
+
+    updateChat(chat, { user: currentUser, message: newMessage });
+
     setNewMessage("");
     setSubmitNotAllowed(true);
   };
@@ -53,7 +61,7 @@ const Chat = () => {
   return (
     <Screen
       header={<ChatHeader user={currentUser} secondUser={secondUser()} />}
-      content={<ChatContent messages={messages} />}
+      content={<ChatContent messages={chat.messages} />}
       chatContent={true}
       footer={
         <ChatFooter

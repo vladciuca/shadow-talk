@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Store from "./Store";
 import { ThemeProvider } from "styled-components";
 import GlobalStyle from "./GlobalStyle";
 import { theme } from "./theme";
@@ -14,15 +15,17 @@ function App() {
     <Router>
       <ThemeProvider theme={theme}>
         <GlobalStyle />
-        <AppContainer>
-          <Logo />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/chat" element={<Chat />} />
-            <Route path="*" element={<ErrorPage />} />
-          </Routes>
-        </AppContainer>
+        <Store>
+          <AppContainer>
+            <Logo />
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/chat/:id" element={<Chat />} />
+              <Route path="*" element={<ErrorPage />} />
+            </Routes>
+          </AppContainer>
+        </Store>
       </ThemeProvider>
     </Router>
   );
