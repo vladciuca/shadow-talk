@@ -61,16 +61,6 @@ const Store = ({ children }) => {
   const updateChat = (chat, message) => {
     const updatedChat = { ...chat, messages: [...chat.messages, message] };
 
-    // longer version for understanding how to swap an obj in an array with a new obj
-    // const newChatList = chats.map((currentChat) => {
-    //   if (currentChat.id === updatedChat.id) {
-    //     console.log("found chat");
-    //     return updatedChat;
-    //   } else {
-    //     return currentChat;
-    //   }
-    // });
-
     const updatedChats = chats.map((currentChat) => {
       return currentChat.id === updatedChat.id ? updatedChat : currentChat;
     });
