@@ -1,53 +1,17 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
-import { CgCheck } from "react-icons/cg";
-import { UserIcon } from "../UserIcon/UserIcon";
-import {
-  ChatContainer,
-  ChatInfo,
-  ChatProfile,
-  ChatTopic,
-  ChatDate,
-  ChatSubInfo,
-  ChatResolve,
-  ResolvedMark,
-} from "./HomeContent.styles";
+import { ChatsListItem } from "../ChatsListItem/ChatsListItem";
 
-export const HomeContent = ({ chats }) => {
-  let navigate = useNavigate();
-
+export const HomeContent = ({ chatList }) => {
   return (
     <>
-      {chats.map((chat) => (
-        <ChatContainer key={chat.id}>
-          <ChatProfile>
-            <UserIcon
-              bgHeightAndWidth={3}
-              iconSize={2.5}
-              iconMargin={1.2}
-              user={"Past"}
-            />
-          </ChatProfile>
-          <ChatInfo onClick={() => navigate(`/chat/${chat.id}`)}>
-            <ChatTopic>
-              <span>Topic:</span>
-              {chat.topic}
-            </ChatTopic>
-            <ChatSubInfo>
-              <ChatResolve>
-                {chat.resolved ? "Resolved" : "In Progress..."}
-                {chat.resolved ? (
-                  <ResolvedMark>
-                    <CgCheck />
-                  </ResolvedMark>
-                ) : (
-                  ""
-                )}
-              </ChatResolve>
-              <ChatDate>{chat.date}</ChatDate>
-            </ChatSubInfo>
-          </ChatInfo>
-        </ChatContainer>
+      {chatList.map((chat) => (
+        <ChatsListItem
+          key={chat.id}
+          id={chat.id}
+          topic={chat.topic}
+          resolved={chat.resolved}
+          date={chat.date}
+        />
       ))}
     </>
   );

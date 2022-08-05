@@ -1,5 +1,4 @@
 import React from "react";
-// import { useParams } from "react-router-dom";
 import { UserIcon } from "../UserIcon/UserIcon";
 import {
   MessageContainer,
@@ -10,7 +9,7 @@ import {
 export const ChatContent = ({ messages }) => {
   return (
     <>
-      {messages?.map((message, i) => (
+      {messages.map((message, i) => (
         <MessageContainer key={i} user={message.user}>
           <UserIconContainer user={message.user}>
             <UserIcon

@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
-import { ChatsContext } from "../Store";
+import { ChatListContext } from "../Store";
 import { useParams } from "react-router-dom";
 import { Screen } from "../components/Screen/Screen";
 import { ChatHeader } from "../components/ChatHeader/ChatHeader";
@@ -7,7 +7,7 @@ import { ChatContent } from "../components/ChatContent/ChatContent";
 import { ChatFooter } from "../components/ChatFooter/ChatFooter";
 
 const Chat = () => {
-  const { getChat, updateChat } = useContext(ChatsContext);
+  const { getChat, updateChat } = useContext(ChatListContext);
   const [currentUser, setCurrentUser] = useState("");
   const [newMessage, setNewMessage] = useState("");
   const [submitNotAllowed, setSubmitNotAllowed] = useState(true);

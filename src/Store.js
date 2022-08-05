@@ -36,10 +36,10 @@ const initialState = [
   },
 ];
 
-export const ChatsContext = React.createContext();
+export const ChatListContext = React.createContext();
 
 const Store = ({ children }) => {
-  const [chats, setChats] = useState(initialState);
+  const [chatList, setChatList] = useState(initialState);
 
   const startNewChat = () => {
     const newChat = {
@@ -50,30 +50,56 @@ const Store = ({ children }) => {
       messages: [],
     };
 
-    setChats([...chats, newChat]);
+    setChatList([...chatList, newChat]);
+  };
+
+  const deleteChat = (id) => {
+    const newChatList = chatList.filter((chat) => chat.id !== id);
+
+    setChatList(newChatList);
+  };
+
+  const toggleChatResolved = (id) => {
+    const newChatList = chatList.map((chat) => {
+      if (chat.id === id) {
+        chat.resolved = !chat.resolved;
+      }
+      return chat;
+    });
+
+    setChatList(newChatList);
   };
 
   const getChat = (id) => {
-    const chat = chats.find((chat) => chat.id === id);
+    const chat = chatList.find((chat) => chat.id === id);
     return chat;
   };
 
+  //should rename to something more obvious
   const updateChat = (chat, message) => {
     const updatedChat = { ...chat, messages: [...chat.messages, message] };
 
-    const updatedChats = chats.map((currentChat) => {
+    const updatedChatList = chatList.map((currentChat) => {
       return currentChat.id === updatedChat.id ? updatedChat : currentChat;
     });
 
-    setChats(updatedChats);
+    setChatList(updatedChatList);
   };
 
   return (
-    <ChatsContext.Provider
-      value={{ chats, setChats, startNewChat, getChat, updateChat }}
+    <ChatListContext.Provider
+      value={{
+        chatList,
+        setChatList,
+        toggleChatResolved,
+        deleteChat,
+        startNewChat,
+        getChat,
+        updateChat,
+      }}
     >
       {children}
-    </ChatsContext.Provider>
+    </ChatListContext.Provider>
   );
 };
 
