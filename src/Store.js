@@ -12,11 +12,13 @@ const initialState = [
         id: "1",
         user: "Past",
         message: "Hi there",
+        highlight: true,
       },
       {
         id: "2",
         user: "Present",
         message: "Hello",
+        highlight: true,
       },
     ],
   },
@@ -30,11 +32,13 @@ const initialState = [
         id: "1",
         user: "Past",
         message: "Hi there for the second time",
+        highlight: false,
       },
       {
         id: "2",
         user: "Present",
         message: "Hello again!",
+        highlight: true,
       },
     ],
   },
@@ -81,7 +85,7 @@ const Store = ({ children }) => {
 
   // chatMessageList Actions
 
-  const addNewMessages = (chat, message) => {
+  const addNewMessage = (chat, message) => {
     const updatedChat = { ...chat, messages: [...chat.messages, message] };
 
     const updatedChatList = chatList.map((currentChat) => {
@@ -91,11 +95,57 @@ const Store = ({ children }) => {
     setChatList(updatedChatList);
   };
 
-  // deleteMessage
+  const deleteMessage = (chat, messageId) => {
+    const newMessageList = chat.messages.filter(
+      (message) => message.id !== messageId
+    );
 
-  // toggleMessageUser
+    const updatedChat = { ...chat, messages: newMessageList };
 
-  // toggleMessageHighlight
+    const updatedChatList = chatList.map((currentChat) => {
+      return currentChat.id === updatedChat.id ? updatedChat : currentChat;
+    });
+
+    setChatList(updatedChatList);
+  };
+
+  const toggleMessageUser = (chat, messageId) => {
+    const newMessageList = chat.messages.map((message) => {
+      if (message.id === messageId) {
+        if (message.user === "Present") {
+          return { ...message, user: "Past" };
+        } else {
+          return { ...message, user: "Present" };
+        }
+      }
+      return message;
+    });
+
+    const updatedChat = { ...chat, messages: newMessageList };
+
+    const updatedChatList = chatList.map((currentChat) => {
+      return currentChat.id === updatedChat.id ? updatedChat : currentChat;
+    });
+
+    setChatList(updatedChatList);
+  };
+
+  const toggleMessageHighlight = (chat, messageId) => {
+    const newMessageList = chat.messages.map((message) => {
+      if (message.id === messageId) {
+        message.highlight = !message.highlight;
+      }
+      return message;
+    });
+
+    const updatedChat = { ...chat, messages: newMessageList };
+
+    const updatedChatList = chatList.map((currentChat) => {
+      return currentChat.id === updatedChat.id ? updatedChat : currentChat;
+    });
+
+    setChatList(updatedChatList);
+  };
 
   return (
     <ChatListContext.Provider
@@ -106,7 +156,10 @@ const Store = ({ children }) => {
         deleteChat,
         addNewChat,
         getChat,
-        addNewMessages,
+        addNewMessage,
+        deleteMessage,
+        toggleMessageUser,
+        toggleMessageHighlight,
       }}
     >
       {children}

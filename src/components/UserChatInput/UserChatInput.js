@@ -12,7 +12,7 @@ import {
 } from "./UserChatInput.styles";
 
 export const UserChatInput = ({ chat, user, inputRef }) => {
-  const { addNewMessages } = useContext(ChatListContext);
+  const { addNewMessage } = useContext(ChatListContext);
   const [newMessage, setNewMessage] = useState("");
   const [submitNotAllowed, setSubmitNotAllowed] = useState(true);
 
@@ -31,7 +31,12 @@ export const UserChatInput = ({ chat, user, inputRef }) => {
       return;
     }
 
-    addNewMessages(chat, { id: v4(), user, message: newMessage });
+    addNewMessage(chat, {
+      id: v4(),
+      user,
+      message: newMessage,
+      highlight: false,
+    });
 
     setNewMessage("");
     setSubmitNotAllowed(true);

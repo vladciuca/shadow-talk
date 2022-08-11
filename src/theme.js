@@ -28,9 +28,9 @@ export const theme = {
   neutralDark: "#5b486a",
   negativeDark: "#df4078",
 
-  positiveOpac: "",
-  neutralOpac: "rgba(164, 135, 195, 0.5)",
-  negativeOpac: "rgba(255, 105, 180, 0.5)",
+  positiveOpac: "rgba(0,191,255, 0.4)",
+  neutralOpac: "rgba(164, 135, 195, 0.4)",
+  negativeOpac: "rgba(255, 105, 180, 0.4)",
 
   success: "#a2f5a2",
   successDark: "#3eb489",

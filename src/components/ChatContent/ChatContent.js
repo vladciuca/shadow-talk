@@ -7,9 +7,11 @@ export const ChatContent = ({ messages, chat }) => {
       {messages.map((message) => (
         <Message
           key={message.id}
+          messageId={message.id}
           user={message.user}
           chat={chat}
-          message={message.message}
+          messageText={message.message}
+          messageHighlight={message.highlight}
         />
       ))}
     </>
