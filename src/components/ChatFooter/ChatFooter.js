@@ -1,59 +1,27 @@
-import React from "react";
+import React, { useRef } from "react";
 import { TbArrowsLeftRight } from "react-icons/tb";
-import { IoSend } from "react-icons/io5";
+import { UserChatInput } from "../UserChatInput/UserChatInput";
 import {
   FooterContainer,
   SwitchUserContainer,
   SwitchUserButton,
   SwitchIcon,
-  UserInputContainer,
-  UserImage,
-  InputContainer,
-  SendMessageContainer,
-  SendMessageButton,
 } from "./ChatFooter.styles";
-import { UserIcon } from "../UserIcon/UserIcon";
 
-export const ChatFooter = ({
-  user,
-  secondUser,
-  switchUser,
-  handleChange,
-  handleValue,
-  handleSubmit,
-  submitNotAllowed,
-}) => {
+export const ChatFooter = ({ chat, user, secondUser, switchUser }) => {
+  const input = useRef();
   return (
     <>
       <FooterContainer>
-        <UserInputContainer onSubmit={handleSubmit}>
-          <UserImage>
-            <UserIcon
-              bgHeightAndWidth={2.5}
-              iconSize={2}
-              iconMargin={1}
-              user={user}
-            />
-          </UserImage>
-          <InputContainer>
-            <input
-              type="text"
-              placeholder={`Chatting as: ${user}-Self`}
-              onChange={handleChange}
-              value={handleValue}
-            />
-          </InputContainer>
-          <SendMessageContainer>
-            <SendMessageButton
-              onClick={handleSubmit}
-              submitNotAllowed={submitNotAllowed}
-            >
-              <IoSend />
-            </SendMessageButton>
-          </SendMessageContainer>
-        </UserInputContainer>
+        <UserChatInput chat={chat} user={user} inputRef={input} />
+
         <SwitchUserContainer>
-          <SwitchUserButton onClick={switchUser}>
+          <SwitchUserButton
+            onClick={() => {
+              switchUser();
+              input.current.focus();
+            }}
+          >
             <SwitchIcon>
               <TbArrowsLeftRight />
             </SwitchIcon>

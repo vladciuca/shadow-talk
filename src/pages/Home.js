@@ -6,14 +6,14 @@ import { HomeContent } from "../components/HomeContent/HomeContent";
 import { HomeFooter } from "../components/HomeFooter/HomeFooter";
 
 const Home = () => {
-  const { chatList, startNewChat } = useContext(ChatListContext);
+  const { chatList, addNewChat } = useContext(ChatListContext);
 
   return (
     <>
       <Screen
         header={<HomeHeader />}
         content={<HomeContent chatList={chatList} />}
-        footer={<HomeFooter startNewChat={() => startNewChat()} />}
+        footer={<HomeFooter addNewChat={addNewChat} />}
       />
     </>
   );

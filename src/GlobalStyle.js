@@ -22,7 +22,7 @@ body{
 }
 
 ::-webkit-scrollbar {
-  width: 0.3rem;
+  width: 0.2rem;
 }
 ::-webkit-scrollbar-track {
   background: transparent;

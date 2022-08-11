@@ -82,9 +82,9 @@ export const Options = styled.div`
   align-items: center;
 `;
 
-const SlideOut = keyframes`
+const SlideIn = keyframes`
   0% {
-    margin-top: -5px;
+    margin-bottom: -5px;
     opacity: 0;
   }
   100% {
@@ -101,7 +101,7 @@ export const OptionsContainer = styled.div`
   div:not(:last-child) {
     border-bottom: 1px solid ${({ theme }) => theme.cardBorder};
   }
-  animation: ${SlideOut} 0.3s linear;
+  animation: ${SlideIn} 0.3s linear;
 `;
 
 export const Option = styled.div`
@@ -111,8 +111,8 @@ export const Option = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  color: ${({ option }) =>
-    option === "delete"
+  color: ${(props) =>
+    props.delete
       ? css`
           ${({ theme }) => theme.danger};
         `

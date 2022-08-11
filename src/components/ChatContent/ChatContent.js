@@ -1,27 +1,16 @@
 import React from "react";
-import { UserIcon } from "../UserIcon/UserIcon";
-import {
-  MessageContainer,
-  UserIconContainer,
-  MessageContent,
-} from "./ChatContent.styles";
+import { Message } from "../Message/Message";
 
-export const ChatContent = ({ messages }) => {
+export const ChatContent = ({ messages, chat }) => {
   return (
     <>
-      {messages.map((message, i) => (
-        <MessageContainer key={i} user={message.user}>
-          <UserIconContainer user={message.user}>
-            <UserIcon
-              bgHeightAndWidth={2}
-              iconSize={1.5}
-              iconMargin={0.85}
-              user={message.user}
-            />
-          </UserIconContainer>
-
-          <MessageContent>{message.message}</MessageContent>
-        </MessageContainer>
+      {messages.map((message) => (
+        <Message
+          key={message.id}
+          user={message.user}
+          chat={chat}
+          message={message.message}
+        />
       ))}
     </>
   );

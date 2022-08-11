@@ -19,6 +19,7 @@ import {
   OptionsContainer,
   Option,
 } from "./ChatsListItem.styles";
+// import { OptionsDropdown } from "../OptionsDropdown/OptionsDropdown";
 
 export const ChatsListItem = ({ id, topic, resolved, date }) => {
   const { toggleChatResolved, deleteChat } = useContext(ChatListContext);
@@ -27,12 +28,20 @@ export const ChatsListItem = ({ id, topic, resolved, date }) => {
   let navigate = useNavigate();
 
   const toggleOptions = () => {
-    setShowOptions((showOptions) => !showOptions);
+    setShowOptions(!showOptions);
   };
 
   let menuRef = useClickOutside(() => {
     setShowOptions(false);
   });
+
+  // const options = [
+  //   {
+  //     text: "Delete",
+  //     icon: <FiTrash2 />,
+  //     function: deleteChat(),
+  //   },
+  // ];
 
   return (
     <div ref={menuRef}>
@@ -70,13 +79,13 @@ export const ChatsListItem = ({ id, topic, resolved, date }) => {
           <TbDotsVertical />
         </Options>
       </ChatContainer>
-
       {showOptions ? (
-        <OptionsContainer>
+        // <OptionsDropdown options={options} />
+        <OptionsContainer showOptions={showOptions}>
           <Option onClick={() => toggleChatResolved(id)}>
             Change Status <FiCheckCircle />
           </Option>
-          <Option option={"delete"} onClick={() => deleteChat(id)}>
+          <Option delete onClick={() => deleteChat(id)}>
             Delete
             <FiTrash2 />
           </Option>

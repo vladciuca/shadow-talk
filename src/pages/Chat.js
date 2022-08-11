@@ -7,10 +7,8 @@ import { ChatContent } from "../components/ChatContent/ChatContent";
 import { ChatFooter } from "../components/ChatFooter/ChatFooter";
 
 const Chat = () => {
-  const { getChat, updateChat } = useContext(ChatListContext);
+  const { getChat } = useContext(ChatListContext);
   const [currentUser, setCurrentUser] = useState("");
-  const [newMessage, setNewMessage] = useState("");
-  const [submitNotAllowed, setSubmitNotAllowed] = useState(true);
 
   const { id } = useParams();
 
@@ -34,44 +32,19 @@ const Chat = () => {
     } else {
       setCurrentUser("Present");
     }
-    setNewMessage("");
-  };
-
-  const handleChange = (e) => {
-    if (e !== "") {
-      setSubmitNotAllowed(false);
-    } else {
-      setSubmitNotAllowed(true);
-    }
-    setNewMessage(e);
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (newMessage === "") {
-      return;
-    }
-
-    updateChat(chat, { user: currentUser, message: newMessage });
-
-    setNewMessage("");
-    setSubmitNotAllowed(true);
   };
 
   return (
     <Screen
       header={<ChatHeader user={currentUser} secondUser={secondUser()} />}
-      content={<ChatContent messages={chat.messages} />}
+      content={<ChatContent chat={chat} messages={chat.messages} />}
       chatContent={true}
       footer={
         <ChatFooter
+          chat={chat}
           user={currentUser}
           secondUser={secondUser()}
-          switchUser={() => switchUser()}
-          handleChange={(e) => handleChange(e.target.value)}
-          handleValue={newMessage}
-          handleSubmit={(e) => handleSubmit(e)}
-          submitNotAllowed={submitNotAllowed}
+          switchUser={switchUser}
         />
       }
     />
