@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { AiOutlineInfoCircle } from "react-icons/ai";
+import { AiOutlineQuestionCircle } from "react-icons/ai";
 import {
   HomeHeaderContainer,
   HomeTitle,
@@ -14,7 +14,7 @@ export const HomeHeader = () => {
     <HomeHeaderContainer>
       <HomeTitle>Chats</HomeTitle>
       <HomeAboutLink onClick={() => navigate("/about")}>
-        <AiOutlineInfoCircle />
+        <AiOutlineQuestionCircle />
       </HomeAboutLink>
     </HomeHeaderContainer>
   );

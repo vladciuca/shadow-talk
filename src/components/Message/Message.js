@@ -14,6 +14,7 @@ import {
   UserIconContainer,
   MessageContent,
   Options,
+  OptionsSpacer,
   OptionsContainer,
   Option,
 } from "./Message.styles";
@@ -24,6 +25,7 @@ export const Message = ({
   messageText,
   messageId,
   messageHighlight,
+  messageStatic,
 }) => {
   const { deleteMessage, toggleMessageUser, toggleMessageHighlight } =
     useContext(ChatListContext);
@@ -48,10 +50,14 @@ export const Message = ({
             user={user}
           />
         </UserIconContainer>
+        {messageStatic ? (
+          <OptionsSpacer />
+        ) : (
+          <Options onClick={() => toggleOptions()}>
+            <TbDotsVertical />
+          </Options>
+        )}
 
-        <Options onClick={() => toggleOptions()}>
-          <TbDotsVertical />
-        </Options>
         <MessageContent messageHighlight={messageHighlight} user={user}>
           {messageText}
         </MessageContent>
@@ -59,11 +65,11 @@ export const Message = ({
       {showOptions ? (
         <OptionsContainer>
           <Option onClick={() => toggleMessageHighlight(chat, messageId)}>
-            Highlight{" "}
+            Highlight
             <span>{messageHighlight ? <AiFillStar /> : <AiOutlineStar />}</span>
           </Option>
           <Option onClick={() => toggleMessageUser(chat, messageId)}>
-            Switch Self{" "}
+            Switch Self
             <span>
               <AiOutlineUserSwitch />
             </span>

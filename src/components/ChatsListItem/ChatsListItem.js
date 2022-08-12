@@ -3,7 +3,11 @@ import { useNavigate } from "react-router-dom";
 import { ChatListContext } from "../../Store";
 import { CgCheck } from "react-icons/cg";
 import { TbDotsVertical } from "react-icons/tb";
-import { AiOutlineDelete, AiOutlineIssuesClose } from "react-icons/ai";
+import {
+  AiOutlineDelete,
+  AiOutlineExclamationCircle,
+  AiOutlineCheckCircle,
+} from "react-icons/ai";
 import useClickOutside from "../../hooks/useClickOutside";
 import { UserIcon } from "../UserIcon/UserIcon";
 import {
@@ -19,7 +23,6 @@ import {
   OptionsContainer,
   Option,
 } from "./ChatsListItem.styles";
-// import { OptionsDropdown } from "../OptionsDropdown/OptionsDropdown";
 
 export const ChatsListItem = ({ id, topic, resolved, date }) => {
   const { toggleChatResolved, deleteChat } = useContext(ChatListContext);
@@ -34,14 +37,6 @@ export const ChatsListItem = ({ id, topic, resolved, date }) => {
   let menuRef = useClickOutside(() => {
     setShowOptions(false);
   });
-
-  // const options = [
-  //   {
-  //     text: "Delete",
-  //     icon: <FiTrash2 />,
-  //     function: deleteChat(),
-  //   },
-  // ];
 
   return (
     <div ref={menuRef}>
@@ -80,12 +75,15 @@ export const ChatsListItem = ({ id, topic, resolved, date }) => {
         </Options>
       </ChatContainer>
       {showOptions ? (
-        // <OptionsDropdown options={options} />
         <OptionsContainer showOptions={showOptions}>
           <Option onClick={() => toggleChatResolved(id)}>
             Change Status
             <span>
-              <AiOutlineIssuesClose />
+              {resolved ? (
+                <AiOutlineCheckCircle />
+              ) : (
+                <AiOutlineExclamationCircle />
+              )}
             </span>
           </Option>
           <Option delete onClick={() => deleteChat(id)}>

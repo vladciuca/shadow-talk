@@ -9,7 +9,7 @@ import {
   SubText,
 } from "./ChatHeader.styles";
 
-export const ChatHeader = ({ user, secondUser }) => {
+export const ChatHeader = ({ secondUser }) => {
   return (
     <>
       <HeaderContainer>

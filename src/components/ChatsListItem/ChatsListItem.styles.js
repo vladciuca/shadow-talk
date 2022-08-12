@@ -121,5 +121,8 @@ export const Option = styled.div`
         `};
   span {
     font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 `;

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { v4 } from "uuid";
 
 const initialState = [
   {
@@ -49,15 +48,7 @@ export const ChatListContext = React.createContext();
 const Store = ({ children }) => {
   const [chatList, setChatList] = useState(initialState);
 
-  const addNewChat = () => {
-    const newChat = {
-      id: v4(),
-      date: new Date().toLocaleDateString(),
-      resolved: false,
-      topic: "",
-      messages: [],
-    };
-
+  const addNewChat = (newChat) => {
     setChatList([...chatList, newChat]);
   };
 
@@ -95,18 +86,22 @@ const Store = ({ children }) => {
     setChatList(updatedChatList);
   };
 
-  const deleteMessage = (chat, messageId) => {
-    const newMessageList = chat.messages.filter(
-      (message) => message.id !== messageId
-    );
-
-    const updatedChat = { ...chat, messages: newMessageList };
+  const updateMessages = (chat, messageList) => {
+    const updatedChat = { ...chat, messages: messageList };
 
     const updatedChatList = chatList.map((currentChat) => {
       return currentChat.id === updatedChat.id ? updatedChat : currentChat;
     });
 
     setChatList(updatedChatList);
+  };
+
+  const deleteMessage = (chat, messageId) => {
+    const newMessageList = chat.messages.filter(
+      (message) => message.id !== messageId
+    );
+
+    updateMessages(chat, newMessageList);
   };
 
   const toggleMessageUser = (chat, messageId) => {
@@ -121,13 +116,7 @@ const Store = ({ children }) => {
       return message;
     });
 
-    const updatedChat = { ...chat, messages: newMessageList };
-
-    const updatedChatList = chatList.map((currentChat) => {
-      return currentChat.id === updatedChat.id ? updatedChat : currentChat;
-    });
-
-    setChatList(updatedChatList);
+    updateMessages(chat, newMessageList);
   };
 
   const toggleMessageHighlight = (chat, messageId) => {
@@ -138,13 +127,7 @@ const Store = ({ children }) => {
       return message;
     });
 
-    const updatedChat = { ...chat, messages: newMessageList };
-
-    const updatedChatList = chatList.map((currentChat) => {
-      return currentChat.id === updatedChat.id ? updatedChat : currentChat;
-    });
-
-    setChatList(updatedChatList);
+    updateMessages(chat, newMessageList);
   };
 
   return (
