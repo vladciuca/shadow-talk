@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { ChatListContext } from "../../Store";
 import { CgCheck } from "react-icons/cg";
 import { TbDotsVertical } from "react-icons/tb";
-import { FiCheckCircle, FiTrash2 } from "react-icons/fi";
+import { AiOutlineDelete, AiOutlineIssuesClose } from "react-icons/ai";
 import useClickOutside from "../../hooks/useClickOutside";
 import { UserIcon } from "../UserIcon/UserIcon";
 import {
@@ -83,11 +83,16 @@ export const ChatsListItem = ({ id, topic, resolved, date }) => {
         // <OptionsDropdown options={options} />
         <OptionsContainer showOptions={showOptions}>
           <Option onClick={() => toggleChatResolved(id)}>
-            Change Status <FiCheckCircle />
+            Change Status
+            <span>
+              <AiOutlineIssuesClose />
+            </span>
           </Option>
           <Option delete onClick={() => deleteChat(id)}>
             Delete
-            <FiTrash2 />
+            <span>
+              <AiOutlineDelete />
+            </span>
           </Option>
         </OptionsContainer>
       ) : null}

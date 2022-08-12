@@ -1,9 +1,12 @@
 import React, { useState, useContext } from "react";
 import { ChatListContext } from "../../Store";
 import { TbDotsVertical } from "react-icons/tb";
-import { FiTrash2 } from "react-icons/fi";
-import { FaUserCircle } from "react-icons/fa";
-import { AiFillStar, AiOutlineStar } from "react-icons/ai";
+import {
+  AiFillStar,
+  AiOutlineStar,
+  AiOutlineUserSwitch,
+  AiOutlineDelete,
+} from "react-icons/ai";
 import useClickOutside from "../../hooks/useClickOutside";
 import { UserIcon } from "../UserIcon/UserIcon";
 import {
@@ -56,14 +59,20 @@ export const Message = ({
       {showOptions ? (
         <OptionsContainer>
           <Option onClick={() => toggleMessageHighlight(chat, messageId)}>
-            Highlight {messageHighlight ? <AiFillStar /> : <AiOutlineStar />}
+            Highlight{" "}
+            <span>{messageHighlight ? <AiFillStar /> : <AiOutlineStar />}</span>
           </Option>
           <Option onClick={() => toggleMessageUser(chat, messageId)}>
-            Switch Self <FaUserCircle />
+            Switch Self{" "}
+            <span>
+              <AiOutlineUserSwitch />
+            </span>
           </Option>
           <Option delete onClick={() => deleteMessage(chat, messageId)}>
             Delete
-            <FiTrash2 />
+            <span>
+              <AiOutlineDelete />
+            </span>
           </Option>
         </OptionsContainer>
       ) : null}

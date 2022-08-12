@@ -83,4 +83,7 @@ export const Option = styled.div`
       : css`
           ${({ theme }) => theme.text};
         `};
+  span {
+    font-size: 1.1rem;
+  }
 `;
