@@ -48,12 +48,28 @@ export const ChatListContext = React.createContext();
 const Store = ({ children }) => {
   const [chatList, setChatList] = useState(initialState);
 
+  const getChat = (id) => {
+    const chat = chatList.find((chat) => chat.id === id);
+    return chat;
+  };
+
   const addNewChat = (newChat) => {
     setChatList([...chatList, newChat]);
   };
 
   const deleteChat = (id) => {
     const newChatList = chatList.filter((chat) => chat.id !== id);
+
+    setChatList(newChatList);
+  };
+
+  const editChatTopic = (id, topic) => {
+    const newChatList = chatList.map((chat) => {
+      if (chat.id === id) {
+        chat.topic = topic;
+      }
+      return chat;
+    });
 
     setChatList(newChatList);
   };
@@ -67,11 +83,6 @@ const Store = ({ children }) => {
     });
 
     setChatList(newChatList);
-  };
-
-  const getChat = (id) => {
-    const chat = chatList.find((chat) => chat.id === id);
-    return chat;
   };
 
   // chatMessageList Actions
@@ -136,6 +147,7 @@ const Store = ({ children }) => {
         chatList,
         setChatList,
         toggleChatResolved,
+        editChatTopic,
         deleteChat,
         addNewChat,
         getChat,

@@ -23,16 +23,7 @@ export const ChatInfo = styled.div`
 `;
 
 export const ChatTopic = styled.div`
-  width: 260px;
-  @media (max-width: 400px) {
-    width: 230px;
-  }
-  @media (max-width: 360px) {
-    width: 210px;
-  }
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  display: flex;
   font-size: 1.1rem;
   line-height: 1.4rem;
   color: ${({ theme }) => theme.text};
@@ -41,6 +32,34 @@ export const ChatTopic = styled.div`
     font-size: 1rem;
     padding-right: 0.25rem;
     color: ${({ theme }) => theme.textLight};
+  }
+`;
+
+export const TopicText = styled.div`
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 210px;
+  @media (max-width: 400px) {
+    max-width: 180px;
+  }
+  @media (max-width: 360px) {
+    max-width: 150px;
+  }
+`;
+
+export const TopicForm = styled.form`
+  flex-grow: 1;
+`;
+export const TopicInput = styled.input`
+  width: 100%;
+  padding: 0 2px;
+  color: ${({ theme }) => theme.text};
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid ${({ theme }) => theme.card};
+  &:focus {
+    outline: none;
   }
 `;
 

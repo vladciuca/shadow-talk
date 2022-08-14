@@ -8,7 +8,7 @@ export const InputContainer = styled.div`
   height: 75px;
   width: 100%;
   background: ${({ theme }) => theme.bgSecondary};
-  border-radius: 15px;
+  border-radius: 0.5rem;
   margin: 0.5rem auto;
   padding: 1rem;
   display: flex;

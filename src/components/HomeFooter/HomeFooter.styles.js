@@ -11,5 +11,5 @@ export const Button = styled.div`
   cursor: pointer;
   padding: 0.5rem 1rem;
   border-radius: 0.3rem;
-  background: ${({ theme }) => theme.neutral};
+  background: ${({ theme }) => theme.negative};
 `;

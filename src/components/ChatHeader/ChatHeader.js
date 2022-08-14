@@ -7,9 +7,11 @@ import {
   UserInfo,
   UserName,
   SubText,
+  Topic,
+  TopicText,
 } from "./ChatHeader.styles";
 
-export const ChatHeader = ({ secondUser }) => {
+export const ChatHeader = ({ secondUser, topic }) => {
   return (
     <>
       <HeaderContainer>
@@ -25,6 +27,12 @@ export const ChatHeader = ({ secondUser }) => {
         <UserInfo>
           <SubText>Chatting with your</SubText>
           <UserName>{secondUser}-Self</UserName>
+          {topic ? (
+            <Topic>
+              <span>about:</span>
+              <TopicText>{topic}</TopicText>
+            </Topic>
+          ) : null}
         </UserInfo>
       </HeaderContainer>
     </>

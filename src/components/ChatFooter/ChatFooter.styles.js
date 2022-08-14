@@ -13,7 +13,7 @@ export const SwitchUserContainer = styled.div`
 
 export const SwitchUserButton = styled.div`
   cursor: pointer;
-  padding: 0.25rem 0.75rem;
+  padding: 0.35rem 0.75rem;
   border-radius: 1.5rem;
   display: flex;
   align-items: center;

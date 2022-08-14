@@ -36,7 +36,7 @@ const Chat = () => {
 
   return (
     <Screen
-      header={<ChatHeader secondUser={secondUser()} />}
+      header={<ChatHeader secondUser={secondUser()} topic={chat.topic} />}
       content={<ChatContent chat={chat} messages={chat.messages} />}
       chatContent={true}
       footer={

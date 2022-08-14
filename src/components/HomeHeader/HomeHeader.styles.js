@@ -10,7 +10,7 @@ export const HomeTitle = styled.div`
   display: flex;
   align-items: center;
   flex-grow: 1;
-  padding-left: 1rem;
+  padding-left: 1.5rem;
   font-size: 1.5rem;
 `;
 

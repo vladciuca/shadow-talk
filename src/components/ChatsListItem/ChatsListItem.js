@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { ChatListContext } from "../../Store";
 import { CgCheck } from "react-icons/cg";
@@ -7,6 +7,7 @@ import {
   AiOutlineDelete,
   AiOutlineExclamationCircle,
   AiOutlineCheckCircle,
+  AiOutlineForm,
 } from "react-icons/ai";
 import useClickOutside from "../../hooks/useClickOutside";
 import { UserIcon } from "../UserIcon/UserIcon";
@@ -15,6 +16,9 @@ import {
   ChatInfo,
   ChatProfile,
   ChatTopic,
+  TopicText,
+  TopicForm,
+  TopicInput,
   ChatDate,
   ChatSubInfo,
   ChatResolve,
@@ -25,18 +29,58 @@ import {
 } from "./ChatsListItem.styles";
 
 export const ChatsListItem = ({ id, topic, resolved, date }) => {
-  const { toggleChatResolved, deleteChat } = useContext(ChatListContext);
+  const { editChatTopic, toggleChatResolved, deleteChat } =
+    useContext(ChatListContext);
   const [showOptions, setShowOptions] = useState(false);
+  const [showEdit, setShowEdit] = useState(false);
+  const [topicValue, setTopicValue] = useState(topic);
 
   let navigate = useNavigate();
 
-  const toggleOptions = () => {
-    setShowOptions(!showOptions);
+  const goToChat = () => {
+    navigate(`/chat/${id}`);
+    editChatTopic(id, topicValue);
   };
 
   let menuRef = useClickOutside(() => {
     setShowOptions(false);
+    setShowEdit(false);
+    editChatTopic(id, topicValue);
   });
+
+  const editRef = useRef();
+
+  const toggleOptions = () => {
+    setShowOptions(!showOptions);
+    setShowEdit(false);
+    editChatTopic(id, topicValue);
+  };
+
+  const toggleEdit = () => {
+    setShowEdit(!showEdit);
+    editChatTopic(id, topicValue);
+  };
+
+  const handleTopicChange = (e) => {
+    setTopicValue(e.target.value);
+  };
+
+  const editTopic = (e) => {
+    e.preventDefault();
+    if (topicValue === "") {
+      return;
+    }
+
+    setShowOptions(false);
+    setShowEdit(false);
+    editChatTopic(id, topicValue);
+  };
+
+  useEffect(() => {
+    if (showEdit) {
+      editRef.current.focus();
+    }
+  }, [showEdit]);
 
   return (
     <div ref={menuRef}>
@@ -49,12 +93,22 @@ export const ChatsListItem = ({ id, topic, resolved, date }) => {
             user={"Past"}
           />
         </ChatProfile>
-        <ChatInfo onClick={() => navigate(`/chat/${id}`)}>
+        <ChatInfo onClick={goToChat}>
           <ChatTopic>
             <span>Topic:</span>
-            {topic}
+            {showEdit ? (
+              <TopicForm onSubmit={(e) => editTopic(e)}>
+                <TopicInput
+                  ref={editRef}
+                  type="text"
+                  onChange={(e) => handleTopicChange(e)}
+                  value={topicValue}
+                />
+              </TopicForm>
+            ) : (
+              <TopicText>{topic}</TopicText>
+            )}
           </ChatTopic>
-
           <ChatSubInfo>
             <ChatResolve>
               {resolved ? "Resolved" : "In Progress..."}
@@ -76,8 +130,18 @@ export const ChatsListItem = ({ id, topic, resolved, date }) => {
       </ChatContainer>
       {showOptions ? (
         <OptionsContainer showOptions={showOptions}>
+          <Option
+            onClick={() => {
+              toggleEdit();
+            }}
+          >
+            Edit
+            <span>
+              <AiOutlineForm />
+            </span>
+          </Option>
           <Option onClick={() => toggleChatResolved(id)}>
-            Change Status
+            Status
             <span>
               {resolved ? (
                 <AiOutlineCheckCircle />

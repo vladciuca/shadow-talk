@@ -18,7 +18,7 @@ export const ScreenContainer = styled.div`
 `;
 
 export const ScreenHeader = styled.div`
-  height: 100px;
+  height: 110px;
   width: 100%;
   padding: 0.5rem;
   background: ${({ theme }) => theme.bgSecondary};
@@ -29,7 +29,8 @@ export const ScreenHeader = styled.div`
 export const ScreenContent = styled.div`
   height: 100%;
   width: 100%;
-  padding: 105px 0.3rem 105px 0.3rem;
+  padding: 115px 0.3rem;
+
   ${({ chatContent }) =>
     chatContent
       ? css`
@@ -54,7 +55,7 @@ export const ScreenOverflow = styled.div`
 `;
 
 export const ScreenFooter = styled.div`
-  height: 100px;
+  height: 110px;
   width: 100%;
   padding: 0.5rem;
   background: ${({ theme }) => theme.bgSecondary};

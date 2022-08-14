@@ -18,6 +18,6 @@ export const Button = styled.div`
           ${({ theme }) => theme.textLight};
         `
       : css`
-          ${({ theme }) => theme.neutral}
+          ${({ theme }) => theme.negative}
         `};
 `;
