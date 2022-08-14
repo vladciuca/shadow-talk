@@ -2,12 +2,7 @@ import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { v4 } from "uuid";
 import { ChatListContext } from "../../Store";
-import {
-  Screen,
-  ChatHeader,
-  NewChatContent,
-  NewChatFooter,
-} from "../../components";
+import { Screen, ChatHeader, NewChatContent, NewChatFooter } from "components";
 
 const NewChat = () => {
   const { addNewChat } = useContext(ChatListContext);

@@ -1,5 +1,5 @@
 import React from "react";
-import { ChatsListItem } from "../../components";
+import { ChatsListItem } from "components";
 
 const HomeContent = ({ chatList }) => {
   return (

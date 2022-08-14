@@ -1,5 +1,5 @@
 import React from "react";
-import { BackToHome } from "../../components";
+import { BackToHome } from "components";
 import { ErrorHeaderContainer, ErrorTitle } from "./ErrorHeader.styles";
 
 const ErrorHeader = () => {

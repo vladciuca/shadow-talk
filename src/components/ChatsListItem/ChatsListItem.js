@@ -10,7 +10,7 @@ import {
 } from "react-icons/ai";
 import { ChatListContext } from "../../Store";
 import useClickOutside from "../../hooks/useClickOutside";
-import { UserIcon } from "../../components";
+import { UserIcon } from "components";
 import {
   ChatContainer,
   ChatInfo,

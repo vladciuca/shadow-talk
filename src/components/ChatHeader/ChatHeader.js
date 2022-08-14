@@ -1,5 +1,5 @@
 import React from "react";
-import { BackToHome, UserIcon } from "../../components";
+import { BackToHome, UserIcon } from "components";
 import {
   HeaderContainer,
   ProfileImage,

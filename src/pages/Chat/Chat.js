@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { ChatListContext } from "../../Store";
-import { Screen, ChatHeader, ChatContent, ChatFooter } from "../../components";
+import { Screen, ChatHeader, ChatContent, ChatFooter } from "components";
 
 const Chat = () => {
   const { getChat } = useContext(ChatListContext);

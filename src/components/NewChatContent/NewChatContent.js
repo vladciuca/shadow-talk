@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { TbUserExclamation } from "react-icons/tb";
 import useScrollToBottom from "../../hooks/useScrollToBottom";
-import { Message } from "../../components";
-import { UserIcon } from "../UserIcon/UserIcon";
+import { Message, UserIcon } from "components";
 import { NewChatContainer, InputContainer } from "./NewChatContent.styles";
 
 const tutorialMessages = [
@@ -58,7 +56,7 @@ const NewChatContent = ({ topic, handleTopic }) => {
 
   return (
     <NewChatContainer>
-      {/* <Message user={"Past"} messageText={"Hi there!"} messageStatic={true} />
+      <Message user={"Past"} messageText={"Hi there!"} messageStatic={true} />
       <Message
         user={"Past"}
         messageText={
@@ -106,11 +104,11 @@ const NewChatContent = ({ topic, handleTopic }) => {
           "Oh, and by the way, you can swap between me and your Present-Self at anytime you want!"
         }
         messageStatic={true}
-      /> */}
+      />
       {/* {messages.map((message, index) => {
         return <p key={index}>{message}</p>;
       })} */}
-      {messages?.map((message, index) => {
+      {/* {messages?.map((message, index) => {
         return (
           <Message
             key={index}
@@ -119,7 +117,7 @@ const NewChatContent = ({ topic, handleTopic }) => {
             messageStatic={message.static}
           />
         );
-      })}
+      })} */}
       <div ref={bottomRef}></div>
     </NewChatContainer>
   );

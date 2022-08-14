@@ -1,5 +1,5 @@
 import React from "react";
-import { Screen, ErrorHeader, ErrorContent } from "../../components";
+import { Screen, ErrorHeader, ErrorContent } from "components";
 
 const Error = () => {
   return <Screen header={<ErrorHeader />} content={<ErrorContent />} />;

@@ -24,6 +24,7 @@ export { default as UserChatInput } from "./UserChatInput";
 // NewChat Page components
 export { default as NewChatContent } from "./NewChatContent";
 export { default as NewChatFooter } from "./NewChatFooter";
+
 // Error Page components
 export { default as ErrorHeader } from "./ErrorHeader";
 export { default as ErrorContent } from "./ErrorContent";

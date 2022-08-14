@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import { v4 } from "uuid";
 import { ChatListContext } from "../../Store";
 import { IoSend } from "react-icons/io5";
-import { UserIcon } from "../../components";
+import { UserIcon } from "components";
 import {
   UserInputContainer,
   UserImage,

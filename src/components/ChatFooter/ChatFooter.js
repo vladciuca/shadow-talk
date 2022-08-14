@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { TbArrowsLeftRight } from "react-icons/tb";
-import { UserChatInput } from "../../components";
+import { UserChatInput } from "components";
 import {
   FooterContainer,
   SwitchUserContainer,

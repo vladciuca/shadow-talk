@@ -8,7 +8,7 @@ import {
   AiOutlineDelete,
 } from "react-icons/ai";
 import useClickOutside from "../../hooks/useClickOutside";
-import { UserIcon } from "../../components";
+import { UserIcon } from "components";
 import {
   MessageContainer,
   UserIconContainer,
