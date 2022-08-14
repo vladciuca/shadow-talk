@@ -1,9 +1,6 @@
 import React, { useContext } from "react";
-import { ChatListContext } from "../Store";
-import { Screen } from "../components/Screen/Screen";
-import { HomeHeader } from "../components/HomeHeader/HomeHeader";
-import { HomeContent } from "../components/HomeContent/HomeContent";
-import { HomeFooter } from "../components/HomeFooter/HomeFooter";
+import { ChatListContext } from "../../Store";
+import { Screen, HomeHeader, HomeContent, HomeFooter } from "../../components";
 
 const Home = () => {
   const { chatList } = useContext(ChatListContext);

@@ -1,6 +1,5 @@
 import React from "react";
-import { BackToHome } from "../BackToHome/BackToHome";
-import { UserIcon } from "../UserIcon/UserIcon";
+import { BackToHome, UserIcon } from "../../components";
 import {
   HeaderContainer,
   ProfileImage,
@@ -11,7 +10,7 @@ import {
   TopicText,
 } from "./ChatHeader.styles";
 
-export const ChatHeader = ({ secondUser, topic }) => {
+const ChatHeader = ({ secondUser, topic }) => {
   return (
     <>
       <HeaderContainer>
@@ -38,3 +37,5 @@ export const ChatHeader = ({ secondUser, topic }) => {
     </>
   );
 };
+
+export default ChatHeader;

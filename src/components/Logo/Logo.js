@@ -2,7 +2,7 @@ import React from "react";
 import { IoMan } from "react-icons/io5";
 import { LogoContainer, PastSelfIcon, PresentSelfIcon } from "./Logo.styles";
 
-export const Logo = () => (
+const Logo = () => (
   <>
     <LogoContainer>
       <PastSelfIcon>
@@ -14,3 +14,5 @@ export const Logo = () => (
     </LogoContainer>
   </>
 );
+
+export default Logo;

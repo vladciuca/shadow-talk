@@ -1,12 +1,12 @@
 import styled from "styled-components";
 
-export const ErrorPageHeaderContainer = styled.div`
+export const ErrorHeaderContainer = styled.div`
   display: flex;
   align-items: center;
   height: 100%;
 `;
 
-export const ErrorPageTitle = styled.div`
+export const ErrorTitle = styled.div`
   display: flex;
   align-items: center;
   flex-grow: 1;

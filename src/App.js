@@ -4,12 +4,8 @@ import { ThemeProvider } from "styled-components";
 import GlobalStyle from "./GlobalStyle";
 import { theme } from "./theme";
 import { AppContainer } from "./components/UI/UI.styles";
-import { Logo } from "./components/Logo/Logo";
-import Home from "./pages/Home";
-import About from "./pages/About";
-import { NewChat } from "./pages/NewChat";
-import Chat from "./pages/Chat";
-import ErrorPage from "./pages/ErrorPage";
+import { Logo } from "./components";
+import { Home, About, NewChat, Chat, Error } from "./pages";
 
 function App() {
   return (
@@ -24,7 +20,7 @@ function App() {
               <Route path="/about" element={<About />} />
               <Route path="/new-chat" element={<NewChat />} />
               <Route path="/chat/:id" element={<Chat />} />
-              <Route path="*" element={<ErrorPage />} />
+              <Route path="*" element={<Error />} />
             </Routes>
           </AppContainer>
         </Store>

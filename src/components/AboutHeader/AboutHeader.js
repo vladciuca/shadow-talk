@@ -1,8 +1,8 @@
 import React from "react";
-import { BackToHome } from "../BackToHome/BackToHome";
+import { BackToHome } from "../../components";
 import { AboutHeaderContainer, AboutTitle } from "./AboutHeader.styles";
 
-export const AboutHeader = () => {
+const AboutHeader = () => {
   return (
     <AboutHeaderContainer>
       <BackToHome />
@@ -10,3 +10,5 @@ export const AboutHeader = () => {
     </AboutHeaderContainer>
   );
 };
+
+export default AboutHeader;

@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { TbArrowsLeftRight } from "react-icons/tb";
-import { UserChatInput } from "../UserChatInput/UserChatInput";
+import { UserChatInput } from "../../components";
 import {
   FooterContainer,
   SwitchUserContainer,
@@ -8,7 +8,7 @@ import {
   SwitchIcon,
 } from "./ChatFooter.styles";
 
-export const ChatFooter = ({ chat, user, secondUser, switchUser }) => {
+const ChatFooter = ({ chat, user, secondUser, switchUser }) => {
   const input = useRef();
   return (
     <>
@@ -33,3 +33,5 @@ export const ChatFooter = ({ chat, user, secondUser, switchUser }) => {
     </>
   );
 };
+
+export default ChatFooter;

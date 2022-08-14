@@ -1,7 +1,7 @@
 import React from "react";
-import { ChatsListItem } from "../ChatsListItem/ChatsListItem";
+import { ChatsListItem } from "../../components";
 
-export const HomeContent = ({ chatList }) => {
+const HomeContent = ({ chatList }) => {
   return (
     <>
       {chatList.map((chat) => (
@@ -16,3 +16,5 @@ export const HomeContent = ({ chatList }) => {
     </>
   );
 };
+
+export default HomeContent;

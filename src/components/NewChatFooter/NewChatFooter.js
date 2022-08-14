@@ -1,7 +1,7 @@
 import React from "react";
 import { NewChatFooterContainer, Button } from "./NewChatFooter.styles";
 
-export const NewChatFooter = ({ addNewChat, navigateNotAllowed }) => {
+const NewChatFooter = ({ addNewChat, navigateNotAllowed }) => {
   return (
     <NewChatFooterContainer>
       <Button onClick={addNewChat} navigateNotAllowed={navigateNotAllowed}>
@@ -10,3 +10,5 @@ export const NewChatFooter = ({ addNewChat, navigateNotAllowed }) => {
     </NewChatFooterContainer>
   );
 };
+
+export default NewChatFooter;

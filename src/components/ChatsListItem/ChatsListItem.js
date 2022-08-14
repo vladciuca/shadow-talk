@@ -1,6 +1,5 @@
 import React, { useState, useContext, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { ChatListContext } from "../../Store";
 import { CgCheck } from "react-icons/cg";
 import { TbDotsVertical } from "react-icons/tb";
 import {
@@ -9,8 +8,9 @@ import {
   AiOutlineCheckCircle,
   AiOutlineForm,
 } from "react-icons/ai";
+import { ChatListContext } from "../../Store";
 import useClickOutside from "../../hooks/useClickOutside";
-import { UserIcon } from "../UserIcon/UserIcon";
+import { UserIcon } from "../../components";
 import {
   ChatContainer,
   ChatInfo,
@@ -28,7 +28,7 @@ import {
   Option,
 } from "./ChatsListItem.styles";
 
-export const ChatsListItem = ({ id, topic, resolved, date }) => {
+const ChatsListItem = ({ id, topic, resolved, date }) => {
   const { editChatTopic, toggleChatResolved, deleteChat } =
     useContext(ChatListContext);
   const [showOptions, setShowOptions] = useState(false);
@@ -38,8 +38,11 @@ export const ChatsListItem = ({ id, topic, resolved, date }) => {
   let navigate = useNavigate();
 
   const goToChat = () => {
-    navigate(`/chat/${id}`);
-    editChatTopic(id, topicValue);
+    if (showEdit) {
+      return;
+    } else {
+      navigate(`/chat/${id}`);
+    }
   };
 
   let menuRef = useClickOutside(() => {
@@ -161,3 +164,5 @@ export const ChatsListItem = ({ id, topic, resolved, date }) => {
     </div>
   );
 };
+
+export default ChatsListItem;

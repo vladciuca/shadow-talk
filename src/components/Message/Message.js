@@ -8,7 +8,7 @@ import {
   AiOutlineDelete,
 } from "react-icons/ai";
 import useClickOutside from "../../hooks/useClickOutside";
-import { UserIcon } from "../UserIcon/UserIcon";
+import { UserIcon } from "../../components";
 import {
   MessageContainer,
   UserIconContainer,
@@ -19,7 +19,7 @@ import {
   Option,
 } from "./Message.styles";
 
-export const Message = ({
+const Message = ({
   chat,
   user,
   messageText,
@@ -85,3 +85,5 @@ export const Message = ({
     </div>
   );
 };
+
+export default Message;

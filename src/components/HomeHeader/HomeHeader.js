@@ -7,7 +7,7 @@ import {
   HomeAboutLink,
 } from "./HomeHeader.styles";
 
-export const HomeHeader = () => {
+const HomeHeader = () => {
   let navigate = useNavigate();
 
   return (
@@ -19,3 +19,5 @@ export const HomeHeader = () => {
     </HomeHeaderContainer>
   );
 };
+
+export default HomeHeader;

@@ -1,8 +1,8 @@
 import React from "react";
 import useScrollToBottom from "../../hooks/useScrollToBottom";
-import { Message } from "../Message/Message";
+import { Message } from "../../components";
 
-export const ChatContent = ({ messages, chat }) => {
+const ChatContent = ({ messages, chat }) => {
   let bottomRef = useScrollToBottom(messages);
 
   return (
@@ -21,3 +21,5 @@ export const ChatContent = ({ messages, chat }) => {
     </>
   );
 };
+
+export default ChatContent;

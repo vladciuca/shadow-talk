@@ -7,7 +7,7 @@ import {
   ScreenFooter,
 } from "./Screen.styles";
 
-export const Screen = ({ header, content, footer, chatContent }) => (
+const Screen = ({ header, content, footer, chatContent }) => (
   <ScreenContainer>
     <ScreenHeader>{header}</ScreenHeader>
     <ScreenContent chatContent={chatContent}>
@@ -16,3 +16,5 @@ export const Screen = ({ header, content, footer, chatContent }) => (
     <ScreenFooter>{footer}</ScreenFooter>
   </ScreenContainer>
 );
+
+export default Screen;

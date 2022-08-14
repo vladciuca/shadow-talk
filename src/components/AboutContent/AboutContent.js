@@ -1,7 +1,7 @@
 import React from "react";
 import { Paragraph, SubText, SubTitle, Title } from "./AboutContent.styles";
 
-export const AboutContent = () => (
+const AboutContent = () => (
   <>
     <Paragraph>
       We are always evolving into different versions of ourselves, and right now
@@ -84,3 +84,5 @@ export const AboutContent = () => (
     </SubText>
   </>
 );
+
+export default AboutContent;

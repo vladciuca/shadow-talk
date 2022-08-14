@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import { v4 } from "uuid";
 import { ChatListContext } from "../../Store";
 import { IoSend } from "react-icons/io5";
-import { UserIcon } from "../UserIcon/UserIcon";
+import { UserIcon } from "../../components";
 import {
   UserInputContainer,
   UserImage,
@@ -11,7 +11,7 @@ import {
   SendMessageButton,
 } from "./UserChatInput.styles";
 
-export const UserChatInput = ({ chat, user, inputRef }) => {
+const UserChatInput = ({ chat, user, inputRef }) => {
   const { addNewMessage } = useContext(ChatListContext);
   const [newMessage, setNewMessage] = useState("");
   const [submitNotAllowed, setSubmitNotAllowed] = useState(true);
@@ -72,3 +72,5 @@ export const UserChatInput = ({ chat, user, inputRef }) => {
     </UserInputContainer>
   );
 };
+
+export default UserChatInput;

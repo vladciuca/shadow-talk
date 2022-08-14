@@ -2,7 +2,7 @@ import React from "react";
 import { FaUserAlt } from "react-icons/fa";
 import { UserBackground } from "./UserIcon.styles";
 
-export const UserIcon = ({ bgHeightAndWidth, iconSize, iconMargin, user }) => {
+const UserIcon = ({ bgHeightAndWidth, iconSize, iconMargin, user }) => {
   return (
     <>
       <UserBackground
@@ -18,3 +18,5 @@ export const UserIcon = ({ bgHeightAndWidth, iconSize, iconMargin, user }) => {
     </>
   );
 };
+
+export default UserIcon;

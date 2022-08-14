@@ -1,13 +1,15 @@
 import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { v4 } from "uuid";
-import { ChatListContext } from "../Store";
-import { Screen } from "../components/Screen/Screen";
-import { ChatHeader } from "../components/ChatHeader/ChatHeader";
-import { NewChatContent } from "../components/NewChatContent/NewChatContent";
-import { NewChatFooter } from "../components/NewChatFooter/NewChatFooter";
+import { ChatListContext } from "../../Store";
+import {
+  Screen,
+  ChatHeader,
+  NewChatContent,
+  NewChatFooter,
+} from "../../components";
 
-export const NewChat = () => {
+const NewChat = () => {
   const { addNewChat } = useContext(ChatListContext);
   const [topic, setTopic] = useState("");
   const [navigateNotAllowed, setNavigateNotAllowed] = useState(true);
@@ -52,3 +54,5 @@ export const NewChat = () => {
     />
   );
 };
+
+export default NewChat;
