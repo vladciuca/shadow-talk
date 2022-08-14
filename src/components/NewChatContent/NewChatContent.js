@@ -1,9 +1,12 @@
 import React from "react";
+import useScrollToBottom from "../../hooks/useScrollToBottom";
 import { Message } from "../Message/Message";
 import { UserIcon } from "../UserIcon/UserIcon";
 import { NewChatContainer, InputContainer } from "./NewChatContent.styles";
 
 export const NewChatContent = ({ topic, handleTopic }) => {
+  let bottomRef = useScrollToBottom();
+
   return (
     <NewChatContainer>
       <Message user={"Past"} messageText={"Hi there!"} messageStatic={true} />
@@ -55,6 +58,7 @@ export const NewChatContent = ({ topic, handleTopic }) => {
         }
         messageStatic={true}
       />
+      <div ref={bottomRef}></div>
     </NewChatContainer>
   );
 };

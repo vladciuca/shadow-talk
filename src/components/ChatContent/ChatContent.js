@@ -1,7 +1,10 @@
 import React from "react";
+import useScrollToBottom from "../../hooks/useScrollToBottom";
 import { Message } from "../Message/Message";
 
 export const ChatContent = ({ messages, chat }) => {
+  let bottomRef = useScrollToBottom(messages);
+
   return (
     <>
       {messages.map((message) => (
@@ -14,6 +17,7 @@ export const ChatContent = ({ messages, chat }) => {
           messageHighlight={message.highlight}
         />
       ))}
+      <div ref={bottomRef}></div>
     </>
   );
 };
