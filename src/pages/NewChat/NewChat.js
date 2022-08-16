@@ -16,6 +16,10 @@ const NewChat = () => {
   const [secondSequence, setSecondSequence] = useState(
     secondSequenceOfMessages
   );
+
+  // const firstSequence = firstSequenceOfMessages;
+  // const secondSequence = secondSequenceOfMessages;
+
   const [startSecondSequence, setStartSecondSequence] = useState(false);
 
   const [topic, setTopic] = useState("");
@@ -27,22 +31,41 @@ const NewChat = () => {
 
   const inputRef = useRef();
 
-  const sendMessages = () => {
+  const sendMessages = (sequence) => {
     let interval = setInterval(() => {
-      if (firstSequence.length <= 1) {
+      if (sequence.length <= 1) {
         clearInterval(interval);
-        setShowTopicInput(true);
+        if (!startSecondSequence) {
+          setShowTopicInput(true);
+        }
+        if (startSecondSequence) {
+          setNavigateNotAllowed(false);
+        }
       }
 
-      const message = firstSequence.shift();
+      const message = sequence.shift();
 
       setTutorialMessages((prev) => [...prev, message]);
     }, 1000);
   };
 
+  //figure out how to get the msg data again on mount
   useEffect(() => {
-    sendMessages();
+    console.log(firstSequence);
+    if (firstSequence.length < 0) {
+      setFirstSequence(firstSequenceOfMessages);
+    }
   }, []);
+
+  useEffect(() => {
+    sendMessages(firstSequence);
+  }, []);
+
+  useEffect(() => {
+    if (startSecondSequence) {
+      sendMessages(secondSequence);
+    }
+  }, [startSecondSequence]);
 
   useEffect(() => {
     if (showTopicInput) {
@@ -57,18 +80,14 @@ const NewChat = () => {
 
   let navigate = useNavigate();
 
-  //TO DO: HANDLE NAV TO ENABLE AFTER SECOND SEQUENCE
   const handleTopic = (e) => {
-    console.log(e);
-    if (e === "") {
-      setNavigateNotAllowed(true);
-    } else {
-      setNavigateNotAllowed(false);
-    }
     setTopic(e);
   };
 
   const handleTopicSubmit = () => {
+    if (topic === "") {
+      return;
+    }
     const topicMessage = {
       id: v4(),
       user: "Present",
