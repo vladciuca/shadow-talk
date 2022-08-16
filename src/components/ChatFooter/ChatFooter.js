@@ -9,17 +9,17 @@ import {
 } from "./ChatFooter.styles";
 
 const ChatFooter = ({ chat, user, secondUser, switchUser }) => {
-  const input = useRef();
+  const inputRef = useRef();
   return (
     <>
       <FooterContainer>
-        <UserChatInput chat={chat} user={user} inputRef={input} />
+        <UserChatInput chat={chat} user={user} inputRef={inputRef} />
 
         <SwitchUserContainer>
           <SwitchUserButton
             onClick={() => {
               switchUser();
-              input.current.focus();
+              inputRef.current.focus();
             }}
           >
             <SwitchIcon>

@@ -11,7 +11,15 @@ import {
   SendMessageButton,
 } from "./UserChatInput.styles";
 
-const UserChatInput = ({ chat, user, inputRef }) => {
+const UserChatInput = ({
+  topicInput,
+  topic,
+  handleTopic,
+  handleTopicSubmit,
+  chat,
+  user,
+  inputRef,
+}) => {
   const { addNewMessage } = useContext(ChatListContext);
   const [newMessage, setNewMessage] = useState("");
   const [submitNotAllowed, setSubmitNotAllowed] = useState(true);
@@ -22,21 +30,35 @@ const UserChatInput = ({ chat, user, inputRef }) => {
     } else {
       setSubmitNotAllowed(true);
     }
-    setNewMessage(e);
+    if (chat) {
+      setNewMessage(e);
+    }
+    if (topicInput) {
+      handleTopic(e);
+    }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (newMessage === "") {
-      return;
+
+    // only in CHAT PAGE
+    if (chat) {
+      if (newMessage === "") {
+        return;
+      }
+
+      addNewMessage(chat, {
+        id: v4(),
+        user,
+        message: newMessage,
+        highlight: false,
+      });
     }
 
-    addNewMessage(chat, {
-      id: v4(),
-      user,
-      message: newMessage,
-      highlight: false,
-    });
+    if (topicInput) {
+      //HANDLE TOPIC SUBMIT
+      handleTopicSubmit();
+    }
 
     setNewMessage("");
     setSubmitNotAllowed(true);
@@ -56,9 +78,13 @@ const UserChatInput = ({ chat, user, inputRef }) => {
         <input
           ref={inputRef}
           type="text"
-          placeholder={`Chatting as: ${user}-Self`}
+          placeholder={
+            topicInput
+              ? "Choose a Topic to continue"
+              : `Chatting as: ${user}-Self`
+          }
           onChange={(e) => handleChange(e.target.value)}
-          value={newMessage}
+          value={topicInput ? topic : newMessage}
         />
       </InputContainer>
       <SendMessageContainer>
