@@ -46,9 +46,12 @@ const ChatsListItem = ({ id, topic, resolved, date }) => {
   };
 
   let menuRef = useClickOutside(() => {
+    if (showEdit) {
+      editChatTopic(id, topicValue);
+    }
+
     setShowOptions(false);
     setShowEdit(false);
-    editChatTopic(id, topicValue);
   });
 
   const editRef = useRef();

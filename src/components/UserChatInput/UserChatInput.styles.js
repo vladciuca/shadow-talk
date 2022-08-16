@@ -33,7 +33,7 @@ export const SendMessageContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 10%;
+  width: 15%;
 `;
 
 export const SendMessageButton = styled.div`
@@ -42,9 +42,9 @@ export const SendMessageButton = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.8rem;
-  height: 1.6rem;
-  width: 1.6rem;
+  font-size: 1rem;
+  height: 2rem;
+  width: 2rem;
   border-radius: 999px;
   ${({ submitNotAllowed }) =>
     submitNotAllowed
