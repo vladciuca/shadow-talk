@@ -27,8 +27,7 @@ export const MessageContent = styled.div`
       : css`
           background: ${({ theme }) => theme.cardPrimary};
         `}
-  /* max-width: 260px;
-  overflow-wrap: break-word; */
+  overflow-wrap: anywhere;
   max-width: 80%;
   padding: 0.4rem 0.5rem;
   line-height: 1.4rem;
@@ -92,5 +91,5 @@ export const Option = styled.div`
 `;
 
 export const OptionsSpacer = styled.div`
-  width: 15px;
+  width: 18px;
 `;

@@ -50,12 +50,12 @@ const NewChat = () => {
   };
 
   //figure out how to get the msg data again on mount
-  useEffect(() => {
-    console.log(firstSequence);
-    if (firstSequence.length < 0) {
-      setFirstSequence(firstSequenceOfMessages);
-    }
-  }, []);
+  // useEffect(() => {
+  //   console.log(firstSequence);
+  //   if (firstSequence.length < 0) {
+  //     setFirstSequence(firstSequenceOfMessages);
+  //   }
+  // }, []);
 
   useEffect(() => {
     sendMessages(firstSequence);
@@ -88,6 +88,7 @@ const NewChat = () => {
     if (topic === "") {
       return;
     }
+
     const topicMessage = {
       id: v4(),
       user: "Present",

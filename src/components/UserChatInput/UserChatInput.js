@@ -1,6 +1,4 @@
-import React, { useState, useContext } from "react";
-import { v4 } from "uuid";
-import { ChatListContext } from "../../Store";
+import React, { useState } from "react";
 import { IoSend } from "react-icons/io5";
 import { UserIcon } from "components";
 import {
@@ -16,12 +14,13 @@ const UserChatInput = ({
   topic,
   handleTopic,
   handleTopicSubmit,
-  chat,
+  chatInput,
+  newMessage,
+  handleNewMessage,
+  handleNewMessageSubmit,
   user,
   inputRef,
 }) => {
-  const { addNewMessage } = useContext(ChatListContext);
-  const [newMessage, setNewMessage] = useState("");
   const [submitNotAllowed, setSubmitNotAllowed] = useState(true);
 
   const handleChange = (e) => {
@@ -30,8 +29,8 @@ const UserChatInput = ({
     } else {
       setSubmitNotAllowed(true);
     }
-    if (chat) {
-      setNewMessage(e);
+    if (chatInput) {
+      handleNewMessage(e);
     }
     if (topicInput) {
       handleTopic(e);
@@ -41,26 +40,15 @@ const UserChatInput = ({
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // only in CHAT PAGE
-    if (chat) {
-      if (newMessage === "") {
-        return;
-      }
-
-      addNewMessage(chat, {
-        id: v4(),
-        user,
-        message: newMessage,
-        highlight: false,
-      });
+    if (chatInput) {
+      handleNewMessageSubmit();
     }
 
     if (topicInput) {
-      //HANDLE TOPIC SUBMIT
       handleTopicSubmit();
     }
 
-    setNewMessage("");
+    inputRef.current.focus();
     setSubmitNotAllowed(true);
   };
 
@@ -70,7 +58,7 @@ const UserChatInput = ({
         <UserIcon
           bgHeightAndWidth={2}
           iconSize={1.5}
-          iconMargin={0.75}
+          iconMargin={0.85}
           user={user}
         />
       </UserImage>

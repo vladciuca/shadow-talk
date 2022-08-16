@@ -15,12 +15,12 @@ const NewChatFooter = ({
     <>
       {showTopicInput ? (
         <UserChatInput
-          inputRef={inputRef}
-          user={"Present"}
+          topicInput={true}
           topic={topic}
           handleTopic={handleTopic}
-          topicInput={true}
           handleTopicSubmit={handleTopicSubmit}
+          user={"Present"}
+          inputRef={inputRef}
         />
       ) : (
         <NewChatFooterContainer>
