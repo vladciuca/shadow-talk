@@ -1,6 +1,6 @@
 import React from "react";
-import { UserChatInput } from "components";
-import { NewChatFooterContainer, Button } from "./NewChatFooter.styles";
+import { UserChatInput, Button } from "components";
+import { NewChatFooterContainer } from "./NewChatFooter.styles";
 
 const NewChatFooter = ({
   inputRef,
@@ -24,9 +24,11 @@ const NewChatFooter = ({
         />
       ) : (
         <NewChatFooterContainer>
-          <Button onClick={addNewChat} navigateNotAllowed={navigateNotAllowed}>
-            Continue to Chat
-          </Button>
+          <Button
+            text={"Continue to Chat"}
+            handleClick={addNewChat}
+            navigateNotAllowed={navigateNotAllowed}
+          />
         </NewChatFooterContainer>
       )}
     </>

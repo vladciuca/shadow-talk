@@ -1,6 +1,7 @@
 // Global components
 export { default as Logo } from "./Logo";
 export { default as Screen } from "./Screen";
+export { default as Button } from "./Button";
 export { default as BackToHome } from "./BackToHome";
 export { default as Message } from "./Message";
 export { default as UserIcon } from "./UserIcon";

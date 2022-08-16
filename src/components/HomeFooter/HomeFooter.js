@@ -1,12 +1,16 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { HomeFooterContainer, Button } from "./HomeFooter.styles";
+import { Button } from "components";
+import { HomeFooterContainer } from "./HomeFooter.styles";
 
 const HomeFooter = () => {
   let navigate = useNavigate();
   return (
     <HomeFooterContainer>
-      <Button onClick={() => navigate("/new-chat")}>Start a New Chat</Button>
+      <Button
+        text={"Start a New Chat"}
+        handleClick={() => navigate("/new-chat")}
+      />
     </HomeFooterContainer>
   );
 };
