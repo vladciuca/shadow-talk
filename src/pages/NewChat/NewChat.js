@@ -9,16 +9,11 @@ import {
   secondSequenceOfMessages,
 } from "./tutorialMessages";
 
+let firstSequence = [...firstSequenceOfMessages];
+let secondSequence = [...secondSequenceOfMessages];
+
 const NewChat = () => {
   const { addNewChat } = useContext(ChatListContext);
-
-  const [firstSequence, setFirstSequence] = useState(firstSequenceOfMessages);
-  const [secondSequence, setSecondSequence] = useState(
-    secondSequenceOfMessages
-  );
-
-  // const firstSequence = firstSequenceOfMessages;
-  // const secondSequence = secondSequenceOfMessages;
 
   const [startSecondSequence, setStartSecondSequence] = useState(false);
 
@@ -56,13 +51,13 @@ const NewChat = () => {
     }, 1000);
   };
 
-  //figure out how to get the msg data again on mount
-  // useEffect(() => {
-  //   console.log(firstSequence);
-  //   if (firstSequence.length < 0) {
-  //     setFirstSequence(firstSequenceOfMessages);
-  //   }
-  // }, []);
+  // reset the array on component unmount
+  useEffect(() => {
+    return function cleanUp() {
+      firstSequence = [...firstSequenceOfMessages];
+      secondSequence = [...secondSequenceOfMessages];
+    };
+  }, []);
 
   useEffect(() => {
     sendMessages(firstSequence);
@@ -79,11 +74,6 @@ const NewChat = () => {
       inputRef.current.focus();
     }
   }, [showTopicInput]);
-
-  //FOR DEVELOPMENT ONLY
-  useEffect(() => {
-    console.log(tutorialMessages);
-  }, [tutorialMessages]);
 
   useEffect(() => {
     if (topic === "") {
@@ -117,7 +107,7 @@ const NewChat = () => {
     //Trigger second sequence of tutorial messages
     setStartSecondSequence(true);
     setUserTyping(false);
-    // tutorial is typing again
+    // tutorial is typing again in Second Sequence
     setTutorialTyping(true);
   };
 
