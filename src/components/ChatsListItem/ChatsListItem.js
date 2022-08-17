@@ -141,13 +141,13 @@ const ChatsListItem = ({ id, topic, resolved, date }) => {
               toggleEdit();
             }}
           >
-            Edit
+            Edit Topic
             <span>
               <AiOutlineForm />
             </span>
           </Option>
           <Option onClick={() => toggleChatResolved(id)}>
-            Status
+            Change Status
             <span>
               {resolved ? (
                 <AiOutlineCheckCircle />

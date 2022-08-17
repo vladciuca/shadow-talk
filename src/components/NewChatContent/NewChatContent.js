@@ -1,9 +1,9 @@
 import React from "react";
 import useScrollToBottom from "../../hooks/useScrollToBottom";
-import { Message } from "components";
+import { Message, TypingIndicator } from "components";
 import { NewChatContainer } from "./NewChatContent.styles";
 
-const NewChatContent = ({ tutorialMessages }) => {
+const NewChatContent = ({ tutorialMessages, tutorialTyping, userTyping }) => {
   let bottomRef = useScrollToBottom(tutorialMessages);
 
   return (
@@ -18,7 +18,20 @@ const NewChatContent = ({ tutorialMessages }) => {
           />
         );
       })}
-
+      {tutorialTyping ? (
+        <Message
+          user={"Past"}
+          messageText={<TypingIndicator />}
+          messageStatic={true}
+        />
+      ) : null}
+      {userTyping ? (
+        <Message
+          user={"Present"}
+          messageText={<TypingIndicator />}
+          messageStatic={true}
+        />
+      ) : null}
       <div ref={bottomRef}></div>
     </NewChatContainer>
   );

@@ -29,6 +29,9 @@ const NewChat = () => {
 
   const [navigateNotAllowed, setNavigateNotAllowed] = useState(true);
 
+  const [tutorialTyping, setTutorialTyping] = useState(true);
+  const [userTyping, setUserTyping] = useState(false);
+
   const inputRef = useRef();
 
   const sendMessages = (sequence) => {
@@ -37,9 +40,13 @@ const NewChat = () => {
         clearInterval(interval);
         if (!startSecondSequence) {
           setShowTopicInput(true);
+          // tutorial is not typing anymore in first sequence
+          setTutorialTyping(false);
         }
         if (startSecondSequence) {
           setNavigateNotAllowed(false);
+          // tutorial is not typing anymore in second sequence
+          setTutorialTyping(false);
         }
       }
 
@@ -78,6 +85,14 @@ const NewChat = () => {
     console.log(tutorialMessages);
   }, [tutorialMessages]);
 
+  useEffect(() => {
+    if (topic === "") {
+      setUserTyping(false);
+    } else {
+      setUserTyping(true);
+    }
+  }, [topic]);
+
   let navigate = useNavigate();
 
   const handleTopic = (e) => {
@@ -101,6 +116,9 @@ const NewChat = () => {
     setShowTopicInput(false);
     //Trigger second sequence of tutorial messages
     setStartSecondSequence(true);
+    setUserTyping(false);
+    // tutorial is typing again
+    setTutorialTyping(true);
   };
 
   const goToNewChat = () => {
@@ -122,7 +140,13 @@ const NewChat = () => {
   return (
     <Screen
       header={<ChatHeader secondUser={"Past"} />}
-      content={<NewChatContent tutorialMessages={tutorialMessages} />}
+      content={
+        <NewChatContent
+          tutorialMessages={tutorialMessages}
+          tutorialTyping={tutorialTyping}
+          userTyping={userTyping}
+        />
+      }
       chatContent={true}
       footer={
         <NewChatFooter
