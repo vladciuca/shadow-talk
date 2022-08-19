@@ -11,6 +11,7 @@ const ChatFooter = ({
   inputRef,
   secondUser,
   switchUser,
+  navigateNotAllowed,
 }) => {
   const handleSwitchUser = () => {
     switchUser();
@@ -19,7 +20,7 @@ const ChatFooter = ({
 
   useEffect(() => {
     inputRef.current.focus();
-  }, []);
+  }, [inputRef]);
 
   return (
     <>
@@ -40,6 +41,7 @@ const ChatFooter = ({
             text={`Switch to
             ${secondUser}-Self`}
             handleClick={handleSwitchUser}
+            navigateNotAllowed={navigateNotAllowed}
           />
         </SwitchUserContainer>
       </FooterContainer>

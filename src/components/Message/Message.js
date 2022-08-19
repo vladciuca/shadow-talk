@@ -26,6 +26,7 @@ const Message = ({
   messageId,
   messageHighlight,
   messageStatic,
+  messageIntegrate,
 }) => {
   const { deleteMessage, toggleMessageUser, toggleMessageHighlight } =
     useContext(ChatListContext);
@@ -58,22 +59,32 @@ const Message = ({
           </Options>
         )}
 
-        <MessageContent messageHighlight={messageHighlight} user={user}>
+        <MessageContent
+          messageHighlight={messageHighlight}
+          messageIntegrate={messageIntegrate}
+          user={user}
+        >
           {messageText}
         </MessageContent>
       </MessageContainer>
       {showOptions ? (
         <OptionsContainer>
-          <Option onClick={() => toggleMessageHighlight(chat, messageId)}>
-            Highlight
-            <span>{messageHighlight ? <AiFillStar /> : <AiOutlineStar />}</span>
-          </Option>
-          <Option onClick={() => toggleMessageUser(chat, messageId)}>
-            Switch Self
-            <span>
-              <AiOutlineUserSwitch />
-            </span>
-          </Option>
+          {messageIntegrate ? null : (
+            <>
+              <Option onClick={() => toggleMessageHighlight(chat, messageId)}>
+                Highlight
+                <span>
+                  {messageHighlight ? <AiFillStar /> : <AiOutlineStar />}
+                </span>
+              </Option>
+              <Option onClick={() => toggleMessageUser(chat, messageId)}>
+                Switch Self
+                <span>
+                  <AiOutlineUserSwitch />
+                </span>
+              </Option>
+            </>
+          )}
           <Option delete onClick={() => deleteMessage(chat, messageId)}>
             Delete
             <span>

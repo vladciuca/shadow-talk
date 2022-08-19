@@ -15,8 +15,12 @@ export const UserIconContainer = styled.div`
 `;
 
 export const MessageContent = styled.div`
-  ${({ messageHighlight, user }) =>
-    messageHighlight && user === "Past"
+  ${({ messageHighlight, messageIntegrate, user }) =>
+    messageIntegrate
+      ? css`
+          background: ${({ theme }) => theme.positiveOpac};
+        `
+      : messageHighlight && user === "Past"
       ? css`
           background: ${({ theme }) => theme.neutralOpac};
         `
@@ -29,8 +33,8 @@ export const MessageContent = styled.div`
         `}
   overflow-wrap: anywhere;
   max-width: 80%;
-  padding: 0.4rem 0.5rem;
   line-height: 1.4rem;
+  padding: 0.3rem 0.5rem;
   border-radius: 0.25rem;
   display: flex;
   align-items: center;

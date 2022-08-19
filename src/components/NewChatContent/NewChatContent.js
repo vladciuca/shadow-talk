@@ -4,7 +4,7 @@ import { Message, TypingIndicator } from "components";
 import { NewChatContainer } from "./NewChatContent.styles";
 
 const NewChatContent = ({ tutorialMessages, tutorialTyping, userTyping }) => {
-  let bottomRef = useScrollToBottom(tutorialMessages);
+  let bottomRef = useScrollToBottom([tutorialMessages, userTyping]);
 
   return (
     <NewChatContainer>

@@ -14,7 +14,7 @@ const Scaling = keyframes`
 export const TypingIndicatorContainer = styled.div`
   display: flex;
   align-items: end;
-  height: 1.3rem;
+  height: 1.1rem;
   div {
     background: ${({ theme }) => theme.textLight};
     height: 4px;

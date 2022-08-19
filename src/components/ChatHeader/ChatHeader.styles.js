@@ -31,6 +31,9 @@ export const UserInfo = styled.div`
 export const UserName = styled.div`
   font-size: 1.5rem;
   color: ${({ theme }) => theme.text};
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 `;
 
 export const SubText = styled.div`
@@ -52,4 +55,30 @@ export const TopicText = styled.div`
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+`;
+
+export const SwitchTextUnchecked = styled.div`
+  padding-top: 0.2rem;
+  margin-left: -40px;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const SwitchTextChecked = styled.div`
+  padding-top: 0.2rem;
+  margin-left: 35px;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const SwitchHandleIcon = styled.div`
+  margin-top: -1px;
+  font-size: 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;

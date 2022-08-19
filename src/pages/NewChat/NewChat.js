@@ -129,7 +129,7 @@ const NewChat = () => {
 
   return (
     <Screen
-      header={<ChatHeader secondUser={"Past"} />}
+      header={<ChatHeader secondUser={"Past"} tutorial={true} />}
       content={
         <NewChatContent
           tutorialMessages={tutorialMessages}

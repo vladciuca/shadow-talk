@@ -8,7 +8,7 @@ export const ButtonContainer = styled.div`
   padding: 0.5rem 1rem;
   border-radius: 30px;
   ${({ user, navigateNotAllowed }) =>
-    user === "Present"
+    user === "Present" && !navigateNotAllowed
       ? css`
           background-image: linear-gradient(
             to right,
@@ -16,7 +16,7 @@ export const ButtonContainer = styled.div`
             ${({ theme }) => theme.neutral}
           );
         `
-      : user === "Past"
+      : user === "Past" && !navigateNotAllowed
       ? css`
           background-image: linear-gradient(
             to right,
@@ -24,7 +24,7 @@ export const ButtonContainer = styled.div`
             ${({ theme }) => theme.negative}
           );
         `
-      : !user && navigateNotAllowed
+      : navigateNotAllowed
       ? css`
           background: ${({ theme }) => theme.textLight};
         `
