@@ -2,7 +2,7 @@ import React from "react";
 import useScrollToBottom from "../../hooks/useScrollToBottom";
 import { Message, TypingIndicator } from "components";
 
-const ChatContent = ({ user, isTyping, autoTyping, chat }) => {
+const ChatContent = ({ user, isTyping, autoTyping, chat, secondUser }) => {
   let bottomRef = useScrollToBottom({
     chatLength: chat.messages.length,
     // fix this trigger by adding typingIndicatorActive boolean to isTyping
@@ -34,7 +34,7 @@ const ChatContent = ({ user, isTyping, autoTyping, chat }) => {
       ) : null}
       {autoTyping ? (
         <Message
-          user={"Past"}
+          user={secondUser}
           messageText={<TypingIndicator />}
           messageStatic={true}
           messageResolve={chat.resolve}

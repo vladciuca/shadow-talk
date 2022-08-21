@@ -25,6 +25,39 @@ const Chat = () => {
   const chat = getChat(id);
   const inputRef = useRef();
 
+  // HINTS FEATURE
+
+  const sendHintAutoMessage = () => {
+    const autoHintMessages = [
+      {
+        text: "Why are you doing this?",
+      },
+      {
+        text: "What do you want from me?",
+      },
+      {
+        text: "What are you trying to protect me from?",
+      },
+    ];
+
+    const selectRandomMessage =
+      autoHintMessages[Math.floor(Math.random() * autoHintMessages.length)];
+
+    const autoHintMessage = {
+      id: v4(),
+      user: "Present",
+      message: selectRandomMessage.text,
+    };
+
+    setAutoTyping(true);
+
+    let interval = setInterval(() => {
+      addNewMessage(chat, autoHintMessage);
+      setAutoTyping(false);
+      clearInterval(interval);
+    }, 1000);
+  };
+
   // RESOLVE FEATURE
 
   const showResolve = () => {
@@ -198,6 +231,7 @@ const Chat = () => {
         <ChatHeader
           secondUser={secondUser()}
           topic={chat.topic}
+          sendHintAutoMessage={sendHintAutoMessage}
           resolve={chat.resolve}
           showStateSwitch={showStateSwitch}
           toggleResolve={toggleResolve}
@@ -209,6 +243,7 @@ const Chat = () => {
         <ChatContent
           chat={chat}
           user={currentUser}
+          secondUser={secondUser()}
           isTyping={isTyping}
           autoTyping={autoTyping}
         />

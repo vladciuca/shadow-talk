@@ -1,4 +1,5 @@
 import React from "react";
+import { AiOutlineQuestionCircle } from "react-icons/ai";
 import { BackToHome, UserIcon, ChatStatusSwitch } from "components";
 import {
   HeaderContainer,
@@ -8,12 +9,14 @@ import {
   SubText,
   Topic,
   TopicText,
+  Hint,
 } from "./ChatHeader.styles";
 
 const ChatHeader = ({
   secondUser,
   topic,
   tutorial,
+  sendHintAutoMessage,
   showStateSwitch,
   resolve,
   toggleResolve,
@@ -43,6 +46,11 @@ const ChatHeader = ({
                 chatStatus={chatStatus}
                 autoTyping={autoTyping}
               />
+            ) : null}
+            {secondUser === "Present" && !tutorial ? (
+              <Hint onClick={sendHintAutoMessage}>
+                <AiOutlineQuestionCircle />
+              </Hint>
             ) : null}
           </UserName>
           {topic ? (

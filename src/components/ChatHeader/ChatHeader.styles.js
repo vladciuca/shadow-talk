@@ -48,3 +48,11 @@ export const TopicText = styled.div`
   overflow: hidden;
   text-overflow: ellipsis;
 `;
+
+export const Hint = styled.div`
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+`;
