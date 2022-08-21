@@ -20,19 +20,13 @@ const ChatStatusInfo = ({ chatStatus, toggleResolve }) => {
             </ResolvedMark>
           </Status>
           <Info>
-            You can expand on this topic by
-            <Button onClick={toggleResolve}>Returning</Button> to chat.
+            You can expand on this topic or
+            <Button onClick={toggleResolve}>Return</Button> to chat.
           </Info>
         </>
       ) : (
         <>
-          <Status>
-            Currently Integrating
-            <ResolvedMark>
-              <CgCheck />
-            </ResolvedMark>
-            with your Past-Self
-          </Status>
+          <Status>Currently Integrating with your Past-Self</Status>
           <Info>
             You can continue by answering or
             <Button onClick={toggleResolve}>Return</Button> to chat.

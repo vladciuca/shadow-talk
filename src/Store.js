@@ -98,15 +98,7 @@ const Store = ({ children }) => {
     setChatList(newChatList);
   };
 
-  //change chat status
-
-  const changeChatStatus = (id, status) => {
-    //status: In progress...
-
-    //status: Resolving...
-
-    //status: Resolved
-
+  const updateChatStatus = (id, status) => {
     const newChatList = chatList.map((chat) => {
       if (chat.id === id) {
         chat.status = status;
@@ -180,7 +172,7 @@ const Store = ({ children }) => {
         setChatList,
         toggleChatResolve,
         changeChatResolve,
-        changeChatStatus,
+        updateChatStatus,
         editChatTopic,
         deleteChat,
         addNewChat,

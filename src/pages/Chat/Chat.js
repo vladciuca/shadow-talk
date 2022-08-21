@@ -11,7 +11,7 @@ const Chat = () => {
     deleteMessage,
     toggleChatResolve,
     changeChatResolve,
-    changeChatStatus,
+    updateChatStatus,
   } = useContext(ChatListContext);
   const [currentUser, setCurrentUser] = useState("");
 
@@ -68,7 +68,7 @@ const Chat = () => {
     const enoughMessagesFromPresent =
       chat.messages.filter((message) => message.user === "Present").length >= 5;
 
-    // you have progressed enough to start integrating the resolve! TO DO: add info notification
+    // you enabled integrate! TO DO: add info notification
     if (enoughMessagesFromPast && enoughMessagesFromPresent) {
       setShowStateSwitch(true);
     } else {
@@ -79,14 +79,14 @@ const Chat = () => {
   const changeStatus = () => {
     //STATUS: In Progress...
     if (!chat.resolve) {
-      changeChatStatus(chat.id, "Discussing...");
+      updateChatStatus(chat.id, "Discussing...");
     }
     //STATUS: Resolving...
     if (
       chat.resolve &&
       chat.messages[chat.messages.length - 1].autoResolveMessage
     ) {
-      changeChatStatus(chat.id, "Integrating...");
+      updateChatStatus(chat.id, "Integrating...");
     }
     //STATUS: Resolved
     if (
@@ -94,10 +94,11 @@ const Chat = () => {
       chat.messages[chat.messages.length - 1].resolve &&
       chat.messages[chat.messages.length - 1].user === "Present"
     ) {
-      changeChatStatus(chat.id, "Resolved");
+      updateChatStatus(chat.id, "Resolved");
     }
   };
 
+  // delete auto message if its the last message in the chat
   const deleteResolveAutoMessage = () => {
     if (chat.messages[chat.messages.length - 1].autoResolveMessage) {
       const autoResolveMessage = chat.messages[chat.messages.length - 1];
@@ -141,11 +142,6 @@ const Chat = () => {
   };
 
   const toggleResolve = () => {
-    //TEMP: CONDITION TO EXPAND ON LATER, button should show before a decent chat length
-    if (chat.messages < 1) {
-      return;
-    }
-
     toggleChatResolve(chat.id);
 
     inputRef.current.focus();
@@ -154,7 +150,7 @@ const Chat = () => {
       sendResolveAutoMessage();
     }
 
-    //if no message follows the info message, delete info message
+    // if no message follows the info message, delete info message
     deleteResolveAutoMessage();
   };
 
@@ -167,10 +163,7 @@ const Chat = () => {
     showResolve();
     changeStatus();
 
-    if (chat.messages.find((message) => message.resolve === true)) {
-      // console.log("has resolve");
-    } else {
-      // console.log("no resolve");
+    if (!chat.messages.find((message) => message.resolve === true)) {
       changeChatResolve(chat.id, false);
     }
   }, [chat.messages]);

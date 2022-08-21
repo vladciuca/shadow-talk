@@ -2,12 +2,7 @@ import React, { useState, useContext, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { CgCheck } from "react-icons/cg";
 import { TbDotsVertical } from "react-icons/tb";
-import {
-  AiOutlineDelete,
-  // AiOutlineExclamationCircle,
-  // AiOutlineCheckCircle,
-  AiOutlineForm,
-} from "react-icons/ai";
+import { AiOutlineDelete, AiOutlineForm } from "react-icons/ai";
 import { ChatListContext } from "../../Store";
 import useClickOutside from "../../hooks/useClickOutside";
 import { UserIcon } from "components";
@@ -145,16 +140,6 @@ const ChatsListItem = ({ id, topic, resolve, status, date }) => {
               <AiOutlineForm />
             </span>
           </Option>
-          {/* <Option onClick={() => toggleChatResolve(id)}>
-            Change Status
-            <span>
-              {resolve ? (
-                <AiOutlineCheckCircle />
-              ) : (
-                <AiOutlineExclamationCircle />
-              )}
-            </span>
-          </Option> */}
           <Option delete onClick={() => deleteChat(id)}>
             Delete
             <span>

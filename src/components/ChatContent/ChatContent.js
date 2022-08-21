@@ -5,7 +5,7 @@ import { Message, TypingIndicator } from "components";
 const ChatContent = ({ user, isTyping, autoTyping, chat, secondUser }) => {
   let bottomRef = useScrollToBottom({
     chatLength: chat.messages.length,
-    // fix this trigger by adding typingIndicatorActive boolean to isTyping
+    // TO DO: fix the user trigger for scroll to bottom
     userTyping: isTyping,
     autoTyping: autoTyping,
   });

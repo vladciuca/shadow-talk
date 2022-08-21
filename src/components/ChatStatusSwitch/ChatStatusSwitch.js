@@ -14,12 +14,6 @@ const ChatStatusSwitch = ({
   chatStatus,
   autoTyping,
 }) => {
-  // const statusText = () => {
-  //   if (chatStatus === "In Progress...") {
-  //     return "Integrating...";
-  //   }
-  //   return chatStatus;
-  // };
   return (
     <Switch
       disabled={autoTyping}
