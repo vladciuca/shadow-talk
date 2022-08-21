@@ -29,12 +29,12 @@ body{
 }
  
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.6); 
+  background: rgba(255, 255, 255, 0.2); 
   opacity: 0.1;
   border-radius: 10px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.4);
 }
 `;
 
