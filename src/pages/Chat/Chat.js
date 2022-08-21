@@ -28,6 +28,8 @@ const Chat = () => {
   // HINTS FEATURE
 
   const sendHintAutoMessage = () => {
+    inputRef.current.focus();
+
     const autoHintMessages = [
       {
         text: "Why are you doing this?",
@@ -77,7 +79,7 @@ const Chat = () => {
   const changeStatus = () => {
     //STATUS: In Progress...
     if (!chat.resolve) {
-      changeChatStatus(chat.id, "In Progress...");
+      changeChatStatus(chat.id, "Discussing...");
     }
     //STATUS: Resolving...
     if (
@@ -218,10 +220,10 @@ const Chat = () => {
   };
 
   useEffect(() => {
-    if (newMessage === "") {
-      setIsTyping(false);
-    } else {
+    if (newMessage.length >= 1) {
       setIsTyping(true);
+    } else {
+      setIsTyping(false);
     }
   }, [newMessage]);
 

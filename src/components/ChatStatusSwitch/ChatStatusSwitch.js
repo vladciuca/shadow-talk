@@ -14,12 +14,12 @@ const ChatStatusSwitch = ({
   chatStatus,
   autoTyping,
 }) => {
-  const statusText = () => {
-    if (chatStatus === "In Progress...") {
-      return "Integrating...";
-    }
-    return chatStatus;
-  };
+  // const statusText = () => {
+  //   if (chatStatus === "In Progress...") {
+  //     return "Integrating...";
+  //   }
+  //   return chatStatus;
+  // };
   return (
     <Switch
       disabled={autoTyping}
@@ -35,7 +35,7 @@ const ChatStatusSwitch = ({
           <AiFillQuestionCircle color="gray" />
         </SwitchHandleIcon>
       }
-      checkedIcon={<SwitchTextChecked>{statusText()}</SwitchTextChecked>}
+      checkedIcon={<SwitchTextChecked>{chatStatus}</SwitchTextChecked>}
       checkedHandleIcon={
         <SwitchHandleIcon>
           <AiFillCheckCircle color={theme.positive} />
