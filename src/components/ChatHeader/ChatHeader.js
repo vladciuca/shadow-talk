@@ -1,8 +1,5 @@
 import React from "react";
-import Switch from "react-switch";
-import { AiFillCheckCircle, AiFillQuestionCircle } from "react-icons/ai";
-import { BackToHome, UserIcon } from "components";
-import { theme } from "../../theme";
+import { BackToHome, UserIcon, ChatStatusSwitch } from "components";
 import {
   HeaderContainer,
   ProfileImage,
@@ -11,17 +8,16 @@ import {
   SubText,
   Topic,
   TopicText,
-  SwitchTextUnchecked,
-  SwitchTextChecked,
-  SwitchHandleIcon,
 } from "./ChatHeader.styles";
 
 const ChatHeader = ({
   secondUser,
   topic,
   tutorial,
-  integrate,
-  startIntegrate,
+  showStateSwitch,
+  resolve,
+  toggleResolve,
+  chatStatus,
   autoTyping,
 }) => {
   return (
@@ -40,29 +36,12 @@ const ChatHeader = ({
           <SubText>Chatting with your</SubText>
           <UserName>
             {secondUser}-Self
-            {secondUser === "Past" && !tutorial ? (
-              <Switch
-                disabled={autoTyping}
-                checked={integrate}
-                onChange={startIntegrate}
-                height={20}
-                width={85}
-                handleDiameter={20}
-                onColor={theme.positive}
-                uncheckedIcon={
-                  <SwitchTextUnchecked>Integrate</SwitchTextUnchecked>
-                }
-                uncheckedHandleIcon={
-                  <SwitchHandleIcon>
-                    <AiFillQuestionCircle color="gray" />
-                  </SwitchHandleIcon>
-                }
-                checkedIcon={<SwitchTextChecked>Integrate</SwitchTextChecked>}
-                checkedHandleIcon={
-                  <SwitchHandleIcon>
-                    <AiFillCheckCircle color={theme.positive} />
-                  </SwitchHandleIcon>
-                }
+            {secondUser === "Past" && !tutorial && showStateSwitch ? (
+              <ChatStatusSwitch
+                resolve={resolve}
+                toggleResolve={toggleResolve}
+                chatStatus={chatStatus}
+                autoTyping={autoTyping}
               />
             ) : null}
           </UserName>

@@ -6,14 +6,6 @@ export const HeaderContainer = styled.div`
   height: 100%;
 `;
 
-export const BackButton = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 2rem;
-  width: 7.5%;
-`;
-
 export const ProfileImage = styled.div`
   display: flex;
   justify-content: center;
@@ -45,7 +37,7 @@ export const Topic = styled.div`
   padding-top: 7px;
   color: ${({ theme }) => theme.textLight};
   display: flex;
-  width: 200px;
+  width: 215px;
   span {
     padding-right: 0.25rem;
   }
@@ -55,30 +47,4 @@ export const TopicText = styled.div`
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-`;
-
-export const SwitchTextUnchecked = styled.div`
-  padding-top: 0.2rem;
-  margin-left: -40px;
-  font-size: 0.8rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
-export const SwitchTextChecked = styled.div`
-  padding-top: 0.2rem;
-  margin-left: 35px;
-  font-size: 0.8rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
-export const SwitchHandleIcon = styled.div`
-  margin-top: -1px;
-  font-size: 1.4rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 `;

@@ -2,14 +2,17 @@ import React from "react";
 import useScrollToBottom from "../../hooks/useScrollToBottom";
 import { Message, TypingIndicator } from "components";
 
-const ChatContent = ({ user, isTyping, autoTyping, messages, chat }) => {
-  // SOLVED: when updating messages by using an option the hook should not trigger
-  // the trigger does not trigger when user isTyping
-  let bottomRef = useScrollToBottom([messages.length, isTyping, autoTyping]);
+const ChatContent = ({ user, isTyping, autoTyping, chat }) => {
+  let bottomRef = useScrollToBottom({
+    chatLength: chat.messages.length,
+    // fix this trigger by adding typingIndicatorActive boolean to isTyping
+    userTyping: isTyping,
+    autoTyping: autoTyping,
+  });
 
   return (
     <>
-      {messages.map((message) => (
+      {chat.messages.map((message) => (
         <Message
           key={message.id}
           messageId={message.id}
@@ -18,7 +21,7 @@ const ChatContent = ({ user, isTyping, autoTyping, messages, chat }) => {
           messageText={message.message}
           messageHighlight={message.highlight}
           messageStatic={message.static}
-          messageIntegrate={message.integrate}
+          messageResolve={message.resolve}
         />
       ))}
       {isTyping ? (
@@ -26,6 +29,7 @@ const ChatContent = ({ user, isTyping, autoTyping, messages, chat }) => {
           user={user}
           messageText={<TypingIndicator />}
           messageStatic={true}
+          messageResolve={chat.resolve}
         />
       ) : null}
       {autoTyping ? (
@@ -33,6 +37,7 @@ const ChatContent = ({ user, isTyping, autoTyping, messages, chat }) => {
           user={"Past"}
           messageText={<TypingIndicator />}
           messageStatic={true}
+          messageResolve={chat.resolve}
         />
       ) : null}
       <div ref={bottomRef}></div>

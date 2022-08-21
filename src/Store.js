@@ -4,7 +4,8 @@ const initialState = [
   {
     id: "1",
     date: "02/08/2022",
-    resolved: true,
+    resolve: false,
+    status: "In progress...",
     topic: "Intro Chat",
     messages: [
       {
@@ -24,7 +25,8 @@ const initialState = [
   {
     id: "2",
     date: "02/08/2022",
-    resolved: false,
+    resolve: false,
+    status: "In progress...",
     topic: "Second Chat topic is really really really long and must be cut",
     messages: [
       {
@@ -74,10 +76,40 @@ const Store = ({ children }) => {
     setChatList(newChatList);
   };
 
-  const toggleChatResolved = (id) => {
+  const toggleChatResolve = (id) => {
     const newChatList = chatList.map((chat) => {
       if (chat.id === id) {
-        chat.resolved = !chat.resolved;
+        chat.resolve = !chat.resolve;
+      }
+      return chat;
+    });
+
+    setChatList(newChatList);
+  };
+
+  const changeChatResolve = (id, value) => {
+    const newChatList = chatList.map((chat) => {
+      if (chat.id === id) {
+        chat.resolve = value;
+      }
+      return chat;
+    });
+
+    setChatList(newChatList);
+  };
+
+  //change chat status
+
+  const changeChatStatus = (id, status) => {
+    //status: In progress...
+
+    //status: Resolving...
+
+    //status: Resolved
+
+    const newChatList = chatList.map((chat) => {
+      if (chat.id === id) {
+        chat.status = status;
       }
       return chat;
     });
@@ -146,7 +178,9 @@ const Store = ({ children }) => {
       value={{
         chatList,
         setChatList,
-        toggleChatResolved,
+        toggleChatResolve,
+        changeChatResolve,
+        changeChatStatus,
         editChatTopic,
         deleteChat,
         addNewChat,

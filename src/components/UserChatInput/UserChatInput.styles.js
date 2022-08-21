@@ -21,11 +21,26 @@ export const InputContainer = styled.div`
     border-radius: 1.5rem;
     padding: 0 0.5rem;
     height: 30px;
-    background: ${({ theme }) => theme.bgPrimary};
+    background: ${({ resolve }) =>
+      resolve
+        ? css`
+            ${({ theme }) => theme.positiveOpac}
+          `
+        : css`
+            ${({ theme }) => theme.bgPrimary}
+          `};
     color: ${({ theme }) => theme.text};
   }
   input:focus {
     outline: none;
+  }
+  input::placeholder {
+    color: ${({ resolve }) =>
+      resolve
+        ? css`
+            ${({ theme }) => theme.textLight}
+          `
+        : ""};
   }
 `;
 

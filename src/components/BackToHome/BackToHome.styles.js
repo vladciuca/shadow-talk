@@ -6,5 +6,5 @@ export const BackButton = styled.div`
   align-items: center;
   justify-content: center;
   font-size: 1.5rem;
-  width: 15%;
+  width: 13%;
 `;

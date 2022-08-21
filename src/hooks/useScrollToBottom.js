@@ -1,11 +1,13 @@
 import { useEffect, useRef } from "react";
 
-function useScrollToBottom(trigger) {
+function useScrollToBottom({ chatLength, userTyping, autoTyping }) {
   let bottomRef = useRef();
 
   useEffect(() => {
-    bottomRef.current.scrollIntoView({ behavior: "smooth" });
-  }, trigger);
+    setTimeout(() => {
+      bottomRef.current?.scrollIntoView({ behavior: "smooth" });
+    }, 100);
+  }, [chatLength, userTyping, autoTyping]);
 
   return bottomRef;
 }

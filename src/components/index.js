@@ -19,8 +19,10 @@ export { default as AboutContent } from "./AboutContent";
 
 // Chat Page components
 export { default as ChatHeader } from "./ChatHeader";
+export { default as ChatStatusSwitch } from "./ChatStatusSwitch";
 export { default as ChatContent } from "./ChatContent";
 export { default as ChatFooter } from "./ChatFooter";
+export { default as ChatStatusInfo } from "./ChatStatusInfo";
 export { default as UserChatInput } from "./UserChatInput";
 
 // NewChat Page components

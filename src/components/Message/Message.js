@@ -26,7 +26,7 @@ const Message = ({
   messageId,
   messageHighlight,
   messageStatic,
-  messageIntegrate,
+  messageResolve,
 }) => {
   const { deleteMessage, toggleMessageUser, toggleMessageHighlight } =
     useContext(ChatListContext);
@@ -61,7 +61,7 @@ const Message = ({
 
         <MessageContent
           messageHighlight={messageHighlight}
-          messageIntegrate={messageIntegrate}
+          messageResolve={messageResolve}
           user={user}
         >
           {messageText}
@@ -69,7 +69,7 @@ const Message = ({
       </MessageContainer>
       {showOptions ? (
         <OptionsContainer>
-          {messageIntegrate ? null : (
+          {messageResolve ? null : (
             <>
               <Option onClick={() => toggleMessageHighlight(chat, messageId)}>
                 Highlight

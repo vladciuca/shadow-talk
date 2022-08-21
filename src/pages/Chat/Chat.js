@@ -3,66 +3,148 @@ import { useParams } from "react-router-dom";
 import { v4 } from "uuid";
 import { ChatListContext } from "../../Store";
 import { Screen, ChatHeader, ChatContent, ChatFooter } from "components";
-import { clear } from "@testing-library/user-event/dist/clear";
 
 const Chat = () => {
-  const { getChat, addNewMessage, deleteMessage } = useContext(ChatListContext);
+  const {
+    getChat,
+    addNewMessage,
+    deleteMessage,
+    toggleChatResolve,
+    changeChatResolve,
+    changeChatStatus,
+  } = useContext(ChatListContext);
   const [currentUser, setCurrentUser] = useState("");
 
   const [newMessage, setNewMessage] = useState("");
   const [isTyping, setIsTyping] = useState(false);
   const [autoTyping, setAutoTyping] = useState(false);
 
-  const [navigateNotAllowed, setNavigateNotAllowed] = useState(false);
-  const [integrate, setIntegrate] = useState(false);
-
-  const [lastMessage, setLastMessage] = useState("");
-  const [infoMessage, setInfoMessage] = useState("");
+  const [showStateSwitch, setShowStateSwitch] = useState(false);
 
   const { id } = useParams();
   const chat = getChat(id);
   const inputRef = useRef();
 
-  const startIntegrate = () => {
-    setIntegrate(!integrate);
-    setNavigateNotAllowed(!navigateNotAllowed);
-    inputRef.current.focus();
+  // RESOLVE FEATURE
 
-    //send info message
+  const showResolve = () => {
+    const enoughMessagesFromPast =
+      chat.messages.filter((message) => message.user === "Past").length >= 5;
+    const enoughMessagesFromPresent =
+      chat.messages.filter((message) => message.user === "Present").length >= 5;
 
-    if (!integrate) {
-      const autoMessage = {
-        id: v4(),
-        user: "Past",
-        message: "What would you do in my place?",
-        highlight: false,
-        integrate: true,
-      };
-
-      setAutoTyping(true);
-
-      let interval = setInterval(() => {
-        addNewMessage(chat, autoMessage);
-        setAutoTyping(false);
-        clearInterval(interval);
-      }, 1000);
-
-      setInfoMessage(autoMessage);
-    }
-
-    //if no message follows the info message, delete info message
-    if (lastMessage.id === infoMessage.id) {
-      deleteMessage(chat, infoMessage.id);
+    // you have progressed enough to start integrating the resolve! TO DO: add info notification
+    if (enoughMessagesFromPast && enoughMessagesFromPresent) {
+      setShowStateSwitch(true);
+    } else {
+      setShowStateSwitch(false);
     }
   };
 
-  useEffect(() => {
-    setLastMessage(chat.messages[chat.messages.length - 1]);
-  }, [addNewMessage]);
+  const changeStatus = () => {
+    //STATUS: In Progress...
+    if (!chat.resolve) {
+      changeChatStatus(chat.id, "In Progress...");
+    }
+    //STATUS: Resolving...
+    if (
+      chat.resolve &&
+      chat.messages[chat.messages.length - 1].autoResolveMessage
+    ) {
+      changeChatStatus(chat.id, "Integrating...");
+    }
+    //STATUS: Resolved
+    if (
+      chat.resolve &&
+      chat.messages[chat.messages.length - 1].resolve &&
+      chat.messages[chat.messages.length - 1].user === "Present"
+    ) {
+      changeChatStatus(chat.id, "Resolved");
+    }
+  };
+
+  const deleteResolveAutoMessage = () => {
+    if (chat.messages[chat.messages.length - 1].autoResolveMessage) {
+      const autoResolveMessage = chat.messages[chat.messages.length - 1];
+      deleteMessage(chat, autoResolveMessage.id);
+    }
+  };
+
+  const sendResolveAutoMessage = () => {
+    const autoResolveMessages = [
+      {
+        text: "What would you do in my place?",
+      },
+      {
+        text: "What would you do differently now?",
+      },
+      {
+        text: "How would you have handled this?",
+      },
+    ];
+
+    const selectRandomMessage =
+      autoResolveMessages[
+        Math.floor(Math.random() * autoResolveMessages.length)
+      ];
+
+    const autoResolveMessage = {
+      id: v4(),
+      user: "Past",
+      message: selectRandomMessage.text,
+      resolve: true,
+      autoResolveMessage: true,
+    };
+
+    setAutoTyping(true);
+
+    let interval = setInterval(() => {
+      addNewMessage(chat, autoResolveMessage);
+      setAutoTyping(false);
+      clearInterval(interval);
+    }, 1000);
+  };
+
+  const toggleResolve = () => {
+    //TEMP: CONDITION TO EXPAND ON LATER, button should show before a decent chat length
+    if (chat.messages < 1) {
+      return;
+    }
+
+    toggleChatResolve(chat.id);
+
+    inputRef.current.focus();
+
+    if (chat.resolve) {
+      sendResolveAutoMessage();
+    }
+
+    //if no message follows the info message, delete info message
+    deleteResolveAutoMessage();
+  };
 
   useEffect(() => {
+    inputRef.current.focus();
     setCurrentUser("Present");
   }, []);
+
+  useEffect(() => {
+    showResolve();
+    changeStatus();
+
+    if (chat.messages.find((message) => message.resolve === true)) {
+      // console.log("has resolve");
+    } else {
+      // console.log("no resolve");
+      changeChatResolve(chat.id, false);
+    }
+  }, [chat.messages]);
+
+  useEffect(() => {
+    changeStatus();
+  }, [chat.resolve]);
+
+  // USER FUNCTIONS
 
   const secondUser = () => {
     if (currentUser === "Present") {
@@ -73,15 +155,14 @@ const Chat = () => {
   };
 
   const switchUser = () => {
-    if (navigateNotAllowed) {
-      return;
-    }
     if (currentUser === "Present") {
       setCurrentUser("Past");
     } else {
       setCurrentUser("Present");
     }
   };
+
+  // MESSAGE FUNCTIONS
 
   const handleNewMessage = (e) => {
     setNewMessage(e);
@@ -97,7 +178,7 @@ const Chat = () => {
       user: currentUser,
       message: newMessage,
       highlight: false,
-      integrate,
+      resolve: chat.resolve,
     });
 
     setNewMessage("");
@@ -117,15 +198,16 @@ const Chat = () => {
         <ChatHeader
           secondUser={secondUser()}
           topic={chat.topic}
-          integrate={integrate}
-          startIntegrate={startIntegrate}
+          resolve={chat.resolve}
+          showStateSwitch={showStateSwitch}
+          toggleResolve={toggleResolve}
+          chatStatus={chat.status}
           autoTyping={autoTyping}
         />
       }
       content={
         <ChatContent
           chat={chat}
-          messages={chat.messages}
           user={currentUser}
           isTyping={isTyping}
           autoTyping={autoTyping}
@@ -141,7 +223,9 @@ const Chat = () => {
           newMessage={newMessage}
           handleNewMessage={handleNewMessage}
           handleNewMessageSubmit={handleNewMessageSubmit}
-          navigateNotAllowed={navigateNotAllowed}
+          resolve={chat.resolve}
+          chatStatus={chat.status}
+          toggleResolve={toggleResolve}
         />
       }
     />

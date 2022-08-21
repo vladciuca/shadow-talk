@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { CgArrowsExchangeAlt } from "react-icons/cg";
-import { UserChatInput, Button } from "components";
+import { UserChatInput, Button, ChatStatusInfo } from "components";
 import { FooterContainer, SwitchUserContainer } from "./ChatFooter.styles";
 
 const ChatFooter = ({
@@ -11,7 +11,9 @@ const ChatFooter = ({
   inputRef,
   secondUser,
   switchUser,
-  navigateNotAllowed,
+  resolve,
+  chatStatus,
+  toggleResolve,
 }) => {
   const handleSwitchUser = () => {
     switchUser();
@@ -32,17 +34,24 @@ const ChatFooter = ({
           handleNewMessageSubmit={handleNewMessageSubmit}
           user={user}
           inputRef={inputRef}
+          resolve={resolve}
         />
 
         <SwitchUserContainer>
-          <Button
-            user={user}
-            icon={<CgArrowsExchangeAlt />}
-            text={`Switch to
+          {resolve ? (
+            <ChatStatusInfo
+              chatStatus={chatStatus}
+              toggleResolve={toggleResolve}
+            />
+          ) : (
+            <Button
+              user={user}
+              icon={<CgArrowsExchangeAlt />}
+              text={`Switch to
             ${secondUser}-Self`}
-            handleClick={handleSwitchUser}
-            navigateNotAllowed={navigateNotAllowed}
-          />
+              handleClick={handleSwitchUser}
+            />
+          )}
         </SwitchUserContainer>
       </FooterContainer>
     </>

@@ -4,8 +4,8 @@ import { CgCheck } from "react-icons/cg";
 import { TbDotsVertical } from "react-icons/tb";
 import {
   AiOutlineDelete,
-  AiOutlineExclamationCircle,
-  AiOutlineCheckCircle,
+  // AiOutlineExclamationCircle,
+  // AiOutlineCheckCircle,
   AiOutlineForm,
 } from "react-icons/ai";
 import { ChatListContext } from "../../Store";
@@ -28,9 +28,8 @@ import {
   Option,
 } from "./ChatsListItem.styles";
 
-const ChatsListItem = ({ id, topic, resolved, date }) => {
-  const { editChatTopic, toggleChatResolved, deleteChat } =
-    useContext(ChatListContext);
+const ChatsListItem = ({ id, topic, resolve, status, date }) => {
+  const { editChatTopic, deleteChat } = useContext(ChatListContext);
   const [showOptions, setShowOptions] = useState(false);
   const [showEdit, setShowEdit] = useState(false);
   const [topicValue, setTopicValue] = useState(topic);
@@ -117,8 +116,8 @@ const ChatsListItem = ({ id, topic, resolved, date }) => {
           </ChatTopic>
           <ChatSubInfo>
             <ChatResolve>
-              {resolved ? "Resolved" : "In Progress..."}
-              {resolved ? (
+              {status}
+              {resolve ? (
                 <ResolvedMark>
                   <CgCheck />
                 </ResolvedMark>
@@ -146,16 +145,16 @@ const ChatsListItem = ({ id, topic, resolved, date }) => {
               <AiOutlineForm />
             </span>
           </Option>
-          <Option onClick={() => toggleChatResolved(id)}>
+          {/* <Option onClick={() => toggleChatResolve(id)}>
             Change Status
             <span>
-              {resolved ? (
+              {resolve ? (
                 <AiOutlineCheckCircle />
               ) : (
                 <AiOutlineExclamationCircle />
               )}
             </span>
-          </Option>
+          </Option> */}
           <Option delete onClick={() => deleteChat(id)}>
             Delete
             <span>

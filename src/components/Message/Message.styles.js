@@ -15,8 +15,8 @@ export const UserIconContainer = styled.div`
 `;
 
 export const MessageContent = styled.div`
-  ${({ messageHighlight, messageIntegrate, user }) =>
-    messageIntegrate
+  ${({ messageHighlight, messageResolve, user }) =>
+    messageResolve
       ? css`
           background: ${({ theme }) => theme.positiveOpac};
         `

@@ -5,7 +5,6 @@ export const ButtonContainer = styled.div`
   align-items: center;
   cursor: ${({ navigateNotAllowed }) =>
     navigateNotAllowed ? "not-allowed" : "pointer"};
-  padding: 0.5rem 1rem;
   border-radius: 30px;
   ${({ user, navigateNotAllowed }) =>
     user === "Present" && !navigateNotAllowed
@@ -15,6 +14,7 @@ export const ButtonContainer = styled.div`
             ${({ theme }) => theme.negative},
             ${({ theme }) => theme.neutral}
           );
+          padding: 0.25rem 1rem;
         `
       : user === "Past" && !navigateNotAllowed
       ? css`
@@ -23,17 +23,20 @@ export const ButtonContainer = styled.div`
             ${({ theme }) => theme.neutral},
             ${({ theme }) => theme.negative}
           );
+          padding: 0.25rem 1rem;
         `
       : navigateNotAllowed
       ? css`
           background: ${({ theme }) => theme.textLight};
+          padding: 0.5rem 1rem;
         `
       : css`
           background: ${({ theme }) => theme.negative};
+          padding: 0.5rem 1rem;
         `};
 
   span {
-    padding-right: 0.25rem;
+    padding-right: 0.15rem;
     font-size: 1.3rem;
     display: flex;
     justify-content: center;

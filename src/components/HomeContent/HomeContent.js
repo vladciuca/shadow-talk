@@ -9,7 +9,8 @@ const HomeContent = ({ chatList }) => {
           key={chat.id}
           id={chat.id}
           topic={chat.topic}
-          resolved={chat.resolved}
+          resolve={chat.resolve}
+          status={chat.status}
           date={chat.date}
         />
       ))}

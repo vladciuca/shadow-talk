@@ -19,6 +19,7 @@ const UserChatInput = ({
   handleNewMessage,
   handleNewMessageSubmit,
   user,
+  resolve,
   inputRef,
 }) => {
   const [submitNotAllowed, setSubmitNotAllowed] = useState(true);
@@ -62,7 +63,7 @@ const UserChatInput = ({
           user={user}
         />
       </UserImage>
-      <InputContainer>
+      <InputContainer resolve={resolve}>
         <input
           ref={inputRef}
           type="text"
