@@ -1,5 +1,12 @@
 import styled, { css } from "styled-components";
 
+export const UserIconContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+`;
+
 export const UserBackground = styled.div`
   height: ${({ bgHeightAndWidth }) => bgHeightAndWidth}rem;
   width: ${({ bgHeightAndWidth }) => bgHeightAndWidth}rem;

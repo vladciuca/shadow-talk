@@ -14,6 +14,8 @@ const Chat = () => {
     updateChatStatus,
   } = useContext(ChatListContext);
   const [currentUser, setCurrentUser] = useState("");
+  const [currentUserNrOfMessages, setCurrentUserNrOfMessages] = useState("");
+  const [secondUserNrOfMessages, setSecondUserNrOfMessages] = useState("");
 
   const [newMessage, setNewMessage] = useState("");
   const [isTyping, setIsTyping] = useState(false);
@@ -25,20 +27,85 @@ const Chat = () => {
   const chat = getChat(id);
   const inputRef = useRef();
 
+  // USER FUNCTIONS
+
+  const secondUser = () => {
+    if (currentUser === "Present") {
+      return "Past";
+    } else {
+      return "Present";
+    }
+  };
+
+  const switchUser = () => {
+    if (currentUser === "Present") {
+      setCurrentUser("Past");
+    } else {
+      setCurrentUser("Present");
+    }
+  };
+
+  // MESSAGE INFO FUNCTIONS
+
+  const getNrOfMessages = () => {
+    const nrOfMessagesCurrentUser = chat.messages.filter(
+      (message) => message.user === currentUser
+    ).length;
+
+    setCurrentUserNrOfMessages(nrOfMessagesCurrentUser);
+
+    const nrOfMessagesSecondUser = chat.messages.filter(
+      (message) => message.user === secondUser()
+    ).length;
+
+    setSecondUserNrOfMessages(nrOfMessagesSecondUser);
+  };
+
   // HINTS FEATURE
 
   const sendHintAutoMessage = () => {
-    inputRef.current.focus();
-
     const autoHintMessages = [
       {
-        text: "Why are you doing this?",
+        text: "Why are you doing this to us?",
       },
       {
         text: "What do you want from me?",
       },
       {
+        text: "What do you want to tell me?",
+      },
+      {
         text: "What are you trying to protect me from?",
+      },
+      {
+        text: "How is this helping me?",
+      },
+      {
+        text: "Why did you act that way?",
+      },
+      {
+        text: "How did that make you feel?",
+      },
+      {
+        text: "What are you seeing that I don't see?",
+      },
+      {
+        text: "What is the good intention behind your actions?",
+      },
+      {
+        text: "What is the purpose of this pain?",
+      },
+      {
+        text: "What is the good that came out of this?",
+      },
+      {
+        text: "How can you help me?",
+      },
+      {
+        text: "Why is this still affecting me?",
+      },
+      {
+        text: "What are you trying to show me?",
       },
     ];
 
@@ -49,6 +116,7 @@ const Chat = () => {
       id: v4(),
       user: "Present",
       message: selectRandomMessage.text,
+      hintMessage: true,
     };
 
     setAutoTyping(true);
@@ -60,13 +128,35 @@ const Chat = () => {
     }, 1000);
   };
 
+  // delete auto message if its the last message in the chat
+  const deleteHintAutoMessage = () => {
+    if (chat.messages[chat.messages.length - 1].hintMessage) {
+      const autoHintMessage = chat.messages[chat.messages.length - 1];
+      deleteMessage(chat, autoHintMessage.id);
+    } else {
+      return;
+    }
+  };
+
+  const handleHints = () => {
+    if (autoTyping) {
+      console.log("i am auto typing, cant send another msj");
+      return;
+    }
+
+    inputRef.current.focus();
+
+    sendHintAutoMessage();
+  };
+
   // RESOLVE FEATURE
 
   const showResolve = () => {
     const enoughMessagesFromPast =
-      chat.messages.filter((message) => message.user === "Past").length >= 5;
+      chat.messages.filter((message) => message.user === "Past").length >= 10;
     const enoughMessagesFromPresent =
-      chat.messages.filter((message) => message.user === "Present").length >= 5;
+      chat.messages.filter((message) => message.user === "Present").length >=
+      10;
 
     // you enabled integrate! TO DO: add info notification
     if (enoughMessagesFromPast && enoughMessagesFromPresent) {
@@ -98,14 +188,6 @@ const Chat = () => {
     }
   };
 
-  // delete auto message if its the last message in the chat
-  const deleteResolveAutoMessage = () => {
-    if (chat.messages[chat.messages.length - 1].autoResolveMessage) {
-      const autoResolveMessage = chat.messages[chat.messages.length - 1];
-      deleteMessage(chat, autoResolveMessage.id);
-    }
-  };
-
   const sendResolveAutoMessage = () => {
     const autoResolveMessages = [
       {
@@ -116,6 +198,39 @@ const Chat = () => {
       },
       {
         text: "How would you have handled this?",
+      },
+      {
+        text: "How would you respond to that?",
+      },
+      {
+        text: "Put yourself in my place.",
+      },
+      {
+        text: "How you would approach this?",
+      },
+      {
+        text: "Tell me how you would of done it?",
+      },
+      {
+        text: "Put yourself in my situation.",
+      },
+      {
+        text: "I know there has to be a better way tackle this issue.",
+      },
+      {
+        text: "If this would happen again, what wold you do?",
+      },
+      {
+        text: "How to do it better next time?",
+      },
+      {
+        text: "Lets switch places for a moment.",
+      },
+      {
+        text: "What are you supposed to do?",
+      },
+      {
+        text: "How should I have done it?",
       },
     ];
 
@@ -141,6 +256,14 @@ const Chat = () => {
     }, 1000);
   };
 
+  // delete auto message if its the last message in the chat
+  const deleteResolveAutoMessage = () => {
+    if (chat.messages[chat.messages.length - 1].autoResolveMessage) {
+      const autoResolveMessage = chat.messages[chat.messages.length - 1];
+      deleteMessage(chat, autoResolveMessage.id);
+    }
+  };
+
   const toggleResolve = () => {
     toggleChatResolve(chat.id);
 
@@ -160,6 +283,12 @@ const Chat = () => {
   }, []);
 
   useEffect(() => {
+    getNrOfMessages();
+  }, [getChat, switchUser]);
+
+  useEffect(() => {
+    getNrOfMessages();
+
     showResolve();
     changeStatus();
 
@@ -171,24 +300,6 @@ const Chat = () => {
   useEffect(() => {
     changeStatus();
   }, [chat.resolve]);
-
-  // USER FUNCTIONS
-
-  const secondUser = () => {
-    if (currentUser === "Present") {
-      return "Past";
-    } else {
-      return "Present";
-    }
-  };
-
-  const switchUser = () => {
-    if (currentUser === "Present") {
-      setCurrentUser("Past");
-    } else {
-      setCurrentUser("Present");
-    }
-  };
 
   // MESSAGE FUNCTIONS
 
@@ -225,8 +336,9 @@ const Chat = () => {
       header={
         <ChatHeader
           secondUser={secondUser()}
+          secondUserNrOfMessages={secondUserNrOfMessages}
           topic={chat.topic}
-          sendHintAutoMessage={sendHintAutoMessage}
+          handleHints={handleHints}
           resolve={chat.resolve}
           showStateSwitch={showStateSwitch}
           toggleResolve={toggleResolve}
@@ -248,6 +360,7 @@ const Chat = () => {
         <ChatFooter
           inputRef={inputRef}
           user={currentUser}
+          currentUserNrOfMessages={currentUserNrOfMessages}
           secondUser={secondUser()}
           switchUser={switchUser}
           newMessage={newMessage}

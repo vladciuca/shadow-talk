@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { IoSend } from "react-icons/io5";
+import { RiMessage2Fill } from "react-icons/ri";
 import { UserIcon } from "components";
 import {
   UserInputContainer,
@@ -7,6 +8,7 @@ import {
   InputContainer,
   SendMessageContainer,
   SendMessageButton,
+  NrOfMessages,
 } from "./UserChatInput.styles";
 
 const UserChatInput = ({
@@ -21,6 +23,7 @@ const UserChatInput = ({
   user,
   resolve,
   inputRef,
+  currentUserNrOfMessages,
 }) => {
   const [submitNotAllowed, setSubmitNotAllowed] = useState(true);
 
@@ -62,6 +65,10 @@ const UserChatInput = ({
           iconMargin={0.85}
           user={user}
         />
+        <NrOfMessages>
+          <span>{currentUserNrOfMessages}</span>
+          <RiMessage2Fill />
+        </NrOfMessages>
       </UserImage>
       <InputContainer resolve={resolve}>
         <input

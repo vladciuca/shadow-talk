@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const HeaderContainer = styled.div`
   display: flex;
@@ -11,6 +11,7 @@ export const ProfileImage = styled.div`
   justify-content: center;
   align-items: center;
   width: 20%;
+  flex-direction: column;
 `;
 
 export const UserInfo = styled.div`
@@ -26,6 +27,20 @@ export const UserName = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+`;
+
+export const NrOfMessages = styled.div`
+  color: ${({ theme }) => theme.textLight};
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  span {
+    font-size: 1rem;
+    margin-right: 0.15rem;
+    font-weight: 700;
+  }
 `;
 
 export const SubText = styled.div`
@@ -55,4 +70,17 @@ export const Hint = styled.div`
   align-items: center;
   justify-content: center;
   font-size: 1.3rem;
+  height: 20px;
+  font-size: 0.8rem;
+  transition: 0.2s ease-in-out;
+  background: ${({ autoTyping }) =>
+    autoTyping === true
+      ? css`
+          ${({ theme }) => theme.neutralOpac}
+        `
+      : css`
+          ${({ theme }) => theme.neutral}
+        `};
+  padding: 0.1rem 1rem;
+  border-radius: 20px;
 `;

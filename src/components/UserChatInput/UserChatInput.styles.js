@@ -11,6 +11,24 @@ export const UserImage = styled.div`
   align-items: center;
   justify-content: center;
   width: 15%;
+  position: relative;
+`;
+
+export const NrOfMessages = styled.div`
+  color: ${({ theme }) => theme.textLight};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 105%;
+  font-size: 1.3rem;
+  font-weight: 700;
+  font-size: 0.8rem;
+  span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 `;
 
 export const InputContainer = styled.div`

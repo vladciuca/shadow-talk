@@ -1,10 +1,10 @@
 import React from "react";
 import { FaUserAlt } from "react-icons/fa";
-import { UserBackground } from "./UserIcon.styles";
+import { UserIconContainer, UserBackground } from "./UserIcon.styles";
 
 const UserIcon = ({ bgHeightAndWidth, iconSize, iconMargin, user }) => {
   return (
-    <>
+    <UserIconContainer>
       <UserBackground
         bgHeightAndWidth={bgHeightAndWidth}
         iconSize={iconSize}
@@ -15,7 +15,7 @@ const UserIcon = ({ bgHeightAndWidth, iconSize, iconMargin, user }) => {
           <FaUserAlt />
         </span>
       </UserBackground>
-    </>
+    </UserIconContainer>
   );
 };
 

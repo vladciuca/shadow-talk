@@ -1,11 +1,12 @@
 import React from "react";
-import { AiOutlineQuestionCircle } from "react-icons/ai";
+import { RiMessage2Fill } from "react-icons/ri";
 import { BackToHome, UserIcon, ChatStatusSwitch } from "components";
 import {
   HeaderContainer,
   ProfileImage,
   UserInfo,
   UserName,
+  NrOfMessages,
   SubText,
   Topic,
   TopicText,
@@ -14,9 +15,10 @@ import {
 
 const ChatHeader = ({
   secondUser,
+  secondUserNrOfMessages,
   topic,
   tutorial,
-  sendHintAutoMessage,
+  handleHints,
   showStateSwitch,
   resolve,
   toggleResolve,
@@ -27,6 +29,7 @@ const ChatHeader = ({
     <>
       <HeaderContainer>
         <BackToHome />
+
         <ProfileImage>
           <UserIcon
             bgHeightAndWidth={3.5}
@@ -34,6 +37,10 @@ const ChatHeader = ({
             iconMargin={1.5}
             user={secondUser}
           />
+          <NrOfMessages>
+            <span>{secondUserNrOfMessages}</span>
+            <RiMessage2Fill />
+          </NrOfMessages>
         </ProfileImage>
         <UserInfo>
           <SubText>Chatting with your</SubText>
@@ -48,8 +55,8 @@ const ChatHeader = ({
               />
             ) : null}
             {secondUser === "Present" && !tutorial ? (
-              <Hint onClick={sendHintAutoMessage}>
-                <AiOutlineQuestionCircle />
+              <Hint autoTyping={autoTyping} onClick={handleHints}>
+                Hints
               </Hint>
             ) : null}
           </UserName>
