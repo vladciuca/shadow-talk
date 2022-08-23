@@ -109,7 +109,7 @@ export const IntegrationIcon = styled.span`
 export const ChatStats = styled.div`
   display: flex;
   justify-content: space-between;
-  padding-top: 0.5rem;
+  padding-top: 7px;
 `;
 
 export const Stats = styled.div`

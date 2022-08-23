@@ -39,7 +39,6 @@ export const NrOfMessages = styled.div`
   span {
     font-size: 1rem;
     margin-right: 0.15rem;
-    font-weight: 700;
   }
 `;
 
