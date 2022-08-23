@@ -20,7 +20,7 @@ export const NrOfMessages = styled.div`
   align-items: center;
   justify-content: center;
   position: absolute;
-  top: 105%;
+  top: 108%;
   font-size: 1.3rem;
   font-weight: 700;
   font-size: 0.8rem;
@@ -28,6 +28,7 @@ export const NrOfMessages = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    padding-right: 0.1rem;
   }
 `;
 

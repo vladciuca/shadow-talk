@@ -1,6 +1,10 @@
 import React from "react";
 import Switch from "react-switch";
-import { AiFillCheckCircle, AiFillQuestionCircle } from "react-icons/ai";
+import {
+  AiFillCheckCircle,
+  AiFillQuestionCircle,
+  AiFillExclamationCircle,
+} from "react-icons/ai";
 import { theme } from "../../theme";
 import {
   SwitchTextUnchecked,
@@ -32,7 +36,11 @@ const ChatStatusSwitch = ({
       checkedIcon={<SwitchTextChecked>{chatStatus}</SwitchTextChecked>}
       checkedHandleIcon={
         <SwitchHandleIcon>
-          <AiFillCheckCircle color={theme.positive} />
+          {chatStatus === "Integrating..." ? (
+            <AiFillExclamationCircle color={theme.positive} />
+          ) : (
+            <AiFillCheckCircle color={theme.positive} />
+          )}
         </SwitchHandleIcon>
       }
     />

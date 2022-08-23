@@ -119,7 +119,7 @@ const NewChat = () => {
       id: v4(),
       date: new Date().toLocaleDateString(),
       resolve: false,
-      status: "In progress...",
+      status: "Discussing...",
       topic,
       messages: [],
     };

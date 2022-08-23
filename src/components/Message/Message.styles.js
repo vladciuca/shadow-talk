@@ -9,8 +9,6 @@ export const MessageContainer = styled.div`
 
 export const UserIconContainer = styled.div`
   width: 10%;
-  display: flex;
-  align-items: top;
   justify-content: ${({ user }) => (user === "Present" ? "end" : "start")};
 `;
 
@@ -32,7 +30,7 @@ export const MessageContent = styled.div`
           background: ${({ theme }) => theme.cardPrimary};
         `}
   overflow-wrap: anywhere;
-  max-width: 80%;
+  max-width: 70%;
   line-height: 1.4rem;
   padding: 0.3rem 0.5rem;
   border-radius: 0.25rem;

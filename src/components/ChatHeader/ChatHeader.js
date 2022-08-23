@@ -37,10 +37,12 @@ const ChatHeader = ({
             iconMargin={1.5}
             user={secondUser}
           />
-          <NrOfMessages>
-            <span>{secondUserNrOfMessages}</span>
-            <RiMessage2Fill />
-          </NrOfMessages>
+          {!tutorial ? (
+            <NrOfMessages>
+              <span>{secondUserNrOfMessages}</span>
+              <RiMessage2Fill />
+            </NrOfMessages>
+          ) : null}
         </ProfileImage>
         <UserInfo>
           <SubText>Chatting with your</SubText>

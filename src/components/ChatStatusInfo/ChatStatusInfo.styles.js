@@ -9,17 +9,17 @@ export const ChatStatusInfoContainer = styled.div`
   font-size: 0.8rem;
 `;
 
+export const Info = styled.div`
+  text-align: center;
+  padding: 0.3rem 0;
+  font-size: 0.7rem;
+`;
+
 export const Status = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-bottom: 0.3rem;
-`;
-
-export const Info = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  color: ${({ theme }) => theme.text};
 `;
 
 export const ResolvedMark = styled.span`
@@ -37,6 +37,7 @@ export const ResolvedMark = styled.span`
 export const Button = styled.span`
   cursor: pointer;
   background: ${({ theme }) => theme.positive};
+  color: ${({ theme }) => theme.text};
   border-radius: 25px;
   margin: 0 0.2rem;
   padding: 0 0.4rem;

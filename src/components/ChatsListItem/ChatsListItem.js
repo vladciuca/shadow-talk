@@ -1,14 +1,23 @@
 import React, { useState, useContext, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { CgCheck } from "react-icons/cg";
 import { TbDotsVertical } from "react-icons/tb";
-import { AiOutlineDelete, AiOutlineForm } from "react-icons/ai";
-import { ChatListContext } from "../../Store";
-import useClickOutside from "../../hooks/useClickOutside";
-import { UserIcon } from "components";
+import { RiMessage2Fill } from "react-icons/ri";
+import { AiOutlineDelete, AiOutlineForm, AiFillStar } from "react-icons/ai";
+import { BsCheckLg, BsExclamationLg } from "react-icons/bs";
+import { ChatListContext } from "Store";
+import useClickOutside from "hooks/useClickOutside";
+import { UserIcon, IconBackground } from "components";
 import {
   ChatContainer,
   ChatInfo,
+  ChatStats,
+  StatusIcon,
+  StatContainer,
+  Stats,
+  StatIcon,
+  ChatIntegration,
+  IntegrationNr,
+  IntegrationIcon,
   ChatProfile,
   ChatTopic,
   TopicText,
@@ -17,17 +26,27 @@ import {
   ChatDate,
   ChatSubInfo,
   ChatResolve,
-  ResolvedMark,
   Options,
   OptionsContainer,
   Option,
 } from "./ChatsListItem.styles";
 
-const ChatsListItem = ({ id, topic, resolve, status, date }) => {
+const ChatsListItem = ({
+  id,
+  topic,
+  resolve,
+  status,
+  date,
+  messages,
+  highlights,
+  integrations,
+}) => {
   const { editChatTopic, deleteChat } = useContext(ChatListContext);
   const [showOptions, setShowOptions] = useState(false);
   const [showEdit, setShowEdit] = useState(false);
   const [topicValue, setTopicValue] = useState(topic);
+
+  const totalMessages = messages.length;
 
   let navigate = useNavigate();
 
@@ -112,16 +131,41 @@ const ChatsListItem = ({ id, topic, resolve, status, date }) => {
           <ChatSubInfo>
             <ChatResolve>
               {status}
-              {resolve ? (
-                <ResolvedMark>
-                  <CgCheck />
-                </ResolvedMark>
-              ) : (
-                ""
-              )}
+              {resolve && status === "Resolved" ? (
+                <StatusIcon>
+                  <IconBackground size={0.9} icon={<BsCheckLg />} />
+                </StatusIcon>
+              ) : resolve && status === "Integrating..." ? (
+                <StatusIcon>
+                  <IconBackground size={0.9} icon={<BsExclamationLg />} />
+                </StatusIcon>
+              ) : null}
             </ChatResolve>
-            <ChatDate>{date}</ChatDate>
+            <ChatIntegration>
+              <IntegrationNr>{integrations}</IntegrationNr>Integrations
+              <IntegrationIcon>
+                <IconBackground size={0.9} icon={<BsExclamationLg />} />
+              </IntegrationIcon>
+            </ChatIntegration>
           </ChatSubInfo>
+          <ChatStats>
+            <Stats>
+              <StatContainer>
+                {totalMessages}
+                <StatIcon>
+                  <RiMessage2Fill />
+                </StatIcon>
+              </StatContainer>
+
+              <StatContainer>
+                {highlights}
+                <StatIcon>
+                  <AiFillStar />
+                </StatIcon>
+              </StatContainer>
+            </Stats>
+            <ChatDate>{date}</ChatDate>
+          </ChatStats>
         </ChatInfo>
 
         <Options onClick={() => toggleOptions()}>

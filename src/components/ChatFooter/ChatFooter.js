@@ -14,7 +14,8 @@ const ChatFooter = ({
   resolve,
   chatStatus,
   toggleResolve,
-  currentUserNrOfMessages,
+  // currentUserNrOfMessages,
+  nrOfIntegrations,
 }) => {
   const handleSwitchUser = () => {
     switchUser();
@@ -36,7 +37,7 @@ const ChatFooter = ({
           user={user}
           inputRef={inputRef}
           resolve={resolve}
-          currentUserNrOfMessages={currentUserNrOfMessages}
+          // currentUserNrOfMessages={currentUserNrOfMessages}
         />
 
         <SwitchUserContainer>
@@ -44,6 +45,7 @@ const ChatFooter = ({
             <ChatStatusInfo
               chatStatus={chatStatus}
               toggleResolve={toggleResolve}
+              nrOfIntegrations={nrOfIntegrations}
             />
           ) : (
             <Button

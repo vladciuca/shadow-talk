@@ -6,6 +6,7 @@ export { default as BackToHome } from "./BackToHome";
 export { default as Message } from "./Message";
 export { default as TypingIndicator } from "./TypingIndicator";
 export { default as UserIcon } from "./UserIcon";
+export { default as IconBackground } from "./IconBackground";
 
 // Home Page components
 export { default as HomeHeader } from "./HomeHeader";

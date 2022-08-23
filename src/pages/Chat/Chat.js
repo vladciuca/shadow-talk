@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { v4 } from "uuid";
-import { ChatListContext } from "../../Store";
+import { ChatListContext } from "Store";
 import { Screen, ChatHeader, ChatContent, ChatFooter } from "components";
 
 const Chat = () => {
@@ -12,10 +12,12 @@ const Chat = () => {
     toggleChatResolve,
     changeChatResolve,
     updateChatStatus,
+    getNrOfIntegrations,
   } = useContext(ChatListContext);
   const [currentUser, setCurrentUser] = useState("");
   const [currentUserNrOfMessages, setCurrentUserNrOfMessages] = useState("");
   const [secondUserNrOfMessages, setSecondUserNrOfMessages] = useState("");
+  const [nrOfIntegrations, setNrOfIntegrations] = useState();
 
   const [newMessage, setNewMessage] = useState("");
   const [isTyping, setIsTyping] = useState(false);
@@ -48,11 +50,11 @@ const Chat = () => {
   // MESSAGE INFO FUNCTIONS
 
   const getNrOfMessages = () => {
-    const nrOfMessagesCurrentUser = chat.messages.filter(
-      (message) => message.user === currentUser
-    ).length;
+    // const nrOfMessagesCurrentUser = chat.messages.filter(
+    //   (message) => message.user === currentUser
+    // ).length;
 
-    setCurrentUserNrOfMessages(nrOfMessagesCurrentUser);
+    // setCurrentUserNrOfMessages(nrOfMessagesCurrentUser);
 
     const nrOfMessagesSecondUser = chat.messages.filter(
       (message) => message.user === secondUser()
@@ -129,14 +131,17 @@ const Chat = () => {
   };
 
   // delete auto message if its the last message in the chat
-  const deleteHintAutoMessage = () => {
+  const deleteHintAutoMessage = async () => {
     if (chat.messages[chat.messages.length - 1].hintMessage) {
       const autoHintMessage = chat.messages[chat.messages.length - 1];
       deleteMessage(chat, autoHintMessage.id);
-    } else {
-      return;
     }
   };
+
+  // const sendMessage = async () => {
+  //   await deleteHintAutoMessage();
+  //   sendHintAutoMessage();
+  // };
 
   const handleHints = () => {
     if (autoTyping) {
@@ -146,7 +151,13 @@ const Chat = () => {
 
     inputRef.current.focus();
 
-    sendHintAutoMessage();
+    deleteHintAutoMessage();
+
+    if (!chat.messages[chat.messages.length - 1].hintMessage) {
+      sendHintAutoMessage();
+    }
+
+    // sendHintAutoMessage();
   };
 
   // RESOLVE FEATURE
@@ -166,6 +177,7 @@ const Chat = () => {
     }
   };
 
+  //maybe move into STORE
   const changeStatus = () => {
     //STATUS: In Progress...
     if (!chat.resolve) {
@@ -284,10 +296,13 @@ const Chat = () => {
 
   useEffect(() => {
     getNrOfMessages();
+    //maybe move integrations from here
+    setNrOfIntegrations(getNrOfIntegrations(chat));
   }, [getChat, switchUser]);
 
   useEffect(() => {
     getNrOfMessages();
+    setNrOfIntegrations(getNrOfIntegrations(chat));
 
     showResolve();
     changeStatus();
@@ -360,7 +375,8 @@ const Chat = () => {
         <ChatFooter
           inputRef={inputRef}
           user={currentUser}
-          currentUserNrOfMessages={currentUserNrOfMessages}
+          // currentUserNrOfMessages={currentUserNrOfMessages}
+          nrOfIntegrations={nrOfIntegrations}
           secondUser={secondUser()}
           switchUser={switchUser}
           newMessage={newMessage}

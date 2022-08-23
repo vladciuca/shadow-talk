@@ -8,31 +8,32 @@ import {
   Button,
 } from "./ChatStatusInfo.styles";
 
-const ChatStatusInfo = ({ chatStatus, toggleResolve }) => {
+const ChatStatusInfo = ({ chatStatus, toggleResolve, nrOfIntegrations }) => {
   return (
     <ChatStatusInfoContainer>
       {chatStatus === "Resolved" ? (
         <>
-          <Status>
-            This topic is marked as Resolved
-            <ResolvedMark>
-              <CgCheck />
-            </ResolvedMark>
-          </Status>
+          <Status>Integration successful!</Status>
           <Info>
-            You can expand on this topic or
-            <Button onClick={toggleResolve}>Return</Button> to chat.
+            You can expand on your answer or
+            <Button onClick={toggleResolve}>Return</Button>to chat.
           </Info>
         </>
       ) : (
         <>
-          <Status>Currently Integrating with your Past-Self</Status>
+          <Status>Currently Integrating...</Status>
           <Info>
             You can continue by answering or
-            <Button onClick={toggleResolve}>Return</Button> to chat.
+            <Button onClick={toggleResolve}>Return</Button>to chat.
           </Info>
         </>
       )}
+      <Status>
+        You have {nrOfIntegrations} Successful Integrations
+        <ResolvedMark>
+          <CgCheck />
+        </ResolvedMark>
+      </Status>
     </ChatStatusInfoContainer>
   );
 };
