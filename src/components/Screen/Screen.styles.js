@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 
 export const ScreenContainer = styled.div`
-  height: 800px;
+  height: 750px;
   width: 400px;
   @media (max-width: 420px) {
     height: 98vh;
