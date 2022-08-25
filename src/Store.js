@@ -1,54 +1,18 @@
-import React, { useState } from "react";
-
-const initialState = [
-  {
-    id: "1",
-    date: "02/08/2022",
-    resolve: false,
-    status: "Chatting...",
-    topic: "Intro Chat",
-    messages: [
-      {
-        id: "1",
-        user: "Past",
-        message: "Hi there",
-        highlight: true,
-      },
-      {
-        id: "2",
-        user: "Present",
-        message: "Hello",
-        highlight: true,
-      },
-    ],
-  },
-  {
-    id: "2",
-    date: "02/08/2022",
-    resolve: false,
-    status: "Chatting...",
-    topic: "Second Chat topic is really really really long and must be cut",
-    messages: [
-      {
-        id: "1",
-        user: "Past",
-        message: "Hi there for the second time",
-        highlight: false,
-      },
-      {
-        id: "2",
-        user: "Present",
-        message: "Hello again!",
-        highlight: true,
-      },
-    ],
-  },
-];
+import React, { useState, useEffect } from "react";
 
 export const ChatListContext = React.createContext();
 
 const Store = ({ children }) => {
-  const [chatList, setChatList] = useState(initialState);
+  const getLocalData = () => {
+    const localData = localStorage.getItem("chatList");
+    return localData ? JSON.parse(localData) : [];
+  };
+
+  const [chatList, setChatList] = useState(getLocalData());
+
+  useEffect(() => {
+    localStorage.setItem("chatList", JSON.stringify(chatList));
+  }, [chatList]);
 
   // ChatList Actions
 
