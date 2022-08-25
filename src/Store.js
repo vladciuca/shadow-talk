@@ -174,6 +174,12 @@ const Store = ({ children }) => {
     return chat.messages.filter((message) => message.user === user);
   };
 
+  const getHighlightsByUser = (chat, user) => {
+    return chat.messages.filter(
+      (message) => message.highlight && message.user === user
+    );
+  };
+
   const getNrOfHighlights = (chat) => {
     return chat.messages.filter((message) => message.highlight).length;
   };
@@ -212,6 +218,7 @@ const Store = ({ children }) => {
         toggleMessageUser,
         toggleMessageHighlight,
         getMessagesByUser,
+        getHighlightsByUser,
         getNrOfHighlights,
         getNrOfIntegrations,
       }}

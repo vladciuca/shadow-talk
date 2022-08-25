@@ -29,16 +29,22 @@ export const UserName = styled.div`
   justify-content: space-between;
 `;
 
-export const NrOfMessages = styled.div`
+export const UserStats = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
+export const Stat = styled.div`
   color: ${({ theme }) => theme.textLight};
   margin-top: 5px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.1rem;
+  font-size: 1rem;
+  padding: 0 0.2rem;
   span {
     font-size: 1rem;
-    margin-right: 0.15rem;
+    padding: 0 0.2rem;
   }
 `;
 

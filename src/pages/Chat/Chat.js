@@ -14,6 +14,7 @@ const Chat = () => {
     updateChatStatus,
     getNrOfIntegrations,
     getMessagesByUser,
+    getHighlightsByUser,
   } = useContext(ChatListContext);
   const [currentUser, setCurrentUser] = useState(null);
 
@@ -285,6 +286,9 @@ const Chat = () => {
         <ChatHeader
           secondUser={secondUser()}
           secondUserNrOfMessages={getMessagesByUser(chat, secondUser()).length}
+          secondUserNrOfHighlights={
+            getHighlightsByUser(chat, secondUser()).length
+          }
           topic={chat.topic}
           handleHints={handleHints}
           resolve={chat.resolve}
