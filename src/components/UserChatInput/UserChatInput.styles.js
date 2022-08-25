@@ -35,6 +35,10 @@ export const NrOfMessages = styled.div`
 export const InputContainer = styled.div`
   flex-grow: 1;
   input {
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
     width: 100%;
     border: none;
     border-radius: 1.5rem;
