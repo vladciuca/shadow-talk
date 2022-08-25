@@ -142,10 +142,16 @@ const ChatsListItem = ({
               ) : null}
             </ChatResolve>
             <ChatIntegration>
-              <IntegrationNr>{integrations}</IntegrationNr>Integrations
-              <IntegrationIcon>
-                <IconBackground size={0.9} icon={<BsExclamationLg />} />
-              </IntegrationIcon>
+              <IntegrationNr>
+                {integrations < 1 ? "No" : integrations}
+              </IntegrationNr>
+              Integration
+              {integrations === 1 ? "" : "s"}
+              {integrations < 1 ? null : (
+                <IntegrationIcon>
+                  <IconBackground size={0.9} icon={<BsExclamationLg />} />
+                </IntegrationIcon>
+              )}
             </ChatIntegration>
           </ChatSubInfo>
           <ChatStats>

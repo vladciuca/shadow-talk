@@ -35,7 +35,7 @@ const AboutContent = () => (
 
     <Title>STEP ONE</Title>
     <SubTitle>
-      Choose a topic that you feel is currently holding you back.
+      Choose a topic that you feel is currently holding you back
     </SubTitle>
     <SubText>
       <div>
@@ -47,7 +47,7 @@ const AboutContent = () => (
     </SubText>
     <Title>STEP TWO</Title>
     <SubTitle>
-      Start a chat about that topic with your <strong>Past-Self</strong>.
+      Start a chat about that topic with your <strong>Past-Self</strong>
     </SubTitle>
     <SubText>
       Be mindful and have questions like:
@@ -60,7 +60,7 @@ const AboutContent = () => (
       can come up.
     </SubText>
     <Title>STEP THREE</Title>
-    <SubTitle>Listen to it fully and honor that part of you.</SubTitle>
+    <SubTitle>Listen to it fully and honor that part of you</SubTitle>
     <SubText>
       <div>
         Don't judge your <strong>Past-Self</strong>, don't try to explain it

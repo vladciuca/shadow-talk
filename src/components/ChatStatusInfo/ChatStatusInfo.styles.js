@@ -12,20 +12,19 @@ export const Info = styled.div`
   text-align: center;
   padding: 0.3rem 0;
   font-size: 0.8rem;
-  border-bottom: 0.5px solid ${({ theme }) => theme.textLight};
-  padding-bottom: 7px;
 `;
 
 export const Status = styled.div`
-  padding-top: 7px;
+  padding-bottom: 4px;
   display: flex;
   justify-content: center;
   align-items: center;
   color: ${({ theme }) => theme.text};
+  font-size: 1.1rem;
 `;
 
 export const Icon = styled.div`
-  margin: 0 0.2rem;
+  margin-left: 0.4rem;
 `;
 
 export const Button = styled.span`
@@ -33,6 +32,7 @@ export const Button = styled.span`
   background: ${({ theme }) => theme.negative};
   color: ${({ theme }) => theme.text};
   border-radius: 25px;
-  margin: 0 0.2rem;
-  padding: 0.1rem 0.4rem;
+  margin: 0 0.3rem;
+  padding: 0rem 0.4rem;
+  font-size: 0.7rem;
 `;

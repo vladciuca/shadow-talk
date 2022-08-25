@@ -10,7 +10,6 @@ import {
   SubTitle,
   SubTitleItem,
   Icon,
-  Number,
   HomeAboutLink,
   Spacer,
 } from "./HomeHeader.styles";
@@ -28,7 +27,7 @@ const HomeHeader = ({ nrOfChats, nrOfResolvedChats, nrOfIntegratingChats }) => {
         <SubTitle>
           {nrOfResolvedChats < 1 ? null : (
             <SubTitleItem>
-              <Number> {nrOfResolvedChats}</Number>
+              {nrOfResolvedChats}
               <Icon>
                 <IconBackground size={1} icon={<BsCheckLg />} />
               </Icon>
@@ -36,11 +35,11 @@ const HomeHeader = ({ nrOfChats, nrOfResolvedChats, nrOfIntegratingChats }) => {
             </SubTitleItem>
           )}
           {nrOfResolvedChats >= 1 && nrOfIntegratingChats >= 1 ? (
-            <Spacer></Spacer>
+            <Spacer>,</Spacer>
           ) : null}
           {nrOfIntegratingChats < 1 ? null : (
             <SubTitleItem>
-              <Number> {nrOfIntegratingChats}</Number>
+              {nrOfIntegratingChats}
               <Icon>
                 <IconBackground size={1} icon={<BsExclamationLg />} />
               </Icon>

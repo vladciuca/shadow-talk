@@ -98,7 +98,6 @@ export const ChatIntegration = styled.div`
 `;
 
 export const IntegrationNr = styled.div`
-  font-weight: 700;
   margin-right: 0.2rem;
 `;
 
@@ -109,7 +108,7 @@ export const IntegrationIcon = styled.span`
 export const ChatStats = styled.div`
   display: flex;
   justify-content: space-between;
-  padding-top: 7px;
+  padding-top: 6px;
 `;
 
 export const Stats = styled.div`

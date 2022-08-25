@@ -28,11 +28,6 @@ export const SubTitleItem = styled.div`
   align-items: center;
 `;
 
-export const Number = styled.div`
-  font-weight: 700;
-  margin-right: 0.1rem;
-`;
-
 export const Icon = styled.div`
   color: ${({ theme }) => theme.positive};
   margin: 0 0.3rem;
@@ -43,11 +38,7 @@ export const Icon = styled.div`
 `;
 
 export const Spacer = styled.div`
-  margin: 0.5rem 0.7rem 0 0.7rem;
-  color: ${({ theme }) => theme.text};
-  width: 1px;
-  height: 20px;
-  border-left: 0.5px solid ${({ theme }) => theme.textLight};
+  padding: 0.5rem 0.7rem 0 0.1rem;
 `;
 
 export const HomeAboutLink = styled.div`

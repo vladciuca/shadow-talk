@@ -5,7 +5,7 @@ const initialState = [
     id: "1",
     date: "02/08/2022",
     resolve: false,
-    status: "Discussing...",
+    status: "Chatting...",
     topic: "Intro Chat",
     messages: [
       {
@@ -26,7 +26,7 @@ const initialState = [
     id: "2",
     date: "02/08/2022",
     resolve: false,
-    status: "Discussing...",
+    status: "Chatting...",
     topic: "Second Chat topic is really really really long and must be cut",
     messages: [
       {
@@ -49,6 +49,8 @@ export const ChatListContext = React.createContext();
 
 const Store = ({ children }) => {
   const [chatList, setChatList] = useState(initialState);
+
+  // ChatList Actions
 
   //get ChatList by Status
   //status: 'Discussing...' (In progress)
@@ -118,11 +120,29 @@ const Store = ({ children }) => {
     setChatList(newChatList);
   };
 
-  //change Chat Status with specific value START WORKING FROM HERE
-  const updateChatStatus = (id, status) => {
+  //update Chat Status based on chat
+  const updateChatStatus = (id) => {
     const newChatList = chatList.map((chat) => {
       if (chat.id === id) {
-        chat.status = status;
+        //STATUS: In progress...
+        if (!chat.resolve) {
+          chat.status = "Chatting...";
+        }
+        //STATUS: Integrating...
+        if (
+          chat.resolve &&
+          chat.messages[chat.messages.length - 1].autoResolveMessage
+        ) {
+          chat.status = "Integrating...";
+        }
+        //STATUS: Resolved!
+        if (
+          chat.resolve &&
+          chat.messages[chat.messages.length - 1].resolve &&
+          chat.messages[chat.messages.length - 1].user === "Present"
+        ) {
+          chat.status = "Resolved";
+        }
       }
       return chat;
     });
@@ -130,7 +150,7 @@ const Store = ({ children }) => {
     setChatList(newChatList);
   };
 
-  // chatMessageList Actions
+  // MessageList Actions
 
   const addNewMessage = (chat, message) => {
     const updatedChat = { ...chat, messages: [...chat.messages, message] };
@@ -186,12 +206,8 @@ const Store = ({ children }) => {
     updateMessages(chat, newMessageList);
   };
 
-  const getPastMessages = (chat) => {
-    return chat.messages.filter((message) => message.user === "Past");
-  };
-
-  const getPresentMessages = (chat) => {
-    return chat.messages.filter((message) => message.user === "Present");
+  const getMessagesByUser = (chat, user) => {
+    return chat.messages.filter((message) => message.user === user);
   };
 
   const getNrOfHighlights = (chat) => {
@@ -231,8 +247,7 @@ const Store = ({ children }) => {
         deleteMessage,
         toggleMessageUser,
         toggleMessageHighlight,
-        getPastMessages,
-        getPresentMessages,
+        getMessagesByUser,
         getNrOfHighlights,
         getNrOfIntegrations,
       }}

@@ -12,6 +12,13 @@ import {
 const ChatStatusInfo = ({ chatStatus, toggleResolve, nrOfIntegrations }) => {
   return (
     <ChatStatusInfoContainer>
+      <Status>
+        {nrOfIntegrations < 1 ? "No" : nrOfIntegrations} Successful Integration
+        {nrOfIntegrations === 1 ? "" : "s"}
+        <Icon>
+          <IconBackground size={1} icon={<BsExclamationLg />} />
+        </Icon>
+      </Status>
       {chatStatus === "Resolved" ? (
         <>
           <Info>
@@ -27,13 +34,6 @@ const ChatStatusInfo = ({ chatStatus, toggleResolve, nrOfIntegrations }) => {
           </Info>
         </>
       )}
-      <Status>
-        {nrOfIntegrations < 1 ? "No" : nrOfIntegrations} Successful Integration
-        {nrOfIntegrations === 1 ? "" : "s"}
-        <Icon>
-          <IconBackground size={1} icon={<BsExclamationLg />} />
-        </Icon>
-      </Status>
     </ChatStatusInfoContainer>
   );
 };
