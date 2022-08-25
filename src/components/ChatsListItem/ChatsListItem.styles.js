@@ -51,6 +51,10 @@ export const TopicForm = styled.form`
 `;
 
 export const TopicInput = styled.input`
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
   width: 100%;
   padding: 0 2px;
   color: ${({ theme }) => theme.text};
