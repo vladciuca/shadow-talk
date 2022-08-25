@@ -13,7 +13,7 @@ export const firstSequenceOfMessages = [
   {
     user: "Past",
     message:
-      "Talk to me and lets try to resolve this issues that you fell is still affecting us so we can move forward!",
+      "Talk to me and lets try to resolve this issues that you feel is still affecting us so we can move forward!",
     static: true,
   },
   {
