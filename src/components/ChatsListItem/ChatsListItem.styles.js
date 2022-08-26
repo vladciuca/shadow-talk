@@ -2,7 +2,7 @@ import styled, { keyframes, css } from "styled-components";
 
 export const ChatContainer = styled.div`
   display: flex;
-  padding-bottom: 2rem;
+  padding: 1rem 0;
 `;
 
 export const ChatProfile = styled.div`
