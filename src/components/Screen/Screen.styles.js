@@ -48,9 +48,9 @@ export const ScreenOverflow = styled.div`
       : css`
           height: 100%;
         `}
-  padding: 1rem 0.8rem 1rem 1rem;
+  padding: 1rem 0.6rem 1rem 0.8rem;
   @media (max-width: 395px) {
-    padding: 1rem 0.6rem 1rem 0.8rem;
+    padding: 1rem 0.4rem 1rem 0.6rem;
   }
   overflow-x: hidden;
   overflow-y: scroll;

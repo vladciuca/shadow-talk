@@ -18,7 +18,7 @@ export const ChatInfo = styled.div`
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  margin-left: 0.5rem;
+  margin-left: 1rem;
 `;
 
 export const ChatTopic = styled.div`
@@ -46,7 +46,7 @@ export const TopicText = styled.div`
   text-overflow: ellipsis;
   max-width: 210px;
   @media (max-width: 400px) {
-    max-width: 180px;
+    max-width: 175px;
   }
   @media (max-width: 360px) {
     max-width: 150px;

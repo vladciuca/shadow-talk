@@ -1,9 +1,10 @@
 export const theme = {
   bgPrimary: "#262335",
-  bgSecondary: "#40384a",
+  // bgSecondary: "#40384a",
+  bgSecondary: "rgba(36,27,47, 0.7)",
 
-  // cardPrimary: "rgba(36,27,47, 0.7)",
-  cardPrimary: "rgba(64,56,74, 0.7)",
+  // cardPrimary: "rgba(64,56,74, 0.7)",
+  cardPrimary: "rgba(36,27,47, 0.5)",
   // cardSecondary: "#241b2f",
 
   //CARDS
@@ -31,9 +32,10 @@ export const theme = {
 
   positiveOpac: "rgba(0,191,255, 0.3)",
   neutralOpac: "rgba(164, 135, 195, 0.4)",
-  negativeOpac: "rgba(255, 105, 180, 0.4)",
+  negativeOpac: "rgba(255, 105, 180, 0.3)",
 
   success: "#a2f5a2",
   successDark: "#3eb489",
   danger: "#ff7b7b",
+  warning: "#d4af37",
 };
