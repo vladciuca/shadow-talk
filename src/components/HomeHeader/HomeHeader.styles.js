@@ -24,6 +24,7 @@ export const SubTitle = styled.div`
 
 export const SubTitleItem = styled.div`
   padding-top: 0.5rem;
+  padding-left: 0.1rem;
   display: flex;
   align-items: center;
 `;

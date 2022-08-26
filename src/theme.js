@@ -2,7 +2,8 @@ export const theme = {
   bgPrimary: "#262335",
   bgSecondary: "#40384a",
 
-  cardPrimary: "rgba(36,27,47, 0.7)",
+  // cardPrimary: "rgba(36,27,47, 0.7)",
+  cardPrimary: "rgba(64,56,74, 0.7)",
   // cardSecondary: "#241b2f",
 
   //CARDS

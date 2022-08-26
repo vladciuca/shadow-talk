@@ -113,7 +113,7 @@ const ChatsListItem = ({
           />
         </ChatProfile>
         <ChatInfo onClick={goToChat}>
-          <ChatTopic>
+          <ChatTopic showEdit={showEdit}>
             <span>Topic:</span>
             {showEdit ? (
               <TopicForm onSubmit={(e) => editTopic(e)}>
@@ -133,11 +133,11 @@ const ChatsListItem = ({
               {status}
               {resolve && status === "Resolved" ? (
                 <StatusIcon>
-                  <IconBackground size={0.9} icon={<BsCheckLg />} />
+                  <IconBackground size={0.8} icon={<BsCheckLg />} />
                 </StatusIcon>
               ) : resolve && status === "Integrating..." ? (
                 <StatusIcon>
-                  <IconBackground size={0.9} icon={<BsExclamationLg />} />
+                  <IconBackground size={0.8} icon={<BsExclamationLg />} />
                 </StatusIcon>
               ) : null}
             </ChatResolve>
@@ -149,7 +149,7 @@ const ChatsListItem = ({
               {integrations === 1 ? "" : "s"}
               {integrations < 1 ? null : (
                 <IntegrationIcon>
-                  <IconBackground size={0.9} icon={<BsExclamationLg />} />
+                  <IconBackground size={0.8} icon={<BsExclamationLg />} />
                 </IntegrationIcon>
               )}
             </ChatIntegration>
