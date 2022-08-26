@@ -113,7 +113,7 @@ const ChatsListItem = ({
           />
         </ChatProfile>
         <ChatInfo onClick={goToChat}>
-          <ChatTopic showEdit={showEdit}>
+          <ChatTopic>
             <span>Topic:</span>
             {showEdit ? (
               <TopicForm onSubmit={(e) => editTopic(e)}>

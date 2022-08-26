@@ -2,7 +2,7 @@ import styled, { keyframes, css } from "styled-components";
 
 export const ChatContainer = styled.div`
   display: flex;
-  padding: 0.5rem 0;
+  padding-bottom: 2rem;
 `;
 
 export const ChatProfile = styled.div`
@@ -12,8 +12,6 @@ export const ChatProfile = styled.div`
 `;
 
 export const ChatInfo = styled.div`
-  background: ${({ theme }) => theme.cardPrimary};
-  border-radius: 10px;
   cursor: pointer;
   display: flex;
   flex-direction: column;
@@ -22,13 +20,7 @@ export const ChatInfo = styled.div`
 `;
 
 export const ChatTopic = styled.div`
-  ${({ showEdit }) =>
-    showEdit
-      ? css`
-          border-bottom: 1px solid ${({ theme }) => theme.card};
-        `
-      : css``};
-  padding: 10px 10px 4px 10px;
+  padding-bottom: 0.1rem;
   display: flex;
   font-size: 1.1rem;
   line-height: 1.4rem;
@@ -44,7 +36,7 @@ export const TopicText = styled.div`
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 210px;
+  max-width: 215px;
   @media (max-width: 400px) {
     max-width: 175px;
   }
@@ -67,13 +59,14 @@ export const TopicInput = styled.input`
   color: ${({ theme }) => theme.text};
   background-color: transparent;
   border: none;
+  border-bottom: 1px solid ${({ theme }) => theme.card};
   &:focus {
     outline: none;
   }
 `;
 
 export const ChatSubInfo = styled.div`
-  padding: 6px 10px;
+  padding: 0.3rem 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -118,7 +111,7 @@ export const IntegrationIcon = styled.span`
 export const ChatStats = styled.div`
   display: flex;
   justify-content: space-between;
-  padding: 5px 10px;
+  padding-top: 0.3rem;
 `;
 
 export const Stats = styled.div`
@@ -139,6 +132,7 @@ export const StatIcon = styled.div`
 `;
 
 export const Options = styled.div`
+  margin-left: 0.5rem;
   cursor: pointer;
   font-size: 1.3rem;
   display: flex;
