@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { FaUser } from "react-icons/fa";
-import { AiOutlineClose, AiFillWarning } from "react-icons/ai";
+import { AiOutlineClose } from "react-icons/ai";
 
 export const AppInfoContainer = styled.div`
   display: block;
