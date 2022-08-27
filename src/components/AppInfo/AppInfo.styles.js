@@ -13,14 +13,13 @@ export const AppInfoContainer = styled.div`
 `;
 
 export const FlagShipLogo = styled.div`
-  margin-left: 0.5rem;
   font-family: "Inconsolata", monospace;
   font-size: 1.6rem;
   font-weight: 700;
 `;
 
 export const AppTitle = styled.div`
-  margin-top: 0.5rem;
+  margin-top: 1rem;
   display: flex;
   align-items: center;
 `;
