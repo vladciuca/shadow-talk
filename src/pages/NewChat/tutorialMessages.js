@@ -13,7 +13,7 @@ export const firstSequenceOfMessages = [
   {
     user: "Past",
     message:
-      "Talk to me and lets try to resolve this issues that you feel is still affecting us so we can move forward!",
+      "Talk to me and lets try to resolve this issues that you feel are still affecting you so we can move forward!",
     static: true,
   },
   {
@@ -28,7 +28,7 @@ export const secondSequenceOfMessages = [
   {
     user: "Past",
     message:
-      "Great! You can always edit the topic from the Chat options in the Chats page.",
+      "Great! And remember, you can always edit the topic from the Chat Options.",
     static: true,
   },
   {
