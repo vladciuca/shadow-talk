@@ -1,10 +1,11 @@
 export const theme = {
   bgPrimary: "#262335",
-  // bgSecondary: "#40384a",
-  bgSecondary: "rgba(36,27,47, 0.7)",
+  bgSecondary: "#40384a",
+  // bgSecondary: "rgba(36,27,47, 0.7)",
 
-  // cardPrimary: "rgba(64,56,74, 0.7)",
-  cardPrimary: "rgba(36,27,47, 0.5)",
+  cardPrimary: "rgba(64,56,74, 0.7)",
+  // cardPrimary: "rgba(36,27,47, 0.5)",
+  cardSecondary: "rgba(36,27,47, 0.5)",
   // cardSecondary: "#241b2f",
 
   //CARDS

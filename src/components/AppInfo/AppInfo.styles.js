@@ -5,7 +5,7 @@ import { ReactComponent as Logo } from "./logo.svg";
 export const AppInfoContainer = styled.div`
   display: block;
   position: absolute;
-  top: 2rem;
+  top: 1.5rem;
   left: 2rem;
   @media (max-width: 1200px) {
     display: none;
@@ -37,7 +37,7 @@ export const InfoMessageContainer = styled.div`
   margin-top: 1.5rem;
   max-width: 270px;
   padding: 1.5rem 1rem 1rem 1rem;
-  background: ${({ theme }) => theme.bgSecondary};
+  background: ${({ theme }) => theme.cardSecondary};
   border-radius: 7px;
   position: relative;
   line-height: 1.3rem;

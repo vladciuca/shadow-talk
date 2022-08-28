@@ -27,7 +27,7 @@ export const MessageContent = styled.div`
           background: ${({ theme }) => theme.negativeOpac};
         `
       : css`
-          background: ${({ theme }) => theme.cardPrimary};
+          background: ${({ theme }) => theme.cardSecondary};
         `}
   overflow-wrap: anywhere;
   max-width: 70%;

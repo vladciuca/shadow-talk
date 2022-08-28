@@ -8,11 +8,11 @@ export const ScreenContainer = styled.div`
     width: 100vw;
   }
   margin: 0 0.5rem;
-  background: ${({ theme }) => theme.card};
   backdrop-filter: blur(3px);
   -webkit-backdrop-filter: blur(3px);
   border-radius: 20px;
   border: 1px solid ${({ theme }) => theme.cardBorder};
+  background: ${({ theme }) => theme.card};
   overflow: hidden;
   position: relative;
 `;
@@ -20,17 +20,17 @@ export const ScreenContainer = styled.div`
 export const ScreenHeader = styled.div`
   height: 120px;
   width: 100%;
-  padding: 0.5rem;
+  padding: 0.5rem 0.3rem;
   background: ${({ theme }) => theme.bgSecondary};
   position: absolute;
   top: 0;
+  border-radius: 10px;
 `;
 
 export const ScreenContent = styled.div`
   height: 100%;
   width: 100%;
-  padding: 125px 0.3rem;
-
+  padding: 125px 0;
   ${({ chatContent }) =>
     chatContent
       ? css`
@@ -57,6 +57,7 @@ export const ScreenOverflow = styled.div`
 `;
 
 export const ScreenFooter = styled.div`
+  border-radius: 10px;
   height: 120px;
   width: 100%;
   padding: 0.5rem;
