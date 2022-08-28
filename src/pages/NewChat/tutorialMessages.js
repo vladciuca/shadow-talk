@@ -39,7 +39,7 @@ export const secondSequenceOfMessages = [
   {
     user: "Past",
     message:
-      "Oh, and by the way, from now on I'm not typing in your place anymore. You can swap between me and your Present-Self at anytime you want!",
+      "Oh, and by the way, from now on I'm still you! So I will not be typing in your place anymore. You can switch between me and your Present-Self at anytime you want!",
     static: true,
   },
 ];
