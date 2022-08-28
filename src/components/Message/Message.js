@@ -1,12 +1,8 @@
 import React, { useState, useContext } from "react";
 import { ChatListContext } from "../../Store";
 import { TbDotsVertical } from "react-icons/tb";
-import {
-  AiFillStar,
-  AiOutlineStar,
-  AiOutlineUserSwitch,
-  AiOutlineDelete,
-} from "react-icons/ai";
+import { BsLightbulbFill, BsLightbulb } from "react-icons/bs";
+import { AiOutlineUserSwitch, AiOutlineDelete } from "react-icons/ai";
 import useClickOutside from "../../hooks/useClickOutside";
 import { UserIcon } from "components";
 import {
@@ -74,7 +70,11 @@ const Message = ({
               <Option onClick={() => toggleMessageHighlight(chat, messageId)}>
                 Highlight
                 <span>
-                  {messageHighlight ? <AiFillStar /> : <AiOutlineStar />}
+                  {messageHighlight ? (
+                    <BsLightbulbFill size="0.9rem" />
+                  ) : (
+                    <BsLightbulb size="0.9rem" />
+                  )}
                 </span>
               </Option>
               <Option onClick={() => toggleMessageUser(chat, messageId)}>

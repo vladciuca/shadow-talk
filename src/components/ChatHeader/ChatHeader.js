@@ -1,6 +1,6 @@
 import React from "react";
 import { RiMessage2Fill } from "react-icons/ri";
-import { AiFillStar } from "react-icons/ai";
+import { BsLightbulbFill } from "react-icons/bs";
 import { BackToHome, UserIcon, ChatStatusSwitch } from "components";
 import {
   HeaderContainer,
@@ -9,6 +9,7 @@ import {
   UserName,
   UserStats,
   Stat,
+  MsgNr,
   SubText,
   Topic,
   TopicText,
@@ -44,13 +45,13 @@ const ChatHeader = ({
           {!tutorial ? (
             <UserStats>
               <Stat>
-                <span>{secondUserNrOfMessages}</span>
-                <RiMessage2Fill />
+                <MsgNr>{secondUserNrOfMessages}</MsgNr>
+                <RiMessage2Fill size="1rem" />
               </Stat>
               {secondUserNrOfHighlights < 1 ? null : (
                 <Stat>
                   <span>{secondUserNrOfHighlights}</span>
-                  <AiFillStar />
+                  <BsLightbulbFill size="0.9rem" />
                 </Stat>
               )}
             </UserStats>

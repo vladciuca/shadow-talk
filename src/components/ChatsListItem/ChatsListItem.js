@@ -2,7 +2,8 @@ import React, { useState, useContext, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { TbDotsVertical } from "react-icons/tb";
 import { RiMessage2Fill } from "react-icons/ri";
-import { AiOutlineDelete, AiOutlineForm, AiFillStar } from "react-icons/ai";
+import { BsLightbulbFill } from "react-icons/bs";
+import { AiOutlineDelete, AiOutlineForm } from "react-icons/ai";
 import { BsCheckLg, BsExclamationLg } from "react-icons/bs";
 import { ChatListContext } from "Store";
 import useClickOutside from "hooks/useClickOutside";
@@ -166,7 +167,7 @@ const ChatsListItem = ({
               <StatContainer>
                 {highlights}
                 <StatIcon>
-                  <AiFillStar />
+                  <BsLightbulbFill size="0.7rem" />
                 </StatIcon>
               </StatContainer>
             </Stats>

@@ -42,10 +42,10 @@ export const Stat = styled.div`
   justify-content: center;
   font-size: 1rem;
   padding: 0 0.2rem;
-  span {
-    font-size: 1rem;
-    padding: 0 0.2rem;
-  }
+`;
+
+export const MsgNr = styled.div`
+  padding: 0 0.2rem;
 `;
 
 export const SubText = styled.div`
