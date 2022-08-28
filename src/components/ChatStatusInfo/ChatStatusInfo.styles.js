@@ -29,7 +29,7 @@ export const Icon = styled.div`
 
 export const Button = styled.span`
   cursor: pointer;
-  background: ${({ theme }) => theme.negative};
+  background: gray;
   color: ${({ theme }) => theme.text};
   border-radius: 25px;
   margin: 0 0.3rem;
