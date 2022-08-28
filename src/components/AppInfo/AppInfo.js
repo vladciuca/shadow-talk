@@ -2,10 +2,8 @@ import React, { useState } from "react";
 import { AiFillWarning } from "react-icons/ai";
 import {
   AppInfoContainer,
-  FlagShipLogo,
   AppTitle,
-  Logo,
-  LogoShadow,
+  LogoContainer,
   Title,
   AppVersion,
   InfoMessageContainer,
@@ -19,10 +17,9 @@ const AppInfo = () => {
   const [showInfoMessage, setShowInfoMessage] = useState(true);
   return (
     <AppInfoContainer>
-      <FlagShipLogo>mind-dev@tools/</FlagShipLogo>
       <AppTitle>
-        <Logo></Logo>
-        <LogoShadow></LogoShadow>
+        <LogoContainer />
+
         <Title>
           Self-Chat Journal<AppVersion>1.0</AppVersion>
         </Title>

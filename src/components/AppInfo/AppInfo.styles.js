@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { FaUser } from "react-icons/fa";
 import { AiOutlineClose } from "react-icons/ai";
+import { ReactComponent as Logo } from "./logo.svg";
 
 export const AppInfoContainer = styled.div`
   display: block;
@@ -12,10 +12,9 @@ export const AppInfoContainer = styled.div`
   }
 `;
 
-export const FlagShipLogo = styled.div`
-  font-family: "Inconsolata", monospace;
-  font-size: 1.6rem;
-  font-weight: 700;
+export const LogoContainer = styled(Logo)`
+  height: 1.6rem;
+  width: auto;
 `;
 
 export const AppTitle = styled.div`
@@ -24,21 +23,8 @@ export const AppTitle = styled.div`
   align-items: center;
 `;
 
-export const Logo = styled(FaUser)`
-  margin-right: 0.8rem;
-  font-size: 1.6rem;
-  color: ${({ theme }) => theme.negativeOpac};
-  position: relative;
-`;
-
-export const LogoShadow = styled(FaUser)`
-  font-size: 1.6rem;
-  color: ${({ theme }) => theme.neutralOpac};
-  position: absolute;
-  left: 7px;
-`;
-
 export const Title = styled.div`
+  margin-left: 0.5rem;
   font-size: 1.6rem;
 `;
 
@@ -50,7 +36,7 @@ export const AppVersion = styled.span`
 export const InfoMessageContainer = styled.div`
   margin-top: 1.5rem;
   max-width: 270px;
-  padding: 1.5rem 1.5rem 1rem 1.5rem;
+  padding: 1.5rem 1rem 1rem 1rem;
   background: ${({ theme }) => theme.bgSecondary};
   border-radius: 7px;
   position: relative;
