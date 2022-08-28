@@ -27,7 +27,7 @@ export const Title = styled.div`
   text-align: center;
   padding: 1rem 0;
   margin: 1rem 0;
-  border-bottom: 1px solid ${({ theme }) => theme.text};
+  border-bottom: 0.5px solid ${({ theme }) => theme.text};
 `;
 
 export const SubTitle = styled.div`
