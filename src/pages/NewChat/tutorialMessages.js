@@ -39,7 +39,13 @@ export const secondSequenceOfMessages = [
   {
     user: "Past",
     message:
-      "Oh, and by the way, I'm still YOU! So I will not be typing in your place anymore. You can switch between me and your Present-Self at anytime you want!",
+      "Oh, and by the way, I'm still YOU! So I won't be typing in your place anymore.",
+    static: true,
+  },
+  {
+    user: "Past",
+    message:
+      "You can switch between me and your Present-Self anytime you want!",
     static: true,
   },
 ];
