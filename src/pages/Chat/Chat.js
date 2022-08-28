@@ -13,6 +13,7 @@ const Chat = () => {
     changeChatResolve,
     updateChatStatus,
     getNrOfIntegrations,
+    getNrOfResponses,
     getMessagesByUser,
     getHighlightsByUser,
   } = useContext(ChatListContext);
@@ -138,11 +139,14 @@ const Chat = () => {
   // RESOLVE FEATURE
 
   const showResolve = () => {
-    const enoughMessagesFromPast = getMessagesByUser(chat, "Past").length >= 5;
+    const enoughMessagesFromPast = getMessagesByUser(chat, "Past").length >= 3;
     const enoughMessagesFromPresent =
-      getMessagesByUser(chat, "Present").length >= 5;
-
-    if (enoughMessagesFromPast && enoughMessagesFromPresent) {
+      getMessagesByUser(chat, "Present").length >= 3;
+    if (
+      getNrOfResponses(chat) >= 3 &&
+      enoughMessagesFromPast &&
+      enoughMessagesFromPresent
+    ) {
       setShowStateSwitch(true);
     } else {
       setShowStateSwitch(false);

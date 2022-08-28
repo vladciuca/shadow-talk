@@ -198,6 +198,21 @@ const Store = ({ children }) => {
     return counter;
   };
 
+  const getNrOfResponses = (chat) => {
+    let counter = 0;
+    for (let i = 0; i < chat.messages.length - 1; i++) {
+      if (
+        (chat.messages[i].user === "Present" &&
+          chat.messages[i + 1].user === "Past") ||
+        (chat.messages[i].user === "Past" &&
+          chat.messages[i + 1].user === "Present")
+      ) {
+        counter++;
+      }
+    }
+    return counter;
+  };
+
   return (
     <ChatListContext.Provider
       value={{
@@ -221,6 +236,7 @@ const Store = ({ children }) => {
         getHighlightsByUser,
         getNrOfHighlights,
         getNrOfIntegrations,
+        getNrOfResponses,
       }}
     >
       {children}

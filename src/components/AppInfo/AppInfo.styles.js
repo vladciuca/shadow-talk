@@ -56,7 +56,7 @@ export const CloseButton = styled(AiOutlineClose)`
 export const InfoIcon = styled.span`
   display: flex;
   align-items: center;
-  margin-right: 0.5rem;
+  margin-right: 1rem;
   font-size: 1.5rem;
   color: ${({ theme }) => theme.warning};
 `;
