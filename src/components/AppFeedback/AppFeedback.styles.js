@@ -58,12 +58,12 @@ export const Button = styled.button`
   :hover {
     background: ${({ theme }) => theme.neutral};
   }
-  margin: 1.5rem 0;
   padding: 0.5rem 1rem;
   border: none;
 `;
 
 export const UserExperience = styled.div`
+  margin-top: 1rem;
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -71,7 +71,7 @@ export const UserExperience = styled.div`
 
 export const UserExperienceInput = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   align-items: center;
   justify-content: center;
   input[type="radio"] {
