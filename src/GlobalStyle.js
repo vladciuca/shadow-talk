@@ -36,6 +36,9 @@ body{
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(255, 255, 255, 0.4);
 }
+textarea:focus, input:focus{
+  outline: none;
+}
 `;
 
 export default GlobalStyle;

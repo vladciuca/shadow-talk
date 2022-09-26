@@ -20,6 +20,7 @@ export const Title = styled.div`
 export const SubTitle = styled.div`
   color: ${({ theme }) => theme.textLight};
   display: flex;
+  font-size: 0.9rem;
 `;
 
 export const SubTitleItem = styled.div`

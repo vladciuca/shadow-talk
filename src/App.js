@@ -4,7 +4,7 @@ import { ThemeProvider } from "styled-components";
 import GlobalStyle from "./GlobalStyle";
 import { theme } from "./theme";
 import { AppContainer } from "./components/UI/UI.styles";
-import { AppInfo, Logo } from "components";
+import { AppInfo, AppFeedback, Logo } from "components";
 import { Home, About, NewChat, Chat, Error } from "pages";
 
 function App() {
@@ -15,6 +15,7 @@ function App() {
         <Store>
           <AppContainer>
             <AppInfo />
+            <AppFeedback />
             <Logo />
             <Routes>
               <Route path="/" element={<Home />} />

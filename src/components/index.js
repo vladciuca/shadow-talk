@@ -1,5 +1,6 @@
 // Global components
 export { default as AppInfo } from "./AppInfo";
+export { default as AppFeedback } from "./AppFeedback";
 export { default as Logo } from "./Logo";
 export { default as Screen } from "./Screen";
 export { default as Button } from "./Button";

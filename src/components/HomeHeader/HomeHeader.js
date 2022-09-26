@@ -24,12 +24,12 @@ const HomeHeader = ({ nrOfChats, nrOfResolvedChats, nrOfIntegratingChats }) => {
           {nrOfChats < 1 ? "No" : nrOfChats} Chat
           {nrOfChats === 1 ? null : "s"}
         </Title>
-        <SubTitle>
+        {/* <SubTitle>
           {nrOfResolvedChats < 1 ? null : (
             <SubTitleItem>
               {nrOfResolvedChats}
               <Icon>
-                <IconBackground size={1} icon={<BsCheckLg />} />
+                <IconBackground size={0.8} icon={<BsCheckLg />} />
               </Icon>
               Resolved
             </SubTitleItem>
@@ -41,12 +41,12 @@ const HomeHeader = ({ nrOfChats, nrOfResolvedChats, nrOfIntegratingChats }) => {
             <SubTitleItem>
               {nrOfIntegratingChats}
               <Icon>
-                <IconBackground size={1} icon={<BsExclamationLg />} />
+                <IconBackground size={0.8} icon={<BsExclamationLg />} />
               </Icon>
               Integrating...
             </SubTitleItem>
           )}
-        </SubTitle>
+        </SubTitle> */}
       </Header>
       <HomeAboutLink onClick={() => navigate("/about")}>
         <AiOutlineQuestionCircle />
