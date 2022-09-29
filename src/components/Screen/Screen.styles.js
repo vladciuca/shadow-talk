@@ -8,8 +8,8 @@ export const ScreenContainer = styled.div`
     width: 100vw;
   }
   margin: 0 0.5rem;
-  backdrop-filter: blur(3px);
-  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
   border-radius: 20px;
   border: 1px solid ${({ theme }) => theme.cardBorder};
   background: ${({ theme }) => theme.card};

@@ -1,8 +1,22 @@
 import React from "react";
-import { Screen, ErrorHeader, ErrorContent } from "components";
+import {
+  Screen,
+  ErrorHeader,
+  ErrorContent,
+  AppInfo,
+  AppFeedback,
+  Logo,
+} from "components";
 
 const Error = () => {
-  return <Screen header={<ErrorHeader />} content={<ErrorContent />} />;
+  return (
+    <>
+      <AppInfo />
+      <AppFeedback />
+      <Logo />
+      <Screen header={<ErrorHeader />} content={<ErrorContent />} />
+    </>
+  );
 };
 
 export default Error;

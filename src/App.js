@@ -5,7 +5,7 @@ import GlobalStyle from "./GlobalStyle";
 import { theme } from "./theme";
 import { AppContainer } from "./components/UI/UI.styles";
 import { AppInfo, AppFeedback, Logo } from "components";
-import { Home, About, NewChat, Chat, Error } from "pages";
+import { Landing, Home, About, NewChat, Chat, Error } from "pages";
 
 function App() {
   return (
@@ -14,11 +14,12 @@ function App() {
         <GlobalStyle />
         <Store>
           <AppContainer>
-            <AppInfo />
+            {/* <AppInfo />
             <AppFeedback />
-            <Logo />
+            <Logo />*/}
             <Routes>
-              <Route path="/" element={<Home />} />
+              <Route path="/" element={<Landing />} />
+              <Route path="/chats" element={<Home />} />
               <Route path="/about" element={<About />} />
               <Route path="/new-chat" element={<NewChat />} />
               <Route path="/chat/:id" element={<Chat />} />

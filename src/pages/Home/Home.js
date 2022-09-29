@@ -1,6 +1,14 @@
 import React, { useContext } from "react";
 import { ChatListContext } from "Store";
-import { Screen, HomeHeader, HomeContent, HomeFooter } from "components";
+import {
+  Screen,
+  HomeHeader,
+  HomeContent,
+  HomeFooter,
+  AppInfo,
+  AppFeedback,
+  Logo,
+} from "components";
 
 const Home = () => {
   const { chatList, getResolvedChats, getIntegratingChats } =
@@ -12,6 +20,9 @@ const Home = () => {
 
   return (
     <>
+      <AppInfo />
+      <AppFeedback />
+      <Logo />
       <Screen
         header={
           <HomeHeader

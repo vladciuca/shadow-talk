@@ -2,7 +2,15 @@ import React, { useState, useEffect, useRef, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { v4 } from "uuid";
 import { ChatListContext } from "../../Store";
-import { Screen, ChatHeader, NewChatContent, NewChatFooter } from "components";
+import {
+  Screen,
+  ChatHeader,
+  NewChatContent,
+  NewChatFooter,
+  AppInfo,
+  AppFeedback,
+  Logo,
+} from "components";
 
 import {
   firstSequenceOfMessages,
@@ -129,28 +137,33 @@ const NewChat = () => {
   };
 
   return (
-    <Screen
-      header={<ChatHeader secondUser={"Past"} tutorial={true} />}
-      content={
-        <NewChatContent
-          tutorialMessages={tutorialMessages}
-          tutorialTyping={tutorialTyping}
-          userTyping={userTyping}
-        />
-      }
-      chatContent={true}
-      footer={
-        <NewChatFooter
-          addNewChat={goToNewChat}
-          navigateNotAllowed={navigateNotAllowed}
-          showTopicInput={showTopicInput}
-          topic={topic}
-          handleTopic={handleTopic}
-          handleTopicSubmit={handleTopicSubmit}
-          inputRef={inputRef}
-        />
-      }
-    />
+    <>
+      <AppInfo />
+      <AppFeedback />
+      <Logo />
+      <Screen
+        header={<ChatHeader secondUser={"Past"} tutorial={true} />}
+        content={
+          <NewChatContent
+            tutorialMessages={tutorialMessages}
+            tutorialTyping={tutorialTyping}
+            userTyping={userTyping}
+          />
+        }
+        chatContent={true}
+        footer={
+          <NewChatFooter
+            addNewChat={goToNewChat}
+            navigateNotAllowed={navigateNotAllowed}
+            showTopicInput={showTopicInput}
+            topic={topic}
+            handleTopic={handleTopic}
+            handleTopicSubmit={handleTopicSubmit}
+            inputRef={inputRef}
+          />
+        }
+      />
+    </>
   );
 };
 

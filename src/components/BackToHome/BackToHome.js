@@ -6,7 +6,7 @@ import { BackButton } from "./BackToHome.styles";
 const BackToHome = () => {
   let navigate = useNavigate();
   return (
-    <BackButton onClick={() => navigate("/")}>
+    <BackButton onClick={() => navigate("/chats")}>
       <IoIosArrowBack />
     </BackButton>
   );

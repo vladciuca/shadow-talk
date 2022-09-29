@@ -1,15 +1,15 @@
 import React from "react";
-import { IoMan } from "react-icons/io5";
+import { IoIosMan } from "react-icons/io";
 import { LogoContainer, PastSelfIcon, PresentSelfIcon } from "./Logo.styles";
 
 const Logo = () => (
   <>
     <LogoContainer>
       <PastSelfIcon>
-        <IoMan size="12rem" />
+        <IoIosMan size="12rem" />
       </PastSelfIcon>
       <PresentSelfIcon>
-        <IoMan size="12rem" />
+        <IoIosMan size="12rem" />
       </PresentSelfIcon>
     </LogoContainer>
   </>

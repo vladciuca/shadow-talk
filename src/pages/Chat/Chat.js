@@ -2,7 +2,15 @@ import React, { useState, useEffect, useRef, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { v4 } from "uuid";
 import { ChatListContext } from "Store";
-import { Screen, ChatHeader, ChatContent, ChatFooter } from "components";
+import {
+  Screen,
+  ChatHeader,
+  ChatContent,
+  ChatFooter,
+  AppInfo,
+  AppFeedback,
+  Logo,
+} from "components";
 
 const Chat = () => {
   const {
@@ -285,49 +293,56 @@ const Chat = () => {
   }, [newMessage]);
 
   return (
-    <Screen
-      header={
-        <ChatHeader
-          secondUser={secondUser()}
-          secondUserNrOfMessages={getMessagesByUser(chat, secondUser()).length}
-          secondUserNrOfHighlights={
-            getHighlightsByUser(chat, secondUser()).length
-          }
-          topic={chat.topic}
-          handleHints={handleHints}
-          resolve={chat.resolve}
-          showStateSwitch={showStateSwitch}
-          toggleResolve={toggleResolve}
-          chatStatus={chat.status}
-          autoTyping={autoTyping}
-        />
-      }
-      content={
-        <ChatContent
-          chat={chat}
-          user={currentUser}
-          secondUser={secondUser()}
-          isTyping={isTyping}
-          autoTyping={autoTyping}
-        />
-      }
-      chatContent={true}
-      footer={
-        <ChatFooter
-          inputRef={inputRef}
-          user={currentUser}
-          nrOfIntegrations={getNrOfIntegrations(chat)}
-          secondUser={secondUser()}
-          switchUser={switchUser}
-          newMessage={newMessage}
-          handleNewMessage={handleNewMessage}
-          handleNewMessageSubmit={handleNewMessageSubmit}
-          resolve={chat.resolve}
-          chatStatus={chat.status}
-          toggleResolve={toggleResolve}
-        />
-      }
-    />
+    <>
+      <AppInfo />
+      <AppFeedback />
+      <Logo />
+      <Screen
+        header={
+          <ChatHeader
+            secondUser={secondUser()}
+            secondUserNrOfMessages={
+              getMessagesByUser(chat, secondUser()).length
+            }
+            secondUserNrOfHighlights={
+              getHighlightsByUser(chat, secondUser()).length
+            }
+            topic={chat.topic}
+            handleHints={handleHints}
+            resolve={chat.resolve}
+            showStateSwitch={showStateSwitch}
+            toggleResolve={toggleResolve}
+            chatStatus={chat.status}
+            autoTyping={autoTyping}
+          />
+        }
+        content={
+          <ChatContent
+            chat={chat}
+            user={currentUser}
+            secondUser={secondUser()}
+            isTyping={isTyping}
+            autoTyping={autoTyping}
+          />
+        }
+        chatContent={true}
+        footer={
+          <ChatFooter
+            inputRef={inputRef}
+            user={currentUser}
+            nrOfIntegrations={getNrOfIntegrations(chat)}
+            secondUser={secondUser()}
+            switchUser={switchUser}
+            newMessage={newMessage}
+            handleNewMessage={handleNewMessage}
+            handleNewMessageSubmit={handleNewMessageSubmit}
+            resolve={chat.resolve}
+            chatStatus={chat.status}
+            toggleResolve={toggleResolve}
+          />
+        }
+      />
+    </>
   );
 };
 
